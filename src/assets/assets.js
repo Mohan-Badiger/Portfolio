@@ -91,7 +91,7 @@ export const workData = [
         title: 'portfolio',
         description: 'Website',
         bgImage: '/work-2.png',
-        link: 'https://kds-temple-frontend.vercel.app/'
+        link: 'https://mohanbadiger.vercel.app/'
     },
     {
         title: 'Photography site',
