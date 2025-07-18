@@ -9,17 +9,29 @@ https://mohanbadiger.vercel.app/
 ## 📁 Project Structure
 /src
 ├── components
+
 │ ├── About.jsx
+
 │ ├── Contact.jsx
+
 │ ├── Footer.jsx
+
 │ ├── Header.jsx
+
 │ ├── Navbar.jsx
+
 │ └── Work.jsx
+
 ├── pages
+
 │ └── Home.jsx
+
 ├── App.jsx
+
 ├── main.jsx
+
 └── index.css
+
 
 ---
 
