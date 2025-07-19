@@ -37,8 +37,16 @@ import right_arrow from './right-arrow.png';
 import send_icon from './send-icon.png';
 import right_arrow_bold from './right-arrow-bold.png';
 import right_arrow_bold_dark from './right-arrow-bold-dark.png';
+import instagram from './instagram.png'
+import github from './github.png'
+import youtube from './youtube.png'
+import linkedin from './linkedin.png'
 
 export const assets = {
+    instagram,
+    github,
+    youtube,
+    linkedin,
     user_image,
     code_icon,
     code_icon_dark,
@@ -83,28 +91,28 @@ export const assets = {
 export const workData = [
     {
         title: 'Temple project',
-        description: 'Website',
+        description: 'Website(Live Demo)',
         bgImage: '/work-1.jpg',
         link: 'https://kds-temple-frontend.vercel.app/'
     },
-    {
-        title: 'portfolio',
-        description: 'Website',
-        bgImage: '/work-2.png',
-        link: 'https://mohanbadiger.vercel.app/'
-    },
-    {
-        title: 'Photography site',
-        description: 'Web Design',
-        bgImage: 'https://html-online.com/articles/wp-content/uploads/2017/03/57646-design-and-photography-website-template.jpg',
-        link: 'https://kds-temple-frontend.vercel.app/'
-    },
-    {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
-        bgImage: 'https://www.mindinventory.com/blog/wp-content/uploads/2024/12/top-mobile-app-ui-ux-design-trends.webp',
-        link: 'https://kds-temple-frontend.vercel.app/'
-    },
+    // {
+    //     title: 'portfolio',
+    //     description: 'Website',
+    //     bgImage: '/work-2.png',
+    //     link: 'https://mohanbadiger.vercel.app/'
+    // },
+    // {
+    //     title: 'Photography site',
+    //     description: 'Web Design',
+    //     bgImage: 'https://html-online.com/articles/wp-content/uploads/2017/03/57646-design-and-photography-website-template.jpg',
+    //     link: 'https://kds-temple-frontend.vercel.app/'
+    // },
+    // {
+    //     title: 'UI/UX designing',
+    //     description: 'UI/UX Design',
+    //     bgImage: 'https://www.mindinventory.com/blog/wp-content/uploads/2024/12/top-mobile-app-ui-ux-design-trends.webp',
+    //     link: 'https://kds-temple-frontend.vercel.app/'
+    // },
 ]
 
 export const serviceData = [
