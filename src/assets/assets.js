@@ -12,8 +12,6 @@ import javascript from './javascript.png';
 import git from './git.png';
 import mongodb from './mongodb.png';
 import right_arrow_white from './right-arrow-white.png';
-import logo from './logo.png';
-import logo_dark from './logo_dark.png';
 import mail_icon from './mail_icon.png';
 import mail_icon_dark from './mail_icon_dark.png';
 import profile_img from './profile-img.png';
@@ -62,8 +60,6 @@ export const assets = {
     profile,
     mongodb,
     right_arrow_white,
-    logo,
-    logo_dark,
     mail_icon,
     mail_icon_dark,
     profile_img,
@@ -95,12 +91,12 @@ export const workData = [
         bgImage: '/work-1.jpg',
         link: 'https://kds-temple-frontend.vercel.app/'
     },
-    // {
-    //     title: 'portfolio',
-    //     description: 'Website',
-    //     bgImage: '/work-2.png',
-    //     link: 'https://mohanbadiger.vercel.app/'
-    // },
+    {
+        title: 'Vishwakarma Temple',
+        description: 'Website(Live Demo)',
+        bgImage: '/work-3.png',
+        link: 'https://vishwakarma-temple-website.vercel.app/'
+    },
     // {
     //     title: 'Photography site',
     //     description: 'Web Design',
