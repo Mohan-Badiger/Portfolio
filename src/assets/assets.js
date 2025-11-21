@@ -39,6 +39,7 @@ import instagram from './instagram.png'
 import github from './github.png'
 import youtube from './youtube.png'
 import linkedin from './linkedin.png'
+import socket from '../assets/logo.png'
 
 export const assets = {
     instagram,
@@ -81,7 +82,8 @@ export const assets = {
     right_arrow,
     send_icon,
     right_arrow_bold,
-    right_arrow_bold_dark
+    right_arrow_bold_dark,
+    socket
 };
 
 export const workData = [
@@ -125,5 +127,5 @@ export const infoList = [
 ];
 
 export const toolsData = [
-    assets.vscode,assets.javascript, assets.react, assets.nodejs, assets.mongodb, assets.git
+    assets.vscode,assets.javascript, assets.react, assets.nodejs, assets.mongodb, assets.git,assets.socket,
 ];
