@@ -13,11 +13,11 @@ const Work = () => {
 
             <div className='grid sm:grid-cols-2 md:grid-cols-4 my-10 gap-5'>
                 {workData.map((project, index) => (
-                    <div className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group'
+                    <div className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg border relative cursor-pointer group'
                         key={index} style={{ backgroundImage: `url(${project.bgImage})`}}>
                         <div
                          onClick={() => window.open(project.link, "_blank")}
-                         className='bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7'>
+                         className='bg-white w-10/12 rounded-md absolute border bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7'>
                             <div>
                                 <h2 className='font-semibold'>{project.title}</h2>
                                 <p className='text-sm text-gray-700'>{project.description}</p>

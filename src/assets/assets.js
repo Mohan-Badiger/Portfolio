@@ -86,23 +86,23 @@ export const assets = {
 
 export const workData = [
     {
+        title: 'Easy Share Files',
+        description: 'Web Application',
+        bgImage: '/easyshare.png',
+        link: 'https://easysharefiles.vercel.app/'
+    },
+    {
         title: 'Temple project',
-        description: 'Website(Live Demo)',
-        bgImage: '/work-1.jpg',
+        description: 'Website',
+        bgImage: '/work-1.png',
         link: 'https://kds-temple-frontend.vercel.app/'
     },
     {
-        title: 'Vishwakarma Temple',
-        description: 'Website(Live Demo)',
+        title: 'VishwakarmaTemple',
+        description: 'Website   ',
         bgImage: '/work-3.png',
         link: 'https://vishwakarma-temple-website.vercel.app/'
     },
-    // {
-    //     title: 'Photography site',
-    //     description: 'Web Design',
-    //     bgImage: 'https://html-online.com/articles/wp-content/uploads/2017/03/57646-design-and-photography-website-template.jpg',
-    //     link: 'https://kds-temple-frontend.vercel.app/'
-    // },
     // {
     //     title: 'UI/UX designing',
     //     description: 'UI/UX Design',
