@@ -36,10 +36,10 @@ export default function Navbar() {
 
         // -------- light mode and dark mode -----------
 
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
+        if (localStorage.theme === 'light') {
+            document.documentElement.classList.remove('dark');
         } else {
-            document.documentElement.classList.remove('dark')
+            document.documentElement.classList.add('dark');
         }
     }, [])
 
@@ -52,8 +52,8 @@ export default function Navbar() {
             <nav ref={navRef} className="w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50">
 
                 <a href="#">
-                     <p className='text-2xl sm:text-2xl md:text-4xl font-medium font-outfit dark:hidden'>Mohan<span className='text-purple-500'>.</span></p>
-                     <p className='text-2xl sm:text-2xl md:text-4xl font-medium font-outfit hidden dark:block'>Mohan<span className='text-purple-500'>.</span></p>
+                    <p className='text-2xl sm:text-2xl md:text-4xl font-medium font-outfit dark:hidden'>Mohan<span className='text-purple-500'>.</span></p>
+                    <p className='text-2xl sm:text-2xl md:text-4xl font-medium font-outfit hidden dark:block'>Mohan<span className='text-purple-500'>.</span></p>
                     {/* <p className="text-4xl font-Outfit font-semibold cursor-pointer mr-14 dark:hidden">Mohan<span className='text-5xl text-purple-500'>.</span></p> */}
                     {/* <img src="./assets/logo_dark.png" alt="Logo" className="w-28 cursor-pointer mr-14 hidden dark:block" /> */}
                 </a>
