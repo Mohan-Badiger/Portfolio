@@ -4,19 +4,19 @@ export default function Work() {
             name: 'BNT Temples',
             icon: './assets/work-1.png',
             description: 'Full Stack',
-            link: '',
+            link: 'https://kds-temple-frontend.vercel.app',
         },
         {
             name: 'Easy Share',
             icon: './assets/work-2.png',
             description: 'Web-Application',
-            link: '',
+            link: 'https://easysharefiles.vercel.app',
         },
         {
             name: 'Vishwakarma',
             icon: './assets/work-3.png',
             description: 'Front-End',
-            link: '',
+            link: 'https://vishwakarma-temple-website.vercel.app',
         },
         // {
         //     name: 'UI/UX designing',
@@ -34,7 +34,7 @@ export default function Work() {
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  my-10 gap-5 dark:text-black">
                 {work.map((work) => (
                     <div key={work.name} className="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group" style={{ backgroundImage: `url(${work.icon})` }}>
-                        <div className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
+                        <a href={work.link} target="_blank" className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
                             <div>
                                 <h2 className="font-semibold">{work.name}</h2>
                                 <p className="text-sm text-gray-700">{work.description}</p>
@@ -42,7 +42,7 @@ export default function Work() {
                             <div className="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
                                 <img src="./assets/send-icon.png" alt="" className="w-5" />
                             </div>
-                        </div>
+                        </a>
                     </div>
                 ))}
             </div>
