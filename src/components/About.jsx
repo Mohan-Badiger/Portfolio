@@ -39,8 +39,6 @@ export default function About() {
             <div className="flex w-full flex-col lg:flex-row items-center gap-20 my-20">
                 <div className="max-w-max mx-auto relative">
                     <img src='./assets/user_image.jpg' alt="" className="w-64 sm:w-80 rounded-3xl max-w-none" />
-
-                
                 </div>
                 <div className="flex-1">
                     <p className="mb-10 max-w-2xl font-Ovo">I am a passionate Frontend Developer with knowledge of HTML, CSS, JavaScript, and React.js. I enjoy building responsive websites and user-friendly interfaces. As a fresher, I am eager to learn, grow my skills, and contribute to real-world web development projects.</p>

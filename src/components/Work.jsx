@@ -18,12 +18,12 @@ export default function Work() {
             description: 'Front-End',
             link: 'https://vishwakarma-temple-website.vercel.app',
         },
-        // {
-        //     name: 'UI/UX designing',
-        //     icon: './assets/work-4.png',
-        //     description: 'Coming soon..',
-        //     link: '',
-        // }
+        {
+            name: 'HireNext',
+            icon: './assets/work-4.png',
+            description: 'Exam for Hiring',
+            link: 'https://hirenext-frontend-mohan.vercel.app',
+        }
     ];
     return (
         <div id="work" className="w-full px-[16%] sm:px-[12%] py-10 scroll-mt-20">
