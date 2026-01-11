@@ -4,13 +4,17 @@
     <meta charset="UTF-8" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/logo.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
 
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary SEO Title -->
-    <title>Mohan Badiger | Full Stack Developer | MERN Portfolio</title>
+    <title>Mohan Badiger | Full Stack Developer</title>
 
     <!-- SEO Meta Description -->
     <meta
@@ -43,7 +47,7 @@
     <meta property="og:url" content="https://mohanbadiger.site/" />
     <meta
       property="og:image"
-      content="https://mohanbadiger.site/assets/logo.png"
+      content="https://mohanbadiger.site/profile_img.jpg"
     />
 
     <!-- Twitter Card -->
@@ -55,7 +59,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://mohanbadiger.site/assets/logo.png"
+      content="https://mohanbadiger.site/profile_img.jpg"
     />
 
     <!-- Fonts -->
@@ -69,18 +73,27 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "website",
+        "@type": "Person",
+        "@id": "https://mohanbadiger.site/#person",
         "name": "Mohan Badiger",
         "url": "https://mohanbadiger.site",
+        "image": "https://mohanbadiger.site/profile_img.jpg",
         "sameAs": [
           "https://www.linkedin.com/in/mohan-badiger",
           "https://github.com/Mohan-Badiger",
           "https://www.youtube.com/@MohanBadiger250"
-        ],
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://mohanbadiger.site"
-        }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://mohanbadiger.site/#website",
+        "url": "https://mohanbadiger.site",
+        "name": "Mohan Badiger",
+        "alternateName": "Mohan Badiger Portfolio"
       }
     </script>
   </head>
