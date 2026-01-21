@@ -50,7 +50,7 @@ export default function Footer() {
           >
             Mohan Badiger
           </a>
-          . All rights reserved.
+            , All rights reserved.
         </p>
 
         <ul
