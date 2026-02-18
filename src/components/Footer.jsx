@@ -32,10 +32,10 @@ export default function Footer() {
           />
 
           <a
-            href="mailto:mohanbadiger250@gmail.com"
+            href="mailto:hello@mohanbadiger.site"
             aria-label="Email Mohan Badiger"
           >
-            mohanbadiger250@gmail.com
+            hello@mohanbadiger.site
           </a>
         </div>
       </div>
