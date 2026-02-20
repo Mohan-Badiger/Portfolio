@@ -2,7 +2,7 @@
 
 A modern, responsive personal portfolio website built to showcase my skills, projects, and experience as a Full Stack Developer.
 
-## 🚀 Live Demo
+## 🚀 Live Link
 mohanbadiger.site
 
 ## 📌 Features
@@ -20,3 +20,4 @@ mohanbadiger.site
 - Tailwind CSS
 - JavaScript (ES6+)
 
+Linkedin : linkedin.com/in/mohan-badiger
