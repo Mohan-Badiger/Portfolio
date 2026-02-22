@@ -4,6 +4,7 @@ A modern, responsive personal portfolio website built to showcase my skills, pro
 
 ## 🚀 Live Link
 mohanbadiger.site
+---
 linkedin : linkedin.com/in/mohan-badiger
 
 ## 📌 Features
@@ -20,5 +21,3 @@ linkedin : linkedin.com/in/mohan-badiger
 - React.js
 - Tailwind CSS
 - JavaScript (ES6+)
-
-Linkedin : linkedin.com/in/mohan-badiger
