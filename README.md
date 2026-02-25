@@ -4,6 +4,7 @@ A modern, responsive personal portfolio website built to showcase my skills, pro
 
 ## 🚀 Live Link
 mohanbadiger.site
+
 ---
 linkedin : linkedin.com/in/mohan-badiger
 
@@ -15,9 +16,3 @@ linkedin : linkedin.com/in/mohan-badiger
 - Projects showcase
 - Contact form
 - Fast performance and SEO-friendly
-
-## 🛠️ Tech Stack
-**Frontend**
-- React.js
-- Tailwind CSS
-- JavaScript (ES6+)
