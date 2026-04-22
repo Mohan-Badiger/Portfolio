@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 export default function About() {
   const tools = [
     { name: 'VS Code', icon: './assets/vscode.png' },
@@ -33,7 +35,11 @@ export default function About() {
   ]
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
       id="about"
       aria-label="About Mohan Badiger"
       className="w-full px-[12%] py-10 scroll-mt-20"
@@ -43,21 +49,49 @@ export default function About() {
         About Mohan Badiger – Full Stack MERN Developer
       </h2>
 
-      {/* Existing visible headings (unchanged) */}
-      <h4 className="text-center mb-2 text-lg font-Ovo">Introduction</h4>
-      <h3 className="text-center text-5xl font-Ovo">About me</h3>
+      {/* Existing visible headings */}
+      <motion.h4
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="text-center mb-2 text-lg font-Ovo"
+      >
+        Introduction
+      </motion.h4>
+      <motion.h3
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        viewport={{ once: true }}
+        className="text-center text-5xl font-Ovo"
+      >
+        About me
+      </motion.h3>
 
       <div className="flex w-full flex-col lg:flex-row items-center gap-20 my-20">
-        <div className="max-w-max mx-auto relative">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-max mx-auto relative"
+        >
           <img
             src="./assets/user_image.jpg"
             alt="Mohan Badiger developer profile image"
-            className="w-64 sm:w-80 rounded-3xl max-w-none"
+            className="w-64 sm:w-80 rounded-3xl max-w-none shadow-lg"
           />
-        </div>
+        </motion.div>
 
-        <div className="flex-1">
-          <p className="mb-10 max-w-2xl font-Ovo">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          viewport={{ once: true }}
+          className="flex-1"
+        >
+          <p className="mb-10 max-w-2xl font-Ovo text-gray-700 dark:text-gray-300">
             I am Mohan Badiger, a passionate Frontend Developer with strong
             knowledge of HTML, CSS, JavaScript, and React.js. I enjoy building
             responsive, user-friendly web applications. As a BCA graduate and
@@ -65,11 +99,18 @@ export default function About() {
             Full Stack and MERN development projects.
           </p>
 
-          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl">
+          <motion.ul
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl"
+          >
             {data.map((item) => (
-              <li
+              <motion.li
+                whileHover={{ scale: 1.05, y: -5 }}
                 key={item.name}
-                className="border border-gray-300 dark:border-white/30 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black dark:hover:shadow-white/80 dark:hover:bg-darkHover/50"
+                className="border border-gray-300 dark:border-white/30 rounded-xl p-6 cursor-pointer hover:bg-lightHover duration-500 hover:shadow-lg dark:hover:shadow-white/20 dark:hover:bg-darkHover/50"
               >
                 <img
                   src={item.icon1}
@@ -87,30 +128,43 @@ export default function About() {
                 <p className="text-gray-600 text-sm dark:text-white/80">
                   {item.description}
                 </p>
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
 
-          <h4 className="my-6 text-gray-700 font-Ovo dark:text-white/80">
+          <motion.h4
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.3 }}
+            viewport={{ once: true }}
+            className="my-6 text-gray-700 font-Ovo dark:text-white/80"
+          >
             Tools I Use
-          </h4>
+          </motion.h4>
 
-          <ul className="grid grid-cols-5 md:flex items-center gap-3 sm:gap-5">
+          <motion.ul
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.5 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-5 md:flex items-center gap-3 sm:gap-5"
+          >
             {tools.map((tool) => (
-              <li
+              <motion.li
+                whileHover={{ scale: 1.1, y: -5 }}
                 key={tool.name}
-                className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-300 dark:border-white/30 rounded-lg cursor-pointer hover:-translate-y-1 duration-500"
+                className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-300 dark:border-white/30 rounded-lg cursor-pointer hover:bg-lightHover duration-500"
               >
                 <img
                   src={tool.icon}
                   alt={`${tool.name} development tool`}
                   className="w-5 sm:w-7"
                 />
-              </li>
+              </motion.li>
             ))}
-          </ul>
-        </div>
+          </motion.ul>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }
