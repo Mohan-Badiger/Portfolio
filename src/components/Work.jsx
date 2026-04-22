@@ -18,6 +18,18 @@ export default function Work() {
       link: 'https://easysharefiles.vercel.app',
     },
     {
+      name: 'Fotx Digital',
+      icon: './assets/work-7.png',
+      description: 'Digital Solutions Startup',
+      link: 'https://fotx.site',
+    },
+    {
+      name: 'Droplyx',
+      icon: './assets/work-6.png',
+      description: 'E-commerce Price Alert',
+      link: 'https://droplyx.vercel.app',
+    },
+    {
       name: 'Vishwakarma',
       icon: './assets/work-3.png',
       description: 'Front-End Website',
@@ -28,19 +40,6 @@ export default function Work() {
       icon: './assets/work-4.png',
       description: 'Online Exam Platform for Hiring',
       link: 'https://hirenext-frontend-mohan.vercel.app',
-    },
-    // Placeholder projects for future demonstration
-    {
-      name: 'Project Alpha',
-      icon: './assets/work-1.png',
-      description: 'Coming Soon',
-      link: '#',
-    },
-    {
-      name: 'Project Beta',
-      icon: './assets/work-2.png',
-      description: 'Coming Soon',
-      link: '#',
     },
   ]
 
