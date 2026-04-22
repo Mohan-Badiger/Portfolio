@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 
 export default function Contact() {
   const [result, setResult] = useState("")
@@ -24,7 +25,11 @@ export default function Contact() {
   }
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
       id="contact"
       aria-label="Contact Mohan Badiger"
       className="w-full px-[12%] py-10 scroll-mt-20 bg-[url('./assets/footer-bg-color.png')] bg-no-repeat bg-[length:90%_auto] bg-center dark:bg-none"
@@ -34,16 +39,42 @@ export default function Contact() {
         Contact Mohan Badiger – Full Stack MERN Developer
       </h2>
 
-      {/* Existing visible content (unchanged) */}
-      <h4 className="text-center mb-2 text-lg font-Ovo">Connect with me</h4>
-      <h3 className="text-center text-5xl font-Ovo">Get in touch</h3>
+      {/* Existing visible content */}
+      <motion.h4
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="text-center mb-2 text-lg font-Ovo"
+      >
+        Connect with me
+      </motion.h4>
+      <motion.h3
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        viewport={{ once: true }}
+        className="text-center text-5xl font-Ovo"
+      >
+        Get in touch
+      </motion.h3>
 
-      <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.7 }}
+        viewport={{ once: true }}
+        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo"
+      >
         I&apos;d love to hear from you! If you have any questions, comments, or
         feedback, please use the form below.
-      </p>
+      </motion.p>
 
-      <form
+      <motion.form
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
+        viewport={{ once: true }}
         onSubmit={onSubmit}
         aria-label="Contact form for Mohan Badiger"
         className="max-w-2xl mx-auto"
@@ -66,7 +97,8 @@ export default function Contact() {
         </label>
 
         <div className="grid grid-cols-auto gap-6 mt-10 mb-8">
-          <input
+          <motion.input
+            whileFocus={{ scale: 1.01 }}
             id="name"
             type="text"
             name="name"
@@ -75,7 +107,8 @@ export default function Contact() {
             className="flex-1 px-3 py-2 focus:ring-1 outline-none border border-gray-300 dark:border-white/30 rounded-md bg-white dark:bg-darkHover/30"
           />
 
-          <input
+          <motion.input
+            whileFocus={{ scale: 1.01 }}
             id="email"
             type="email"
             name="email"
@@ -85,18 +118,21 @@ export default function Contact() {
           />
         </div>
 
-        <textarea
+        <motion.textarea
+          whileFocus={{ scale: 1.01 }}
           id="message"
           name="message"
           rows="6"
           required
           placeholder="Enter your message"
           className="w-full px-4 py-2 focus:ring-1 outline-none border border-gray-300 dark:border-white/30 rounded-md bg-white mb-6 dark:bg-darkHover/30"
-        ></textarea>
+        ></motion.textarea>
 
         <div className="h-captcha mb-6 max-w-full" data-captcha="true"></div>
 
-        <button
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           type="submit"
           className="py-2 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 dark:bg-transparent dark:border dark:border-white/30 dark:hover:bg-darkHover"
         >
@@ -106,12 +142,12 @@ export default function Contact() {
             alt="submit contact form"
             className="w-4"
           />
-        </button>
+        </motion.button>
 
-        <p className="mt-4" aria-live="polite">
+        <p className="mt-4 text-center" aria-live="polite">
           {result}
         </p>
-      </form>
-    </section>
+      </motion.form>
+    </motion.section>
   )
 }
