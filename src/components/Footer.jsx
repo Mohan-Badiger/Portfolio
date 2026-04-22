@@ -1,6 +1,12 @@
+import { motion } from 'framer-motion'
+
 export default function Footer() {
   return (
-    <footer
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
       aria-label="Footer - Mohan Badiger Portfolio"
       className="mt-20"
     >
@@ -10,16 +16,34 @@ export default function Footer() {
       </h2>
 
       <div className="text-center">
-        {/* Existing brand text (unchanged) */}
-        <p className="text-2xl sm:text-2xl md:text-4xl font-medium font-outfit dark:hidden">
+        {/* Existing brand text */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-2xl sm:text-2xl md:text-4xl font-medium font-outfit dark:hidden"
+        >
           Mohan<span className="text-purple-500">.</span>
-        </p>
-        <p className="text-2xl sm:text-2xl md:text-4xl font-medium font-outfit hidden dark:block">
+        </motion.p>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-2xl sm:text-2xl md:text-4xl font-medium font-outfit hidden dark:block"
+        >
           Mohan<span className="text-purple-500">.</span>
-        </p>
+        </motion.p>
 
         {/* Email */}
-        <div className="w-max flex items-center gap-2 mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="w-max flex items-center gap-2 mx-auto mt-4"
+        >
           <img
             src="./assets/mail_icon.png"
             alt="Email icon"
@@ -34,19 +58,27 @@ export default function Footer() {
           <a
             href="mailto:hello@mohanbadiger.site"
             aria-label="Email Mohan Badiger"
+            className="hover:text-purple-500 transition-colors"
           >
             hello@mohanbadiger.site
           </a>
-        </div>
+        </motion.div>
       </div>
 
       {/* Bottom bar */}
-      <div className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-3">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        viewport={{ once: true }}
+        className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6"
+      >
         <p>
           © {new Date().getFullYear()}{" "}
           <a
             href="https://mohanbadiger.site"
             aria-label="Mohan Badiger Portfolio Website"
+            className="hover:text-purple-500 transition-colors"
           >
             Mohan Badiger
           </a>
@@ -58,35 +90,41 @@ export default function Footer() {
           aria-label="Social links"
         >
           <li>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.1, y: -2 }}
               target="_blank"
               rel="noopener noreferrer"
               href="https://github.com/Mohan-Badiger"
+              className="hover:text-purple-500 transition-colors"
             >
               GitHub
-            </a>
+            </motion.a>
           </li>
           <li>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.1, y: -2 }}
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.linkedin.com/in/mohan-badiger"
+              className="hover:text-purple-500 transition-colors"
             >
               LinkedIn
-            </a>
+            </motion.a>
           </li>
           <li>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.1, y: -2 }}
               target="_blank"
               rel="noopener noreferrer"
               href=""
               aria-label="Mohan Badiger Twitter profile"
+              className="hover:text-purple-500 transition-colors"
             >
               Twitter
-            </a>
+            </motion.a>
           </li>
         </ul>
-      </div>
-    </footer>
+      </motion.div>
+    </motion.footer>
   )
 }
