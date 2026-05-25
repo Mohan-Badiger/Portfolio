@@ -73,7 +73,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-black font-GoogleSans text-white tracking-tight leading-none"
+          className="text-4xl sm:text-5xl font-black font-GoogleSans text-slate-900 dark:text-white tracking-tight leading-none"
         >
           Push Message
         </motion.h3>
@@ -82,7 +82,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
+          className="text-slate-650 dark:text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
         >
           Configure parameters below to push a secure text message directly into my mail terminal.
         </motion.p>

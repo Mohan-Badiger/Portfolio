@@ -22,7 +22,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-2xl md:text-4xl font-bold font-GoogleSans text-white dark:hidden"
+          className="text-2xl sm:text-2xl md:text-4xl font-bold font-GoogleSans text-slate-900 dark:hidden"
         >
           Mohan<span className="text-antigravityBlue font-extrabold">_</span>
         </motion.p>
@@ -71,7 +71,7 @@ export default function Footer() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
         viewport={{ once: true }}
-        className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6"
+        className="text-center sm:flex items-center justify-between border-t border-slate-200 dark:border-white/[0.06] mx-[10%] mt-12 py-6"
       >
         <p>
           © {new Date().getFullYear()}{" "}
