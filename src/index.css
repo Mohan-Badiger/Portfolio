@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ovo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght,ROND@8..144,-10..0,25..150,400..500,0..100&family=Google+Sans:wght@300;400;500;700&family=Outfit:wght@100..900&family=Ovo&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,8 +6,9 @@
 
 @layer base {
   body {
-    background-color: #030008; /* Deep premium obsidian black background */
-    color: #f3f4f6;
+    @apply bg-slate-50 text-slate-800 dark:bg-[#08080c] dark:text-[#f8fafc];
+    font-family: 'Google Sans Flex', 'Google Sans', 'Outfit', sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
   
   html {
@@ -15,86 +16,129 @@
   }
 }
 
-/* Custom premium scrollbar */
+/* Custom premium scrollbar matching Google Sans Flex aesthetic */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #030008;
+  @apply bg-slate-50 dark:bg-[#08080c];
+  transition: background-color 0.4s ease;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.3);
+  @apply bg-slate-300 dark:bg-white/10;
   border-radius: 9999px;
+  transition: background-color 0.4s ease;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.6);
+  @apply bg-slate-400 dark:bg-antigravityBlue/40;
 }
 
-/* Grid Pattern Overlay */
-.bg-grid-pattern {
-  background-size: 50px 50px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+/* Developer Dot Grid Pattern - dynamically changes contrast in dark/light mode */
+.bg-dot-grid {
+  background-size: 32px 32px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  transition: background-image 0.4s ease;
+}
+.dark .bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 }
 
-/* Glassmorphism panel styling */
-.glass-card {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+/* Zero-Gravity weightless floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
 }
 
-.glass-card-premium {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-normal {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Glowing Aurora lights - softer on light theme background */
+.aurora-blue {
+  background: radial-gradient(circle at center, rgba(66, 133, 244, 0.06) 0%, transparent 65%);
+  transition: background 0.4s ease;
+}
+.dark .aurora-blue {
+  background: radial-gradient(circle at center, rgba(66, 133, 244, 0.1) 0%, transparent 65%);
+}
+.aurora-purple {
+  background: radial-gradient(circle at center, rgba(155, 114, 248, 0.05) 0%, transparent 65%);
+  transition: background 0.4s ease;
+}
+.dark .aurora-purple {
+  background: radial-gradient(circle at center, rgba(155, 114, 248, 0.08) 0%, transparent 65%);
+}
+.aurora-pink {
+  background: radial-gradient(circle at center, rgba(236, 64, 122, 0.04) 0%, transparent 65%);
+  transition: background 0.4s ease;
+}
+.dark .aurora-pink {
+  background: radial-gradient(circle at center, rgba(236, 64, 122, 0.07) 0%, transparent 65%);
+}
+
+/* Mock terminal console card remains dark for tech theme contrast */
+.terminal-card {
+  background: rgba(17, 18, 23, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Text glow */
-.glow-text-purple {
-  text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+/* Glowing accents - lower intensity in light theme */
+.text-glow-gemini {
+  text-shadow: 0 0 20px rgba(155, 114, 248, 0.25);
+}
+.dark .text-glow-gemini {
+  text-shadow: 0 0 25px rgba(155, 114, 248, 0.4);
 }
 
-.glow-text-pink {
-  text-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+/* Glowing Border Pulse */
+@keyframes border-pulse-light {
+  0%, 100% {
+    border-color: rgba(0, 0, 0, 0.05);
+  }
+  50% {
+    border-color: rgba(66, 133, 244, 0.18);
+  }
+}
+@keyframes border-pulse-dark {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    border-color: rgba(66, 133, 244, 0.25);
+  }
 }
 
-/* 3D Transform and perspective defaults */
-.perspective-1000 {
-  perspective: 1000px;
+.border-pulse-neon {
+  animation: border-pulse-light 5s ease-in-out infinite;
+}
+.dark .border-pulse-neon {
+  animation: border-pulse-dark 5s ease-in-out infinite;
 }
 
-.preserve-3d {
-  transform-style: preserve-3d;
+/* Interactive Card shadows - adapts background colors to dark/light */
+.card-shadow-hover {
+  @apply bg-white/60 border-black/[0.05] dark:bg-[#111217]/35 dark:border-white/[0.04];
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.backface-hidden {
-  backface-visibility: hidden;
+.card-shadow-hover:hover {
+  @apply bg-white/90 border-antigravityBlue/20 dark:bg-white/[0.035] dark:border-antigravityBlue/20;
+  box-shadow: 0 10px 30px rgba(66, 133, 244, 0.06);
 }
-
-/* Glowing buttons */
-.neon-btn-purple {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-.neon-btn-purple::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(90deg, #b820e6, #da7d20);
-  opacity: 0.8;
-  z-index: -1;
-  transition: opacity 0.3s ease;
-}
-.neon-btn-purple:hover::before {
-  opacity: 1;
-}
-.neon-btn-purple:hover {
-  box-shadow: 0 0 20px rgba(184, 32, 230, 0.5);
-  transform: translateY(-2px);
+.dark .card-shadow-hover:hover {
+  box-shadow: 0 0 40px rgba(66, 133, 244, 0.08);
 }
