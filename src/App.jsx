@@ -8,6 +8,8 @@ import Work from './components/Work'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 import CursorTrail from './components/CursorTrail'
+import BigDeveloperTitle from './components/BigDeveloperTitle'
+
 
 export default function App() {
   // Initialize Lenis smooth scroll globally
@@ -39,8 +41,8 @@ export default function App() {
       if (href && href.startsWith('#')) {
         e.preventDefault()
         const targetId = href.substring(1)
-        const targetEl = targetId === 'top' || targetId === '' 
-          ? document.getElementById('root') 
+        const targetEl = targetId === 'top' || targetId === ''
+          ? document.getElementById('root')
           : document.getElementById(targetId)
         if (targetEl) {
           lenis.scrollTo(targetEl, { offset: -80, duration: 1.2 })
@@ -72,12 +74,13 @@ export default function App() {
       <main>
         {/* Hero header */}
         <Header />
-        
+
         {/* Core sections */}
         <About />
         <Services />
         <Work />
         <ContactSection />
+        <BigDeveloperTitle />
       </main>
 
       {/* Footer credits and social map */}
