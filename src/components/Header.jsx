@@ -79,8 +79,8 @@ export default function Header() {
             Engineering high-performance web systems<span className="text-antigravityBlue font-bold">.</span>
           </h3>
 
-          <p className="max-w-lg text-sm sm:text-base text-slate-650 dark:text-gray-400 font-GoogleSans font-light leading-relaxed flex flex-wrap items-center gap-y-2 gap-x-1">
-            I develop responsive, user-friendly full-stack solutions using <span className="text-slate-900 dark:text-[#f8fafc] font-semibold bg-slate-200/30 dark:bg-white/[0.06] px-1.5 py-0.5 rounded border border-slate-200/50 dark:border-white/[0.05] transition-colors">React</span>, <span className="text-slate-900 dark:text-[#f8fafc] font-semibold bg-slate-200/30 dark:bg-white/[0.06] px-1.5 py-0.5 rounded border border-slate-200/50 dark:border-white/[0.05] transition-colors">Node.js</span>, <span className="text-slate-900 dark:text-[#f8fafc] font-semibold bg-slate-200/30 dark:bg-white/[0.06] px-1.5 py-0.5 rounded border border-slate-200/50 dark:border-white/[0.05] transition-colors">MongoDB</span>, <span className="text-slate-900 dark:text-[#f8fafc] font-semibold bg-slate-200/30 dark:bg-white/[0.06] px-1.5 py-0.5 rounded border border-slate-200/50 dark:border-white/[0.05] transition-colors">Docker</span>, and <span className="text-slate-900 dark:text-[#f8fafc] font-semibold bg-slate-200/30 dark:bg-white/[0.06] px-1.5 py-0.5 rounded border border-slate-200/50 dark:border-white/[0.05] transition-colors">AWS</span>. Translating complex code into fluid interfaces.
+          <p className="max-w-lg text-sm sm:text-base text-slate-650 dark:text-gray-400 font-GoogleSans font-light leading-relaxed">
+            I develop responsive, user-friendly full-stack solutions using <span className="text-slate-900 dark:text-white font-semibold">React</span>, <span className="text-slate-900 dark:text-white font-semibold">Node.js</span>, <span className="text-slate-900 dark:text-white font-semibold">MongoDB</span>, <span className="text-slate-900 dark:text-white font-semibold">Docker</span>, and <span className="text-slate-900 dark:text-white font-semibold">AWS</span>. Translating complex code into fluid interfaces.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 mt-2">
@@ -105,7 +105,7 @@ export default function Header() {
           </div>
 
           {/* Social Links */}
-          <div className="flex gap-4 mt-6 items-center">
+          <div className="flex gap-4 items-center">
             {[
               { url: 'https://github.com/Mohan-Badiger', icon: assets.github, darkIcon: assets.githubdark, name: 'GitHub' },
               { url: 'https://www.linkedin.com/in/mohan-badiger', icon: assets.linkedin, darkIcon: assets.linkedindark, name: 'LinkedIn' },
