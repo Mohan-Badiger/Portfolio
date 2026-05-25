@@ -154,7 +154,7 @@ export default function Work() {
                     onClick={() => setActiveIdx(idx)}
                     className={`w-full text-left font-mono text-xs px-3.5 py-2.5 rounded transition-all flex items-center gap-2 select-none ${isActive
                       ? 'bg-slate-200/50 dark:bg-white/[0.04] text-slate-900 dark:text-white border-l-2 border-antigravityBlue font-medium'
-                      : 'text-slate-600 dark:text-gray-400 hover:text-slate-950 dark:hover:text-gray-250 hover:bg-slate-200/25 dark:hover:bg-white/[0.02] border-l-2 border-transparent'
+                      : 'text-slate-600 dark:text-gray-400 hover:text-slate-950 dark:hover:text-blue-400 hover:bg-slate-200/25 dark:hover:bg-white/[0.02] border-l-2 border-transparent'
                       }`}
                   >
                     <span className={`text-[10px] ${isActive ? 'text-antigravityBlue' : 'text-slate-450 dark:text-gray-650'}`}>
