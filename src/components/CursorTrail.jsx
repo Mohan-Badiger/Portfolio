@@ -136,7 +136,7 @@ export default function CursorTrail() {
 
       // 1. Draw glowing vector trail
       if (trailPoints.length > 1) {
-        ctx.shadowBlur = 15
+        ctx.shadowBlur = window.innerWidth < 768 ? 0 : 15
         ctx.shadowColor = 'rgba(168, 85, 247, 0.6)'
         
         ctx.beginPath()
@@ -188,7 +188,7 @@ export default function CursorTrail() {
         ctx.rotate(p.rotation)
         
         // Add light glow to sparkles
-        ctx.shadowBlur = 10
+        ctx.shadowBlur = window.innerWidth < 768 ? 0 : 10
         ctx.shadowColor = color
         
         drawStar(0, 0, p.spikes, p.size, p.size * p.innerRadiusRatio, color)

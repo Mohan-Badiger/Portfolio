@@ -68,7 +68,7 @@ export default function Header() {
             </span>
           </div>
 
-          <h2 className="text-5xl sm:text-7xl lg:text-8xl font-GoogleSans tracking-tight leading-[0.9]">
+          <h2 className="text-6xl sm:text-7xl lg:text-8xl font-GoogleSans tracking-tight leading-[0.9]">
             <span className="text-slate-900 dark:text-white font-medium">Mohan</span> <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-antigravityBlue via-antigravityPurple to-antigravityPink font-semibold tracking-wide md:tracking-wider">
               Badiger
@@ -120,8 +120,22 @@ export default function Header() {
                 className="w-11 h-11 rounded-lg border border-slate-250 dark:border-white/[0.08] bg-slate-100/30 dark:bg-white/[0.02] flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/[0.06] hover:border-antigravityBlue/50 dark:hover:border-antigravityBlue/50 hover:shadow-lg hover:shadow-antigravityBlue/10 transition-all duration-300 group"
                 aria-label={`Mohan Badiger ${soc.name}`}
               >
-                <img src={soc.icon} alt={soc.name} className="w-5 h-5 object-contain dark:hidden group-hover:scale-110 transition-transform duration-300" />
-                <img src={soc.darkIcon} alt={soc.name} className="w-5 h-5 object-contain hidden dark:block group-hover:scale-110 transition-transform duration-300" />
+                <img
+                  src={soc.icon}
+                  alt={soc.name}
+                  width={20}
+                  height={20}
+                  decoding="async"
+                  className="w-5 h-5 object-contain dark:hidden group-hover:scale-110 transition-transform duration-300"
+                />
+                <img
+                  src={soc.darkIcon}
+                  alt={soc.name}
+                  width={20}
+                  height={20}
+                  decoding="async"
+                  className="w-5 h-5 object-contain hidden dark:block group-hover:scale-110 transition-transform duration-300"
+                />
               </a>
             ))}
           </div>

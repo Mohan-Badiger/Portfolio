@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 export default function Work() {
   const projects = [
@@ -203,11 +203,16 @@ export default function Work() {
                 }}
                 className="w-full aspect-[4/3] max-w-sm rounded-xl overflow-hidden border border-slate-250 dark:border-white/10 shadow-xl dark:shadow-2xl relative select-none preserve-3d group"
               >
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${current.icon})` }}
+                <img
+                  src={current.icon}
+                  alt={`${current.name} screenshot preview`}
+                  width={384}
+                  height={288}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/10 dark:bg-black/35 group-hover:bg-black/5 dark:group-hover:bg-black/10 transition-colors" />
+                <div className="absolute inset-0 bg-black/10 dark:bg-black/35 group-hover:bg-black/5 dark:group-hover:bg-black/10 transition-colors pointer-events-none" />
 
                 {/* Visual glow on hover */}
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-tr from-antigravityBlue/10 to-transparent" />
@@ -263,7 +268,11 @@ export default function Work() {
                 Launch Artifact
                 <img
                   src="./assets/send-icon.png"
-                  alt="open"
+                  alt="Launch icon"
+                  width={14}
+                  height={14}
+                  loading="lazy"
+                  decoding="async"
                   className="w-3.5 h-3.5 object-contain invert"
                 />
               </motion.a>

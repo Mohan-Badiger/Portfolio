@@ -98,6 +98,9 @@ export default function About() {
             <img
               src="./assets/user_image.jpg"
               alt="Mohan Badiger developer profile image"
+              width={320}
+              height={427}
+              decoding="async"
               className="w-full h-full object-cover rounded filter grayscale group-hover:grayscale-0 transition-all duration-700"
             />
           </div>
@@ -174,6 +177,10 @@ export default function About() {
                 <img
                   src={tool.icon}
                   alt={`${tool.name} tool`}
+                  width={20}
+                  height={20}
+                  loading="lazy"
+                  decoding="async"
                   className="w-5 h-5 object-contain flex-shrink-0"
                 />
                 <div className="flex flex-col text-left">
@@ -181,7 +188,7 @@ export default function About() {
                     {tool.name}
                   </span>
                   <span className="font-mono text-[8px] text-gray-500 dark:text-gray-600">
-                    {tool.status} // [OK]
+                    {`${tool.status} // [OK]`}
                   </span>
                 </div>
               </motion.li>

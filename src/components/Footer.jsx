@@ -47,11 +47,19 @@ export default function Footer() {
           <img
             src="./assets/mail_icon.png"
             alt="Email icon"
+            width={20}
+            height={20}
+            loading="lazy"
+            decoding="async"
             className="w-5 dark:hidden"
           />
           <img
             src="./assets/mail_icon_dark.png"
             alt="Email icon"
+            width={20}
+            height={20}
+            loading="lazy"
+            decoding="async"
             className="w-5 hidden dark:block"
           />
 

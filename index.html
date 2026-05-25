@@ -13,6 +13,15 @@
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Prevent Theme Flashing -->
+    <script>
+      if (localStorage.theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
     <!-- Primary SEO Title -->
     <title>Mohan Badiger | Full Stack Developer</title>
 
@@ -66,7 +75,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght,ROND@8..144,-10..0,25..150,400..500,0..100&family=Google+Sans:wght@300;400;500;700&family=Outfit:wght@100..900&family=Ovo&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght,ROND@8..144,-10..0,25..150,400..500,0..100&family=Google+Sans:wght@300;400;500;700&family=Outfit:wght@100..900&display=swap"
       rel="stylesheet"
     />
 

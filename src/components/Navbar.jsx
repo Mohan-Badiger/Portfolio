@@ -120,6 +120,9 @@ export default function Navbar() {
               transition={{ duration: 0.3 }}
               src={darkTheme ? './assets/sun_icon.png' : './assets/moon_icon.png'}
               alt={darkTheme ? 'Light mode' : 'Dark mode'}
+              width={16}
+              height={16}
+              decoding="async"
               className="w-4 h-4 object-contain"
             />
           </button>
@@ -144,6 +147,9 @@ export default function Navbar() {
             <img
               src={darkTheme ? './assets/menu-white.png' : './assets/menu-black.png'}
               alt="Menu"
+              width={16}
+              height={16}
+              decoding="async"
               className="w-4 h-4 object-contain"
             />
           </button>
@@ -184,6 +190,9 @@ export default function Navbar() {
                   <img
                     src={darkTheme ? './assets/close-white.png' : './assets/close-black.png'}
                     alt="Close"
+                    width={12}
+                    height={12}
+                    decoding="async"
                     className="w-3 h-3 object-contain"
                   />
                 </button>

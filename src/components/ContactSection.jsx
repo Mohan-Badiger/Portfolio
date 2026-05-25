@@ -112,30 +112,23 @@ export default function ContactSection() {
         </div>
 
         {/* Editor workspace pane */}
-        <div className="flex p-5 gap-4 bg-[#0d0e12]/20 relative">
+        <div className="p-5 bg-[#0d0e12]/20 flex flex-col gap-6 relative">
           
-          {/* Editor Line Numbers */}
-          <div className="text-right text-gray-700 font-mono text-[11px] select-none flex flex-col gap-[38px] pt-1">
-            <span>01</span>
-            <span>02</span>
-            <span>03</span>
-            <span>04</span>
-          </div>
+          <input
+            type="hidden"
+            name="subject"
+            value="Mohan Badiger - New Contact Form Submission"
+          />
 
-          <div className="flex-1 flex flex-col gap-6 text-left">
-            <input
-              type="hidden"
-              name="subject"
-              value="Mohan Badiger - New Contact Form Submission"
-            />
+          {/* Accessibility screen labels */}
+          <label htmlFor="name" className="sr-only">Your Name</label>
+          <label htmlFor="email" className="sr-only">Your Email Address</label>
+          <label htmlFor="message" className="sr-only">Your Message</label>
 
-            {/* Accessibility screen labels */}
-            <label htmlFor="name" className="sr-only">Your Name</label>
-            <label htmlFor="email" className="sr-only">Your Email Address</label>
-            <label htmlFor="message" className="sr-only">Your Message</label>
-
-            {/* Field 01: Name */}
-            <div className="flex flex-col">
+          {/* Row 01: Name */}
+          <div className="flex items-start gap-4 text-left">
+            <span className="text-gray-700 font-mono text-[11px] select-none pt-1 w-5 text-right flex-shrink-0">01</span>
+            <div className="flex-1 flex flex-col">
               <span className="text-[10px] text-antigravityBlue font-mono mb-1.5 select-none">
                 const <span className="text-purple-400">senderName</span> =
               </span>
@@ -149,9 +142,12 @@ export default function ContactSection() {
                 className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)]"
               />
             </div>
+          </div>
 
-            {/* Field 02: Email */}
-            <div className="flex flex-col">
+          {/* Row 02: Email */}
+          <div className="flex items-start gap-4 text-left">
+            <span className="text-gray-700 font-mono text-[11px] select-none pt-1 w-5 text-right flex-shrink-0">02</span>
+            <div className="flex-1 flex flex-col">
               <span className="text-[10px] text-antigravityBlue font-mono mb-1.5 select-none">
                 const <span className="text-purple-400">senderEmail</span> =
               </span>
@@ -165,9 +161,12 @@ export default function ContactSection() {
                 className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)]"
               />
             </div>
+          </div>
 
-            {/* Field 03: Message */}
-            <div className="flex flex-col">
+          {/* Row 03: Message */}
+          <div className="flex items-start gap-4 text-left">
+            <span className="text-gray-700 font-mono text-[11px] select-none pt-1 w-5 text-right flex-shrink-0">03</span>
+            <div className="flex-1 flex flex-col">
               <span className="text-[10px] text-antigravityBlue font-mono mb-1.5 select-none">
                 const <span className="text-purple-400">messageBody</span> =
               </span>
@@ -181,9 +180,12 @@ export default function ContactSection() {
                 className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)] resize-none"
               ></motion.textarea>
             </div>
+          </div>
 
-            {/* Field 04: Command Button */}
-            <div className="flex flex-col mt-2">
+          {/* Row 04: Command Button */}
+          <div className="flex items-start gap-4 text-left">
+            <span className="text-gray-700 font-mono text-[11px] select-none pt-2 w-5 text-right flex-shrink-0">04</span>
+            <div className="flex-1 flex flex-col">
               <motion.button
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
@@ -191,7 +193,7 @@ export default function ContactSection() {
                 disabled={isSubmitting}
                 className="w-full py-3 bg-gradient-to-r from-antigravityBlue to-antigravityPurple hover:opacity-90 text-white font-mono text-[11px] font-bold rounded shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 select-none"
               >
-                <span>$</span> git commit -m "Send" && git push
+                <span>$</span> {'git commit -m "Send" && git push'}
               </motion.button>
             </div>
           </div>

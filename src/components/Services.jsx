@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 function ServiceCard({ service, index }) {
   const [rotateX, setRotateX] = useState(0)
@@ -69,7 +70,11 @@ function ServiceCard({ service, index }) {
       <div style={{ transform: 'translateZ(30px)' }} className="mb-5">
         <img
           src={service.icon}
-          alt=""
+          alt={`${service.name} icon`}
+          width={32}
+          height={32}
+          loading="lazy"
+          decoding="async"
           className="w-8 h-8 object-contain dark:invert invert-0"
         />
       </div>
@@ -96,12 +101,26 @@ function ServiceCard({ service, index }) {
         View Module
         <img
           src="./assets/right-arrow.png"
-          alt=""
+          alt="Arrow icon"
+          width={12}
+          height={12}
+          loading="lazy"
+          decoding="async"
           className="w-3 h-3 object-contain dark:invert transform group-hover:translate-x-1 transition-transform"
         />
       </a>
     </motion.div>
   )
+}
+
+ServiceCard.propTypes = {
+  service: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    link: PropTypes.string,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
 }
 
 export default function Services() {

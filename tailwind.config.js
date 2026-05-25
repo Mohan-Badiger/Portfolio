@@ -11,8 +11,7 @@ export default {
             },
             fontFamily: {
                 GoogleSans: ["'Google Sans Flex'", "'Google Sans'", "sans-serif"],
-                Outfit: ["Outfit", "sans-serif"],
-                Ovo: ["Ovo", "serif"]
+                Outfit: ["Outfit", "sans-serif"]
             },
             animation: {
                 spin_slow: 'spin 6s linear infinite'
