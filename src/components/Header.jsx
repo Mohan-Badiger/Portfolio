@@ -61,26 +61,26 @@ export default function Header() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-6 flex flex-col gap-6 text-left"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-white/[0.04] bg-white/[0.02] w-fit">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-slate-200 dark:border-white/[0.04] bg-slate-100/50 dark:bg-white/[0.02] w-fit">
             <span className="w-2 h-2 rounded-full bg-antigravityBlue animate-ping" />
-            <span className="text-[10px] uppercase font-bold tracking-widest font-GoogleSans text-gray-400">
+            <span className="text-[10px] uppercase font-bold tracking-widest font-GoogleSans text-gray-500 dark:text-gray-400">
               Full-Stack Developer & BCA Student
             </span>
           </div>
 
           <h2 className="text-5xl sm:text-7xl lg:text-8xl font-GoogleSans tracking-tight leading-[0.9]">
-            <span className="text-white font-medium">Mohan</span> <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-antigravityBlue via-antigravityPurple to-antigravityPink font-bold">
+            <span className="text-slate-900 dark:text-white font-medium">Mohan</span> <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-antigravityBlue via-antigravityPurple to-antigravityPink font-semibold tracking-wide md:tracking-wider">
               Badiger
             </span>
           </h2>
 
-          <h3 className="text-2xl sm:text-3xl font-normal font-GoogleSans tracking-tight text-gray-400 leading-tight">
+          <h3 className="text-2xl sm:text-3xl font-normal font-GoogleSans tracking-tight text-slate-500 dark:text-gray-300 leading-tight">
             Engineering high-performance web systems<span className="text-antigravityBlue font-bold">.</span>
           </h3>
 
-          <p className="max-w-lg text-sm sm:text-base text-gray-500 dark:text-gray-400 font-GoogleSans font-light leading-relaxed">
-            I develop responsive, user-friendly full-stack solutions using <span className="text-gray-300 font-medium">React</span>, <span className="text-gray-300 font-medium">Node.js</span>, <span className="text-gray-300 font-medium">MongoDB</span>, <span className="text-gray-300 font-medium">Docker</span>, and <span className="text-gray-300 font-medium">AWS</span>. Translating complex code into fluid interfaces.
+          <p className="max-w-lg text-sm sm:text-base text-slate-650 dark:text-gray-400 font-GoogleSans font-light leading-relaxed flex flex-wrap items-center gap-y-2 gap-x-1">
+            I develop responsive, user-friendly full-stack solutions using <span className="text-slate-900 dark:text-[#f8fafc] font-semibold bg-slate-200/30 dark:bg-white/[0.06] px-1.5 py-0.5 rounded border border-slate-200/50 dark:border-white/[0.05] transition-colors">React</span>, <span className="text-slate-900 dark:text-[#f8fafc] font-semibold bg-slate-200/30 dark:bg-white/[0.06] px-1.5 py-0.5 rounded border border-slate-200/50 dark:border-white/[0.05] transition-colors">Node.js</span>, <span className="text-slate-900 dark:text-[#f8fafc] font-semibold bg-slate-200/30 dark:bg-white/[0.06] px-1.5 py-0.5 rounded border border-slate-200/50 dark:border-white/[0.05] transition-colors">MongoDB</span>, <span className="text-slate-900 dark:text-[#f8fafc] font-semibold bg-slate-200/30 dark:bg-white/[0.06] px-1.5 py-0.5 rounded border border-slate-200/50 dark:border-white/[0.05] transition-colors">Docker</span>, and <span className="text-slate-900 dark:text-[#f8fafc] font-semibold bg-slate-200/30 dark:bg-white/[0.06] px-1.5 py-0.5 rounded border border-slate-200/50 dark:border-white/[0.05] transition-colors">AWS</span>. Translating complex code into fluid interfaces.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 mt-2">
@@ -88,7 +88,7 @@ export default function Header() {
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               href="#contact"
-              className="px-6 py-3 rounded bg-white text-[#08080c] font-GoogleSans text-xs font-semibold shadow-xl transition-all duration-200"
+              className="px-6 py-3 rounded bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-[#08080c] dark:hover:bg-slate-100 font-GoogleSans text-xs font-semibold shadow-xl transition-all duration-200"
             >
               Get Started
             </motion.a>
@@ -98,7 +98,7 @@ export default function Header() {
               whileTap={{ scale: 0.98 }}
               href="./assets/Mohan_FullStack Resume.pdf"
               download
-              className="px-6 py-3 rounded border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.02] text-white font-GoogleSans text-xs font-semibold transition-all duration-200"
+              className="px-6 py-3 rounded border border-slate-200 dark:border-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.02] text-slate-800 dark:text-white font-GoogleSans text-xs font-semibold transition-all duration-200"
             >
               Download Resume
             </motion.a>
@@ -117,10 +117,11 @@ export default function Header() {
                 href={soc.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded border border-white/[0.06] flex items-center justify-center hover:bg-white/[0.03] transition-colors"
+                className="w-11 h-11 rounded-lg border border-slate-250 dark:border-white/[0.08] bg-slate-100/30 dark:bg-white/[0.02] flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/[0.06] hover:border-antigravityBlue/50 dark:hover:border-antigravityBlue/50 hover:shadow-lg hover:shadow-antigravityBlue/10 transition-all duration-300 group"
                 aria-label={`Mohan Badiger ${soc.name}`}
               >
-                <img src={soc.darkIcon} alt={soc.name} className="w-4 h-4 object-contain" />
+                <img src={soc.icon} alt={soc.name} className="w-5 h-5 object-contain dark:hidden group-hover:scale-110 transition-transform duration-300" />
+                <img src={soc.darkIcon} alt={soc.name} className="w-5 h-5 object-contain hidden dark:block group-hover:scale-110 transition-transform duration-300" />
               </a>
             ))}
           </div>
@@ -146,13 +147,13 @@ export default function Header() {
               {/* Tab Title */}
               <div className="flex gap-2 text-[10px] text-gray-500 font-GoogleSans">
                 <span className="text-gray-300 font-medium px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.04]">
-                  agent_mission_log.log
+                  information.log
                 </span>
                 <span className="px-2 py-0.5">profile.json</span>
               </div>
               {/* Right diagnostics */}
               <div className="text-[10px] text-gray-600 font-GoogleSans">
-                Gemini 3.5 High
+                Developer
               </div>
             </div>
 
@@ -163,7 +164,7 @@ export default function Header() {
                   {log.text}
                 </div>
               ))}
-              
+
               {/* Blinking Shell Cursor */}
               {logIndex < agentLogs.length && (
                 <div className="flex items-center gap-1">
