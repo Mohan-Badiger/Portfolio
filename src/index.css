@@ -1,5 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ovo&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #030008; /* Deep premium obsidian black background */
+    color: #f3f4f6;
+  }
+  
+  html {
+    scroll-behavior: auto !important; /* Managed by Lenis smooth scroll */
+  }
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #030008;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.6);
+}
+
+/* Grid Pattern Overlay */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Glassmorphism panel styling */
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card-premium {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Text glow */
+.glow-text-purple {
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.glow-text-pink {
+  text-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+}
+
+/* 3D Transform and perspective defaults */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Glowing buttons */
+.neon-btn-purple {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.neon-btn-purple::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, #b820e6, #da7d20);
+  opacity: 0.8;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+.neon-btn-purple:hover::before {
+  opacity: 1;
+}
+.neon-btn-purple:hover {
+  box-shadow: 0 0 20px rgba(184, 32, 230, 0.5);
+  transform: translateY(-2px);
+}
