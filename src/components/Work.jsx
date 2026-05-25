@@ -15,7 +15,7 @@ export default function Work() {
     },
     {
       name: 'Easy Share',
-      file: 'easy_share.ts',
+      file: 'easy_share.jsx',
       icon: './assets/work-2.png',
       description: 'A cloud-based File Sharing Web Application featuring fast socket connections, encrypted packet paths, drag-and-drop triggers, and download links.',
       link: 'https://easysharefiles.vercel.app',
@@ -25,7 +25,7 @@ export default function Work() {
     },
     {
       name: 'Fotx Digital',
-      file: 'fotx_digital.py',
+      file: 'fotx_digital.jsx',
       icon: './assets/work-7.png',
       description: 'A sleek visual portal for a digital agency startup, featuring glassmorphic animations, custom vector templates, and automated contact flows.',
       link: 'https://fotx.site',
@@ -35,7 +35,7 @@ export default function Work() {
     },
     {
       name: 'Droplyx',
-      file: 'droplyx.json',
+      file: 'droplyx.jsx',
       icon: './assets/work-6.png',
       description: 'An E-commerce price tracking and alert dashboard. Implements background polling scripts to trace price drops and trigger notifications.',
       link: 'https://droplyx.vercel.app',
@@ -45,7 +45,7 @@ export default function Work() {
     },
     {
       name: 'Vishwakarma',
-      file: 'vishwakarma.html',
+      file: 'vishwakarma.jsx',
       icon: './assets/work-3.png',
       description: 'A responsive visual front-end portal designed for community outreach, built with high-fidelity grid snapping and accessible markup layers.',
       link: 'https://vishwakarma-temple-website.vercel.app',
@@ -55,7 +55,7 @@ export default function Work() {
     },
     {
       name: 'HireNext',
-      file: 'hirenext.go',
+      file: 'hirenext.jsx',
       icon: './assets/work-4.png',
       description: 'An online developer exam and recruitment dashboard supporting live code execution evaluation, timing thresholds, and grading spreadsheets.',
       link: 'https://hirenext-frontend-mohan.vercel.app',
@@ -122,7 +122,7 @@ export default function Work() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-black font-GoogleSans text-white tracking-tight leading-none"
+          className="text-4xl sm:text-5xl font-black font-GoogleSans text-slate-900 dark:text-white tracking-tight leading-none"
         >
           Code Explorer
         </motion.h3>
@@ -131,20 +131,20 @@ export default function Work() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
+          className="text-slate-650 dark:text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
         >
           Select a project file tab from the explorer to run build analyses, inspect specifications, and compile live URLs.
         </motion.p>
       </div>
 
       {/* Full Mock IDE Wrapper */}
-      <div className="w-full rounded-xl border border-white/[0.06] bg-[#0d0e12]/60 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col md:flex-row min-h-[500px]">
+      <div className="w-full rounded-xl border border-slate-200 dark:border-white/[0.06] bg-white/60 dark:bg-[#0d0e12]/60 shadow-[0_15px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-md overflow-hidden flex flex-col md:flex-row min-h-[500px]">
         {/* Left IDE Sidebar: File Explorer */}
-        <div className="w-full md:w-60 border-r border-white/[0.06] bg-[#0b0b0f]/80 flex flex-col p-4 flex-shrink-0">
-          <div className="text-[10px] uppercase font-bold tracking-wider font-mono text-gray-500 mb-4 select-none pl-2">
+        <div className="w-full md:w-60 border-r border-slate-200 dark:border-white/[0.06] bg-slate-100/30 dark:bg-[#0b0b0f]/80 flex flex-col p-4 flex-shrink-0">
+          <div className="text-[10px] uppercase font-bold tracking-wider font-mono text-slate-500 dark:text-gray-505 mb-4 select-none pl-2">
             WORKSPACE / PROJECTS
           </div>
-          
+
           <ul className="flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible gap-1.5 pb-2 md:pb-0 scrollbar-none">
             {projects.map((proj, idx) => {
               const isActive = idx === activeIdx
@@ -152,13 +152,12 @@ export default function Work() {
                 <li key={proj.name} className="flex-shrink-0">
                   <button
                     onClick={() => setActiveIdx(idx)}
-                    className={`w-full text-left font-mono text-xs px-3.5 py-2.5 rounded transition-all flex items-center gap-2 select-none ${
-                      isActive 
-                        ? 'bg-white/[0.04] text-white border-l-2 border-antigravityBlue font-medium' 
-                        : 'text-gray-400 hover:text-gray-200 hover:bg-white/[0.02] border-l-2 border-transparent'
-                    }`}
+                    className={`w-full text-left font-mono text-xs px-3.5 py-2.5 rounded transition-all flex items-center gap-2 select-none ${isActive
+                      ? 'bg-slate-200/50 dark:bg-white/[0.04] text-slate-900 dark:text-white border-l-2 border-antigravityBlue font-medium'
+                      : 'text-slate-600 dark:text-gray-400 hover:text-slate-950 dark:hover:text-gray-250 hover:bg-slate-200/25 dark:hover:bg-white/[0.02] border-l-2 border-transparent'
+                      }`}
                   >
-                    <span className={`text-[10px] ${isActive ? 'text-antigravityBlue' : 'text-gray-600'}`}>
+                    <span className={`text-[10px] ${isActive ? 'text-antigravityBlue' : 'text-slate-450 dark:text-gray-650'}`}>
                       📄
                     </span>
                     {proj.file}
@@ -170,23 +169,23 @@ export default function Work() {
         </div>
 
         {/* Right IDE Panel: Active Editor Tab */}
-        <div className="flex-1 flex flex-col bg-[#0d0e12]/30">
+        <div className="flex-1 flex flex-col bg-slate-50/20 dark:bg-[#0d0e12]/30">
           {/* Active Tab Bar */}
-          <div className="px-4 py-2.5 bg-[#0b0b0f]/60 border-b border-white/[0.06] flex items-center justify-between">
-            <div className="flex gap-2 items-center text-[10px] text-gray-500 font-mono">
-              <span className="text-gray-300 bg-white/[0.04] border border-white/[0.04] px-2.5 py-1 rounded flex items-center gap-1.5">
+          <div className="px-4 py-2.5 bg-slate-100/50 dark:bg-[#0b0b0f]/60 border-b border-slate-200 dark:border-white/[0.06] flex items-center justify-between">
+            <div className="flex gap-2 items-center text-[10px] text-slate-500 dark:text-gray-500 font-mono">
+              <span className="text-slate-800 dark:text-gray-300 bg-slate-200/40 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.04] px-2.5 py-1 rounded flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-antigravityBlue animate-pulse" />
                 {current.file}
               </span>
             </div>
-            <span className="font-mono text-[9px] text-gray-600 uppercase">
+            <span className="font-mono text-[9px] text-slate-500 dark:text-gray-600 uppercase">
               SIZE: {current.size}
             </span>
           </div>
 
           {/* Tab Work Content Area */}
           <div className="p-6 sm:p-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            
+
             {/* Left: 3D Tilting Image Mockup */}
             <div className="flex items-center justify-center">
               <motion.div
@@ -202,14 +201,14 @@ export default function Work() {
                   transformStyle: 'preserve-3d',
                   transition: isHovered ? 'none' : 'transform 0.5s ease',
                 }}
-                className="w-full aspect-[4/3] max-w-sm rounded-xl overflow-hidden border border-white/10 shadow-2xl relative select-none preserve-3d group"
+                className="w-full aspect-[4/3] max-w-sm rounded-xl overflow-hidden border border-slate-250 dark:border-white/10 shadow-xl dark:shadow-2xl relative select-none preserve-3d group"
               >
-                <div 
+                <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                   style={{ backgroundImage: `url(${current.icon})` }}
                 />
-                <div className="absolute inset-0 bg-black/35 group-hover:bg-black/10 transition-colors" />
-                
+                <div className="absolute inset-0 bg-black/10 dark:bg-black/35 group-hover:bg-black/5 dark:group-hover:bg-black/10 transition-colors" />
+
                 {/* Visual glow on hover */}
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-tr from-antigravityBlue/10 to-transparent" />
               </motion.div>
@@ -218,33 +217,33 @@ export default function Work() {
             {/* Right: Technical Spec Panel */}
             <div className="flex flex-col gap-4 text-left">
               <div>
-                <span className="font-mono text-[9px] uppercase tracking-wider text-gray-500 block mb-1">
+                <span className="font-mono text-[9px] uppercase tracking-wider text-slate-500 dark:text-gray-505 block mb-1">
                   FILE_DESCRIPTION
                 </span>
-                <h4 className="text-xl sm:text-2xl font-bold font-GoogleSans text-white tracking-tight leading-tight">
+                <h4 className="text-xl sm:text-2xl font-bold font-GoogleSans text-slate-900 dark:text-white tracking-tight leading-tight">
                   {current.name}
                 </h4>
               </div>
 
-              <p className="text-xs sm:text-sm text-gray-400 font-GoogleSans font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-650 dark:text-gray-400 font-GoogleSans font-light leading-relaxed">
                 {current.description}
               </p>
 
               {/* Technical Specifications */}
-              <div className="p-4 rounded border border-white/[0.04] bg-[#111217]/50 font-mono text-[10px] text-gray-500 flex flex-col gap-2">
+              <div className="p-4 rounded border border-slate-200 dark:border-white/[0.04] bg-slate-100/50 dark:bg-[#111217]/50 font-mono text-[10px] text-slate-500 dark:text-gray-500 flex flex-col gap-2">
                 <div className="flex justify-between">
                   <span>MODULE_STATUS:</span>
-                  <span className="text-emerald-400 font-bold">{current.status}</span>
+                  <span className="text-emerald-500 dark:text-emerald-400 font-bold">{current.status}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>FILE_SIZE:</span>
-                  <span className="text-gray-300">{current.size}</span>
+                  <span className="text-slate-800 dark:text-gray-300">{current.size}</span>
                 </div>
-                <div className="flex flex-col gap-1.5 mt-1 border-t border-white/[0.04] pt-2.5">
-                  <span className="uppercase text-[9px] tracking-wider text-gray-600">DEPENDENCY_TREE:</span>
+                <div className="flex flex-col gap-1.5 mt-1 border-t border-slate-200 dark:border-white/[0.04] pt-2.5">
+                  <span className="uppercase text-[9px] tracking-wider text-slate-450 dark:text-gray-600">DEPENDENCY_TREE:</span>
                   <div className="flex flex-wrap gap-1.5">
                     {current.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.04] text-[9px] text-gray-300 font-mono">
+                      <span key={tag} className="px-2 py-0.5 rounded bg-slate-200/50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.04] text-[9px] text-slate-700 dark:text-gray-300 font-mono">
                         {tag}
                       </span>
                     ))}

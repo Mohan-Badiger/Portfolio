@@ -42,7 +42,7 @@ function ServiceCard({ service, index }) {
         transformStyle: 'preserve-3d',
         transition: isHovered ? 'none' : 'transform 0.5s ease',
       }}
-      className="p-6 sm:p-8 rounded-xl border border-white/[0.05] bg-[#111217]/30 hover:border-antigravityBlue/20 shadow-md relative overflow-hidden select-none preserve-3d group cursor-pointer card-shadow-hover"
+      className="p-6 sm:p-8 rounded-xl relative overflow-hidden select-none preserve-3d group cursor-pointer card-shadow-hover shadow-sm hover:shadow-md"
     >
       {/* Dynamic Cursor Spotlight Overlay */}
       {isHovered && (
@@ -62,7 +62,7 @@ function ServiceCard({ service, index }) {
         <span>SYS_SVC_0{index + 1}</span>
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-gray-400">ONLINE</span>
+          <span className="text-gray-500 dark:text-gray-400">ONLINE</span>
         </div>
       </div>
 
@@ -76,14 +76,14 @@ function ServiceCard({ service, index }) {
 
       <h3
         style={{ transform: 'translateZ(25px)' }}
-        className="text-base font-bold font-GoogleSans text-white mb-2"
+        className="text-base font-bold font-GoogleSans text-slate-900 dark:text-white mb-2"
       >
         {service.name}
       </h3>
 
       <p
         style={{ transform: 'translateZ(10px)' }}
-        className="text-xs sm:text-sm text-gray-400 font-GoogleSans font-light leading-relaxed mb-6"
+        className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 font-GoogleSans font-light leading-relaxed mb-6"
       >
         {service.description}
       </p>
@@ -91,13 +91,13 @@ function ServiceCard({ service, index }) {
       <a
         href={service.link || '#contact'}
         style={{ transform: 'translateZ(20px)' }}
-        className="inline-flex items-center gap-2 text-[11px] font-medium font-GoogleSans text-antigravityBlue group-hover:text-white transition-colors"
+        className="inline-flex items-center gap-2 text-[11px] font-medium font-GoogleSans text-antigravityBlue group-hover:text-slate-950 dark:group-hover:text-white transition-colors"
       >
         View Module
         <img
           src="./assets/right-arrow.png"
           alt=""
-          className="w-3 h-3 object-contain invert dark:invert-0 transform group-hover:translate-x-1 transition-transform"
+          className="w-3 h-3 object-contain dark:invert transform group-hover:translate-x-1 transition-transform"
         />
       </a>
     </motion.div>
@@ -155,21 +155,21 @@ export default function Services() {
         >
           02 / Capability
         </motion.h4>
-        <motion.h2
+        <motion.h3
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-black font-GoogleSans text-white tracking-tight leading-none"
+          className="text-4xl sm:text-5xl font-black font-GoogleSans text-slate-900 dark:text-white tracking-tight leading-none"
         >
           My Services
-        </motion.h2>
+        </motion.h3>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
+          className="text-slate-600 dark:text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
         >
           I deliver premium developer services combining fast loading speeds, responsive engineering, and beautiful pixel-perfect user interfaces.
         </motion.p>
