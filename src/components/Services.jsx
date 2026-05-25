@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 
-// Custom interactive 3D card with radial spotlight reflection
 function ServiceCard({ service, index }) {
   const [rotateX, setRotateX] = useState(0)
   const [rotateY, setRotateY] = useState(0)
@@ -11,14 +10,12 @@ function ServiceCard({ service, index }) {
   const handleMouseMove = (e) => {
     const card = e.currentTarget
     const rect = card.getBoundingClientRect()
-    
-    // Position of cursor relative to card
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
 
-    // Rotation bounds
-    const rotX = -((y - rect.height / 2) / (rect.height / 2)) * 12
-    const rotY = ((x - rect.width / 2) / (rect.width / 2)) * 12
+    // Rotation degrees calculation
+    const rotX = -((y - rect.height / 2) / (rect.height / 2)) * 10
+    const rotY = ((x - rect.width / 2) / (rect.width / 2)) * 10
 
     setRotateX(rotX)
     setRotateY(rotY)
@@ -31,76 +28,76 @@ function ServiceCard({ service, index }) {
     setIsHovered(false)
   }
 
-  const cardVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, delay: index * 0.1 }
-    }
-  }
-
   return (
     <motion.div
-      variants={cardVariants}
+      initial={{ y: 30, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       style={{
         transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
         transformStyle: 'preserve-3d',
-        transition: isHovered ? 'none' : 'transform 0.5s ease'
+        transition: isHovered ? 'none' : 'transform 0.5s ease',
       }}
-      className="glass-card-premium rounded-2xl px-8 py-10 cursor-pointer border border-white/5 hover:border-purple-500/30 shadow-[0_15px_35px_rgba(0,0,0,0.3)] relative overflow-hidden select-none preserve-3d group"
+      className="p-6 sm:p-8 rounded-xl border border-white/[0.05] bg-[#111217]/30 hover:border-antigravityBlue/20 shadow-md relative overflow-hidden select-none preserve-3d group cursor-pointer card-shadow-hover"
     >
-      {/* Radial Spotlight Overlay */}
+      {/* Dynamic Cursor Spotlight Overlay */}
       {isHovered && (
         <div
           className="absolute inset-0 pointer-events-none transition-opacity duration-300"
           style={{
-            background: `radial-gradient(circle 180px at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(168, 85, 247, 0.08), transparent)`
+            background: `radial-gradient(circle 180px at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(66, 133, 244, 0.08), transparent)`
           }}
         />
       )}
 
-      {/* Floating Sparkle behind icon */}
+      {/* Card Header: Simulated Dev Stats */}
       <div 
-        className="absolute top-8 left-8 w-12 h-12 rounded-full bg-purple-500/10 blur-xl group-hover:bg-pink-500/20 transition-all duration-500" 
-        style={{ transform: 'translateZ(10px)' }}
-      />
+        className="flex items-center justify-between font-mono text-[9px] text-gray-500 mb-6 uppercase"
+        style={{ transform: 'translateZ(15px)' }}
+      >
+        <span>SYS_SVC_0{index + 1}</span>
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-gray-400">ONLINE</span>
+        </div>
+      </div>
 
-      <div style={{ transform: 'translateZ(30px)' }} className="mb-6">
-        <img 
-          src={service.icon} 
-          alt="" 
-          className="w-10 h-10 object-contain dark:invert invert-0 transition-transform duration-500 group-hover:scale-110" 
+      <div style={{ transform: 'translateZ(30px)' }} className="mb-5">
+        <img
+          src={service.icon}
+          alt=""
+          className="w-8 h-8 object-contain dark:invert invert-0"
         />
       </div>
 
-      <h3 
+      <h3
         style={{ transform: 'translateZ(25px)' }}
-        className="text-lg font-bold font-Outfit text-white mb-3"
+        className="text-base font-bold font-GoogleSans text-white mb-2"
       >
         {service.name}
       </h3>
 
-      <p 
-        style={{ transform: 'translateZ(15px)' }}
-        className="text-sm text-gray-400 font-Outfit leading-relaxed font-light mb-6"
+      <p
+        style={{ transform: 'translateZ(10px)' }}
+        className="text-xs sm:text-sm text-gray-400 font-GoogleSans font-light leading-relaxed mb-6"
       >
         {service.description}
       </p>
 
-      <a 
-        href={service.link || '#contact'} 
+      <a
+        href={service.link || '#contact'}
         style={{ transform: 'translateZ(20px)' }}
-        className="inline-flex items-center gap-2 text-xs font-semibold text-purple-400 group-hover:text-pink-400 transition-colors"
+        className="inline-flex items-center gap-2 text-[11px] font-medium font-GoogleSans text-antigravityBlue group-hover:text-white transition-colors"
       >
-        Read more 
-        <img 
-          src="./assets/right-arrow.png" 
-          alt="" 
-          className="w-3.5 h-3.5 object-contain invert dark:invert-0 transform group-hover:translate-x-1 transition-transform" 
+        View Module
+        <img
+          src="./assets/right-arrow.png"
+          alt=""
+          className="w-3 h-3 object-contain invert dark:invert-0 transform group-hover:translate-x-1 transition-transform"
         />
       </a>
     </motion.div>
@@ -132,64 +129,62 @@ export default function Services() {
       icon: './assets/graphics-icon.png',
       description: 'Engineering visual branding systems, vector assets, and digital media to define memorable online products.',
       link: '',
-    }
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
+    },
+  ]
 
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={containerVariants}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, margin: '-100px' }}
       id="services"
-      className="w-full px-6 sm:px-12 lg:px-[12%] py-20 scroll-mt-24 relative overflow-hidden"
+      className="w-full px-6 sm:px-12 lg:px-[12%] py-24 scroll-mt-24 relative overflow-hidden"
     >
-      {/* Background neon blob */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 -z-10 translate-x-[-30%] translate-y-[-50%] aurora-blob-3 pointer-events-none rounded-full blur-[110px] opacity-60" />
+      {/* Background aurora blur blobs */}
+      <div className="absolute top-1/2 left-0 w-96 h-96 -z-10 translate-x-[-30%] translate-y-[-50%] aurora-blue pointer-events-none rounded-full blur-[110px] opacity-35" />
 
-      <div className="flex flex-col items-center text-center mb-16">
-        <motion.h4 
-          variants={{ hidden: { y: -15, opacity: 0 }, visible: { y: 0, opacity: 1 } }}
-          className="text-purple-400 font-semibold tracking-widest text-xs uppercase mb-3 font-Outfit"
+      {/* Header section */}
+      <div className="flex flex-col items-start text-left mb-16">
+        <motion.h4
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-antigravityBlue font-bold tracking-widest text-xs uppercase mb-2 font-GoogleSans"
         >
-          What I Offer
+          02 / Capability
         </motion.h4>
-        <motion.h2 
-          variants={{ hidden: { y: -15, opacity: 0 }, visible: { y: 0, opacity: 1 } }}
-          className="text-3xl sm:text-5xl font-bold font-Outfit text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300"
+        <motion.h2
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-4xl sm:text-5xl font-black font-GoogleSans text-white tracking-tight leading-none"
         >
-          My services
+          My Services
         </motion.h2>
-        <motion.p 
-          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-          className="text-gray-400 max-w-xl mx-auto mt-4 font-Outfit font-light text-sm sm:text-base leading-relaxed"
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
         >
-          I deliver premium web applications combining fast loading speeds, responsive engineering, and beautiful pixel-perfect UI.
+          I deliver premium developer services combining fast loading speeds, responsive engineering, and beautiful pixel-perfect user interfaces.
         </motion.p>
       </div>
 
-      <motion.div
-        variants={containerVariants}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-10"
-      >
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-10">
         {services.map((service, index) => (
-          <ServiceCard 
-            key={service.name} 
-            service={service} 
-            index={index} 
+          <ServiceCard
+            key={service.name}
+            service={service}
+            index={index}
           />
         ))}
-      </motion.div>
+      </div>
     </motion.div>
   )
 }

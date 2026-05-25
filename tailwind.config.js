@@ -10,6 +10,7 @@ export default {
                 'auto': 'repeat(auto-fit, minmax(200px, 1fr))'
             },
             fontFamily: {
+                GoogleSans: ["'Google Sans Flex'", "'Google Sans'", "sans-serif"],
                 Outfit: ["Outfit", "sans-serif"],
                 Ovo: ["Ovo", "serif"]
             },
@@ -19,7 +20,11 @@ export default {
             colors: {
                 lightHover: '#fcf4ff',
                 darkHover: '#2a004a',
-                darkTheme: '#11001F'
+                darkTheme: '#08080c', // Google Antigravity dark background
+                antigravityGray: '#111217',
+                antigravityBlue: '#4285f4',
+                antigravityPurple: '#9b72f8',
+                antigravityPink: '#ec407a',
             },
             boxShadow: {
                 'black': '4px 4px 0 #000',

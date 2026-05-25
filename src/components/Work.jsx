@@ -1,7 +1,74 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-function ProjectCard({ item, index }) {
+export default function Work() {
+  const projects = [
+    {
+      name: 'BNT Temples',
+      file: 'bnt_temples.jsx',
+      icon: './assets/work-1.png',
+      description: 'A Full Stack Web Application engineered for managing community temples, containing visual asset grids, search nodes, and user dashboard paths.',
+      link: 'https://kds-temple-frontend.vercel.app',
+      tags: ['React', 'Node.js', 'MongoDB', 'Express', 'Tailwind'],
+      status: 'STABLE [99.8%]',
+      size: '14.2 MB',
+    },
+    {
+      name: 'Easy Share',
+      file: 'easy_share.ts',
+      icon: './assets/work-2.png',
+      description: 'A cloud-based File Sharing Web Application featuring fast socket connections, encrypted packet paths, drag-and-drop triggers, and download links.',
+      link: 'https://easysharefiles.vercel.app',
+      tags: ['React', 'Tailwind', 'Socket.IO', 'Express', 'Node'],
+      status: 'STABLE [99.4%]',
+      size: '8.7 MB',
+    },
+    {
+      name: 'Fotx Digital',
+      file: 'fotx_digital.py',
+      icon: './assets/work-7.png',
+      description: 'A sleek visual portal for a digital agency startup, featuring glassmorphic animations, custom vector templates, and automated contact flows.',
+      link: 'https://fotx.site',
+      tags: ['HTML', 'CSS', 'JavaScript', 'Framer Motion'],
+      status: 'ONLINE',
+      size: '5.1 MB',
+    },
+    {
+      name: 'Droplyx',
+      file: 'droplyx.json',
+      icon: './assets/work-6.png',
+      description: 'An E-commerce price tracking and alert dashboard. Implements background polling scripts to trace price drops and trigger notifications.',
+      link: 'https://droplyx.vercel.app',
+      tags: ['React', 'Node.js', 'Puppeteer', 'CronJobs'],
+      status: 'ACTIVE',
+      size: '11.8 MB',
+    },
+    {
+      name: 'Vishwakarma',
+      file: 'vishwakarma.html',
+      icon: './assets/work-3.png',
+      description: 'A responsive visual front-end portal designed for community outreach, built with high-fidelity grid snapping and accessible markup layers.',
+      link: 'https://vishwakarma-temple-website.vercel.app',
+      tags: ['HTML', 'CSS', 'JavaScript', 'AOS'],
+      status: 'STABLE [100.0%]',
+      size: '3.4 MB',
+    },
+    {
+      name: 'HireNext',
+      file: 'hirenext.go',
+      icon: './assets/work-4.png',
+      description: 'An online developer exam and recruitment dashboard supporting live code execution evaluation, timing thresholds, and grading spreadsheets.',
+      link: 'https://hirenext-frontend-mohan.vercel.app',
+      tags: ['React', 'Node.js', 'MongoDB', 'Docker', 'AWS EC2'],
+      status: 'MAINTENANCE',
+      size: '22.6 MB',
+    },
+  ]
+
+  const [activeIdx, setActiveIdx] = useState(0)
+  const current = projects[activeIdx]
+
+  // Interactive 3D tilt variables for the screenshot preview
   const [rotateX, setRotateX] = useState(0)
   const [rotateY, setRotateY] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
@@ -11,8 +78,8 @@ function ProjectCard({ item, index }) {
     const rect = card.getBoundingClientRect()
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
-    const rotX = -((y - rect.height / 2) / (rect.height / 2)) * 10
-    const rotY = ((x - rect.width / 2) / (rect.width / 2)) * 10
+    const rotX = -((y - rect.height / 2) / (rect.height / 2)) * 8
+    const rotY = ((x - rect.width / 2) / (rect.width / 2)) * 8
 
     setRotateX(rotX)
     setRotateY(rotY)
@@ -24,225 +91,188 @@ function ProjectCard({ item, index }) {
     setIsHovered(false)
   }
 
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.95,
-      transition: { duration: 0.3 },
-    },
-  }
-
-  return (
-    <motion.article
-      layout
-      variants={itemVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-        transformStyle: 'preserve-3d',
-        transition: isHovered ? 'none' : 'transform 0.5s ease',
-      }}
-      className="aspect-[4/3] rounded-2xl relative cursor-pointer overflow-hidden border border-white/5 shadow-[0_15px_35px_rgba(0,0,0,0.4)] select-none preserve-3d group"
-      aria-label={`${item.name} project by Mohan Badiger`}
-    >
-      {/* Background Image with Scale Zoom */}
-      <motion.div
-        animate={{ scale: isHovered ? 1.08 : 1.0 }}
-        transition={{ duration: 0.4 }}
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${item.icon})` }}
-      />
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-all duration-300 group-hover:from-black/95 group-hover:via-black/50" />
-
-      {/* Screen-reader image for SEO */}
-      <img
-        src={item.icon}
-        alt={`${item.name} project screenshot`}
-        className="sr-only"
-      />
-
-      {/* Info Card Content */}
-      <a
-        href={item.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ transform: 'translateZ(30px)' }}
-        className="absolute bottom-4 left-4 right-4 p-4 rounded-xl border border-white/10 glass-card bg-black/40 backdrop-blur-md flex items-center justify-between shadow-2xl transition-all duration-300 group-hover:bottom-5 group-hover:border-purple-500/30"
-        aria-label={`View ${item.name} project`}
-      >
-        <div className="flex-1 min-w-0 pr-2">
-          <span className="text-[10px] font-bold tracking-widest text-purple-400 uppercase font-Outfit">
-            Project
-          </span>
-          <h4 className="font-bold text-white text-base sm:text-lg font-Outfit truncate mt-0.5">
-            {item.name}
-          </h4>
-          <p className="text-xs text-gray-400 font-Outfit truncate font-light mt-0.5">
-            {item.description}
-          </p>
-        </div>
-
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          className="w-10 h-10 rounded-full border border-white/20 glass-card flex items-center justify-center text-white bg-white/5 transition-all duration-300 group-hover:bg-purple-500 group-hover:border-transparent group-hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] flex-shrink-0"
-        >
-          <img
-            src="./assets/send-icon.png"
-            alt="Open link"
-            className="w-4 h-4 object-contain invert"
-          />
-        </motion.div>
-      </a>
-    </motion.article>
-  )
-}
-
-export default function Work() {
-  const [showAll, setShowAll] = useState(false)
-
-  const work = [
-    {
-      name: 'BNT Temples',
-      icon: './assets/work-1.png',
-      description: 'Full Stack Web Application',
-      link: 'https://kds-temple-frontend.vercel.app',
-    },
-    {
-      name: 'Easy Share',
-      icon: './assets/work-2.png',
-      description: 'File Sharing Web Application',
-      link: 'https://easysharefiles.vercel.app',
-    },
-    {
-      name: 'Fotx Digital',
-      icon: './assets/work-7.png',
-      description: 'Digital Solutions Startup',
-      link: 'https://fotx.site',
-    },
-    {
-      name: 'Droplyx',
-      icon: './assets/work-6.png',
-      description: 'E-commerce Price Alert',
-      link: 'https://droplyx.vercel.app',
-    },
-    {
-      name: 'Vishwakarma',
-      icon: './assets/work-3.png',
-      description: 'Front-End Website',
-      link: 'https://vishwakarma-temple-website.vercel.app',
-    },
-    {
-      name: 'HireNext',
-      icon: './assets/work-4.png',
-      description: 'Online Exam Platform for Hiring',
-      link: 'https://hirenext-frontend-mohan.vercel.app',
-    },
-  ]
-
-  const displayedWork = showAll ? work : work.slice(0, 4)
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
   return (
     <motion.section
-      layout
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
       id="work"
       aria-label="Projects by Mohan Badiger"
-      className="w-full px-6 sm:px-12 lg:px-[12%] py-20 scroll-mt-24 relative overflow-hidden"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-100px' }}
-      variants={containerVariants}
+      className="w-full px-6 sm:px-12 lg:px-[12%] py-24 scroll-mt-24 relative overflow-hidden"
     >
-      {/* Background neon blob */}
-      <div className="absolute top-1/3 right-0 w-96 h-96 -z-10 translate-x-[30%] translate-y-[-20%] aurora-blob-1 pointer-events-none rounded-full blur-[120px] opacity-50" />
+      {/* Background aurora light leak */}
+      <div className="absolute top-1/2 right-0 w-[450px] h-[450px] -z-10 translate-x-[20%] translate-y-[-50%] aurora-blue pointer-events-none rounded-full blur-[120px] opacity-30" />
 
-      <h2 className="sr-only">
-        Projects by Mohan Badiger – Full Stack MERN Developer
-      </h2>
+      <h2 className="sr-only">Projects by Mohan Badiger – Full Stack MERN Developer</h2>
 
-      <div className="flex flex-col items-center text-center mb-16">
+      {/* Header section */}
+      <div className="flex flex-col items-start text-left mb-16">
         <motion.h4
-          layout
-          variants={{ hidden: { y: -15, opacity: 0 }, visible: { y: 0, opacity: 1 } }}
-          className="text-purple-400 font-semibold tracking-widest text-xs uppercase mb-3 font-Outfit"
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-antigravityBlue font-bold tracking-widest text-xs uppercase mb-2 font-GoogleSans"
         >
-          My Portfolio
+          03 / Artifacts
         </motion.h4>
         <motion.h3
-          layout
-          variants={{ hidden: { y: -15, opacity: 0 }, visible: { y: 0, opacity: 1 } }}
-          className="text-3xl sm:text-5xl font-bold font-Outfit text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300"
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-4xl sm:text-5xl font-black font-GoogleSans text-white tracking-tight leading-none"
         >
-          My latest work
+          Code Explorer
         </motion.h3>
         <motion.p
-          layout
-          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-          className="text-gray-400 max-w-xl mx-auto mt-4 font-Outfit font-light text-sm sm:text-base leading-relaxed"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
         >
-          Explore a curated selection of full stack platforms, price alerts, and modern responsive front-ends that I have developed.
+          Select a project file tab from the explorer to run build analyses, inspect specifications, and compile live URLs.
         </motion.p>
       </div>
 
-      <motion.div
-        layout
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-10"
-      >
-        <AnimatePresence mode="popLayout">
-          {displayedWork.map((item, index) => (
-            <ProjectCard
-              key={item.name}
-              item={item}
-              index={index}
-            />
-          ))}
-        </AnimatePresence>
-      </motion.div>
+      {/* Full Mock IDE Wrapper */}
+      <div className="w-full rounded-xl border border-white/[0.06] bg-[#0d0e12]/60 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col md:flex-row min-h-[500px]">
+        {/* Left IDE Sidebar: File Explorer */}
+        <div className="w-full md:w-60 border-r border-white/[0.06] bg-[#0b0b0f]/80 flex flex-col p-4 flex-shrink-0">
+          <div className="text-[10px] uppercase font-bold tracking-wider font-mono text-gray-500 mb-4 select-none pl-2">
+            WORKSPACE / PROJECTS
+          </div>
+          
+          <ul className="flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible gap-1.5 pb-2 md:pb-0 scrollbar-none">
+            {projects.map((proj, idx) => {
+              const isActive = idx === activeIdx
+              return (
+                <li key={proj.name} className="flex-shrink-0">
+                  <button
+                    onClick={() => setActiveIdx(idx)}
+                    className={`w-full text-left font-mono text-xs px-3.5 py-2.5 rounded transition-all flex items-center gap-2 select-none ${
+                      isActive 
+                        ? 'bg-white/[0.04] text-white border-l-2 border-antigravityBlue font-medium' 
+                        : 'text-gray-400 hover:text-gray-200 hover:bg-white/[0.02] border-l-2 border-transparent'
+                    }`}
+                  >
+                    <span className={`text-[10px] ${isActive ? 'text-antigravityBlue' : 'text-gray-600'}`}>
+                      📄
+                    </span>
+                    {proj.file}
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
 
-      {/* Modern Capsule Button for Expansion */}
-      <motion.div layout className="flex justify-center mt-12">
-        <motion.button
-          layout
-          onClick={() => setShowAll(!showAll)}
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2.5 text-white border border-white/10 glass-card bg-white/5 hover:bg-white/10 px-8 py-3 rounded-full font-Outfit text-sm font-semibold transition-all duration-300"
-          aria-label={showAll ? 'Show less projects' : 'Show more projects'}
-        >
-          {showAll ? 'Show less' : 'Show more'}
-          <motion.img
-            animate={{ rotate: showAll ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-            src="./assets/right-arrow-bold-dark.png"
-            alt="arrow"
-            className="w-4 h-4 object-contain invert"
-          />
-        </motion.button>
-      </motion.div>
+        {/* Right IDE Panel: Active Editor Tab */}
+        <div className="flex-1 flex flex-col bg-[#0d0e12]/30">
+          {/* Active Tab Bar */}
+          <div className="px-4 py-2.5 bg-[#0b0b0f]/60 border-b border-white/[0.06] flex items-center justify-between">
+            <div className="flex gap-2 items-center text-[10px] text-gray-500 font-mono">
+              <span className="text-gray-300 bg-white/[0.04] border border-white/[0.04] px-2.5 py-1 rounded flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-antigravityBlue animate-pulse" />
+                {current.file}
+              </span>
+            </div>
+            <span className="font-mono text-[9px] text-gray-600 uppercase">
+              SIZE: {current.size}
+            </span>
+          </div>
+
+          {/* Tab Work Content Area */}
+          <div className="p-6 sm:p-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            
+            {/* Left: 3D Tilting Image Mockup */}
+            <div className="flex items-center justify-center">
+              <motion.div
+                key={current.name}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+                onMouseMove={handleMouseMove}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+                  transformStyle: 'preserve-3d',
+                  transition: isHovered ? 'none' : 'transform 0.5s ease',
+                }}
+                className="w-full aspect-[4/3] max-w-sm rounded-xl overflow-hidden border border-white/10 shadow-2xl relative select-none preserve-3d group"
+              >
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                  style={{ backgroundImage: `url(${current.icon})` }}
+                />
+                <div className="absolute inset-0 bg-black/35 group-hover:bg-black/10 transition-colors" />
+                
+                {/* Visual glow on hover */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-tr from-antigravityBlue/10 to-transparent" />
+              </motion.div>
+            </div>
+
+            {/* Right: Technical Spec Panel */}
+            <div className="flex flex-col gap-4 text-left">
+              <div>
+                <span className="font-mono text-[9px] uppercase tracking-wider text-gray-500 block mb-1">
+                  FILE_DESCRIPTION
+                </span>
+                <h4 className="text-xl sm:text-2xl font-bold font-GoogleSans text-white tracking-tight leading-tight">
+                  {current.name}
+                </h4>
+              </div>
+
+              <p className="text-xs sm:text-sm text-gray-400 font-GoogleSans font-light leading-relaxed">
+                {current.description}
+              </p>
+
+              {/* Technical Specifications */}
+              <div className="p-4 rounded border border-white/[0.04] bg-[#111217]/50 font-mono text-[10px] text-gray-500 flex flex-col gap-2">
+                <div className="flex justify-between">
+                  <span>MODULE_STATUS:</span>
+                  <span className="text-emerald-400 font-bold">{current.status}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>FILE_SIZE:</span>
+                  <span className="text-gray-300">{current.size}</span>
+                </div>
+                <div className="flex flex-col gap-1.5 mt-1 border-t border-white/[0.04] pt-2.5">
+                  <span className="uppercase text-[9px] tracking-wider text-gray-600">DEPENDENCY_TREE:</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {current.tags.map((tag) => (
+                      <span key={tag} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.04] text-[9px] text-gray-300 font-mono">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Action trigger button */}
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                href={current.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 w-full sm:w-fit px-6 py-2.5 rounded bg-gradient-to-r from-antigravityBlue to-antigravityPurple text-white text-xs font-semibold font-GoogleSans flex items-center justify-center gap-2 shadow-lg"
+              >
+                Launch Artifact
+                <img
+                  src="./assets/send-icon.png"
+                  alt="open"
+                  className="w-3.5 h-3.5 object-contain invert"
+                />
+              </motion.a>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </motion.section>
   )
 }

@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [darkTheme, setDarkTheme] = useState(true)
+  const [activeSection, setActiveSection] = useState('home')
 
   const toggleTheme = () => {
     const isDark = document.documentElement.classList.toggle('dark')
@@ -14,11 +15,26 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40)
+      setIsScrolled(window.scrollY > 30)
+
+      // Section tracker to set active navigation line
+      const sections = ['about', 'services', 'work', 'contact']
+      let currentSection = 'home'
+      for (const section of sections) {
+        const el = document.getElementById(section)
+        if (el) {
+          const rect = el.getBoundingClientRect()
+          if (rect.top <= 120 && rect.bottom >= 120) {
+            currentSection = section
+            break
+          }
+        }
+      }
+      setActiveSection(currentSection)
     }
     window.addEventListener('scroll', handleScroll)
 
-    // Default to dark theme on initialize
+    // Force default dark theme matching antigravity.google style
     if (localStorage.theme === 'light') {
       document.documentElement.classList.remove('dark')
       setDarkTheme(false)
@@ -31,138 +47,157 @@ export default function Navbar() {
   }, [])
 
   const navLinks = [
-    { name: 'Home', href: '#top' },
-    { name: 'About me', href: '#about' },
-    { name: 'My Work', href: '#work' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact me', href: '#contact' },
+    { name: 'Home', id: 'home', href: '#top' },
+    { name: 'About', id: 'about', href: '#about' },
+    { name: 'Services', id: 'services', href: '#services' },
+    { name: 'Projects', id: 'work', href: '#work' },
+    { name: 'Contact', id: 'contact', href: '#contact' },
   ]
 
   return (
     <>
-      {/* Background aurora blur blobs */}
-      <div className="fixed top-0 right-0 w-2/3 h-96 -z-10 translate-y-[-50%] translate-x-[20%] aurora-blob-1 pointer-events-none rounded-full" />
-      <div className="fixed top-1/3 left-0 w-96 h-96 -z-10 translate-x-[-50%] aurora-blob-2 pointer-events-none rounded-full" />
+      {/* Visual background atmospheric lights */}
+      <div className="fixed top-0 right-0 w-[500px] h-[500px] -z-20 translate-y-[-50%] translate-x-[20%] aurora-blue pointer-events-none rounded-full blur-[100px]" />
+      <div className="fixed top-1/2 left-0 w-96 h-96 -z-20 translate-x-[-50%] translate-y-[-50%] aurora-purple pointer-events-none rounded-full blur-[90px]" />
 
       <motion.nav
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, type: 'spring', stiffness: 120 }}
-        className={`w-full fixed top-0 left-0 px-6 sm:px-12 lg:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-300 ${
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className={`w-full fixed top-0 left-0 px-6 sm:px-10 lg:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'py-3 backdrop-blur-xl border-b border-white/5 bg-black/35 dark:bg-black/30' 
+            ? 'py-3 backdrop-blur-md border-b border-white/[0.04] bg-[#08080c]/80' 
             : 'bg-transparent'
         }`}
       >
-        <a href="#" className="flex items-center gap-1 group">
-          <span className="text-2xl font-bold tracking-wider font-Outfit transition-all duration-300 text-black dark:text-white glow-text-purple dark:group-hover:text-pink-400">
-            Mohan<span className="text-purple-500 font-extrabold group-hover:animate-ping inline-block">.</span>
+        <a href="#" className="flex items-center gap-2 group">
+          {/* Stylized Google Developer console logo */}
+          <div className="w-6 h-6 rounded bg-gradient-to-tr from-antigravityBlue via-antigravityPurple to-antigravityPink flex items-center justify-center text-[10px] font-bold text-white shadow-lg">
+            M
+          </div>
+          <span className="text-lg font-bold font-GoogleSans tracking-tight text-white glow-text-gemini">
+            Mohan<span className="text-antigravityBlue font-extrabold group-hover:text-antigravityPink transition-colors">_</span>
           </span>
         </a>
 
-        {/* Desktop menu items */}
-        <ul className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 glass-card bg-white/5 dark:bg-black/20 font-Outfit text-sm">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a
-                href={link.href}
-                className="px-4 py-1.5 rounded-full text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-white/10 dark:hover:bg-white/5 transition-all duration-200 block"
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
+        {/* Minimalist Google-style menu links */}
+        <ul className="hidden md:flex items-center gap-6 font-GoogleSans text-sm font-light text-gray-400">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id
+            return (
+              <li key={link.name} className="relative py-1">
+                <a
+                  href={link.href}
+                  className={`transition-colors duration-200 ${
+                    isActive ? 'text-white font-medium' : 'hover:text-gray-200'
+                  }`}
+                >
+                  {link.name}
+                </a>
+                
+                {/* Underline tracker for active section */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeIndicator"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-antigravityBlue rounded-full"
+                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                  />
+                )}
+              </li>
+            )
+          })}
         </ul>
 
         <div className="flex items-center gap-3">
-          {/* Theme toggle button */}
+          {/* Light/Dark Toggler */}
           <button
             onClick={toggleTheme}
-            aria-label="Toggle visual theme"
-            className="p-2 rounded-full border border-white/10 glass-card hover:bg-white/10 dark:hover:bg-white/5 transition-all duration-200"
+            aria-label="Toggle system color theme"
+            className="p-1.5 rounded border border-white/[0.06] hover:bg-white/[0.04] transition-colors"
           >
             <motion.img
               key={darkTheme ? 'sun' : 'moon'}
-              initial={{ rotate: -90, scale: 0.8 }}
-              animate={{ rotate: 0, scale: 1 }}
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
               transition={{ duration: 0.3 }}
               src={darkTheme ? './assets/sun_icon.png' : './assets/moon_icon.png'}
               alt={darkTheme ? 'Light mode' : 'Dark mode'}
-              className="w-5 h-5 dark:invert-0 invert"
+              className="w-4 h-4 dark:invert-0 invert"
             />
           </button>
 
-          {/* Contact Button */}
+          {/* Connect Action CTA */}
           <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             href="#contact"
-            className="hidden lg:flex items-center gap-2 px-6 py-2 border border-white/10 glass-card hover:border-purple-500/50 hover:bg-purple-950/20 text-sm font-Outfit rounded-full transition-all duration-300 text-black dark:text-white"
+            className="hidden lg:flex items-center gap-2 px-5 py-1.5 border border-antigravityBlue/20 bg-antigravityBlue/5 hover:bg-antigravityBlue/10 hover:border-antigravityBlue/50 text-xs font-medium font-GoogleSans text-antigravityBlue rounded transition-all duration-300"
           >
-            Connect
-            <img src="./assets/arrow-icon.png" alt="" className="w-3 dark:invert invert-0" />
+            Deploy
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           </motion.a>
 
-          {/* Mobile Menu trigger */}
+          {/* Mobile Drawer Trigger */}
           <button
-            className="block md:hidden p-2 rounded-full border border-white/10 glass-card hover:bg-white/10 dark:hover:bg-white/5"
+            className="block md:hidden p-1.5 rounded border border-white/[0.06] hover:bg-white/[0.04]"
             onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open mobile menu"
+            aria-label="Open side panel"
           >
             <img
               src={darkTheme ? './assets/menu-white.png' : './assets/menu-black.png'}
               alt="Menu"
-              className="w-5 h-5"
+              className="w-4 h-4"
             />
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile Drawer (with AnimatePresence) */}
+      {/* Mobile Drawer (Antigravity Terminal Panel Style) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
             />
 
-            {/* Sidebar drawer */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 bottom-0 w-72 h-full glass-card-premium bg-slate-900/90 dark:bg-black/85 backdrop-blur-2xl z-50 flex flex-col p-8 border-l border-white/10 shadow-2xl text-white"
+              transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
+              className="fixed right-0 top-0 bottom-0 w-72 h-full bg-[#0d0e12]/95 border-l border-white/[0.06] backdrop-blur-2xl z-50 flex flex-col p-6 shadow-2xl text-white font-GoogleSans"
             >
-              <div className="flex justify-between items-center mb-12">
-                <span className="text-2xl font-bold tracking-wider glow-text-purple">
-                  Mohan<span className="text-purple-500 font-extrabold">.</span>
-                </span>
+              <div className="flex justify-between items-center mb-10 pb-4 border-b border-white/[0.06]">
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 rounded bg-gradient-to-tr from-antigravityBlue to-antigravityPurple" />
+                  <span className="text-base font-bold tracking-tight text-white">
+                    Mohan
+                  </span>
+                </div>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 rounded-full border border-white/10 glass-card hover:bg-white/10"
-                  aria-label="Close mobile menu"
+                  className="p-1.5 rounded border border-white/[0.06] hover:bg-white/[0.04]"
+                  aria-label="Close panel"
                 >
                   <img
                     src="./assets/close-white.png"
                     alt="Close"
-                    className="w-4 h-4"
+                    className="w-3 h-3"
                   />
                 </button>
               </div>
 
-              <ul className="flex flex-col gap-6 text-lg font-Outfit">
+              <ul className="flex flex-col gap-4 text-base font-light text-gray-300">
                 {navLinks.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block py-2 border-b border-white/5 hover:text-purple-400 hover:pl-2 transition-all duration-300"
+                      className="block py-2.5 px-3 rounded hover:bg-white/[0.03] hover:text-white transition-all duration-200"
                     >
                       {link.name}
                     </a>
@@ -174,10 +209,10 @@ export default function Navbar() {
                 <a
                   href="#contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-3 border border-purple-500/30 bg-purple-950/20 text-white rounded-full text-center font-Outfit text-sm hover:bg-purple-900/30 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-antigravityBlue to-antigravityPurple text-white text-sm font-semibold rounded shadow-lg"
                 >
-                  Get in touch
-                  <img src="./assets/arrow-icon.png" alt="" className="w-3 invert" />
+                  Deploy Connection
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 </a>
               </div>
             </motion.div>

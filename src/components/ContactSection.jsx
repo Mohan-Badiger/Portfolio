@@ -8,7 +8,7 @@ export default function ContactSection() {
   const onSubmit = async (event) => {
     event.preventDefault()
     setIsSubmitting(true)
-    setResult("Sending message...")
+    setResult(">> Running git commit... >> Starting git push...")
 
     const formData = new FormData(event.target)
 
@@ -30,13 +30,13 @@ export default function ContactSection() {
       }).then((res) => res.json())
 
       if (response.success) {
-        setResult("Thank you! Your message was sent successfully.")
+        setResult(">> Push successful! Message dispatched to Mohan's console.")
         event.target.reset()
       } else {
-        setResult(response.message || "Something went wrong. Please try again.")
+        setResult(`>> Push failed: ${response.message || "Unknown compile error"}`)
       }
     } catch (error) {
-      setResult("Network error. Please check your connection and try again.")
+      setResult(">> Connection refused: Check network protocols and retry.")
     } finally {
       setIsSubmitting(false)
     }
@@ -46,138 +46,167 @@ export default function ContactSection() {
     <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.8 }}
       viewport={{ once: true }}
       id="contact"
       aria-label="Contact Mohan Badiger"
-      className="w-full px-6 sm:px-12 lg:px-[12%] py-20 scroll-mt-24 relative overflow-hidden"
+      className="w-full px-6 sm:px-12 lg:px-[12%] py-24 scroll-mt-24 relative overflow-hidden"
     >
       {/* Background radial lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 -z-10 aurora-blob-3 pointer-events-none rounded-full blur-[100px] opacity-45" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 -z-10 aurora-purple pointer-events-none rounded-full blur-[110px] opacity-25 animate-float-slow" />
 
-      <h2 className="sr-only">
-        Contact Mohan Badiger – Full Stack MERN Developer
-      </h2>
+      <h2 className="sr-only">Contact Mohan Badiger – Full Stack MERN Developer</h2>
 
-      <div className="flex flex-col items-center text-center mb-12">
+      {/* Header section */}
+      <div className="flex flex-col items-start text-left mb-16">
         <motion.h4
-          initial={{ opacity: 0, y: -15 }}
+          initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-purple-400 font-semibold tracking-widest text-xs uppercase mb-3 font-Outfit"
+          className="text-antigravityBlue font-bold tracking-widest text-xs uppercase mb-2 font-GoogleSans"
         >
-          Connect with me
+          04 / Connection
         </motion.h4>
         <motion.h3
-          initial={{ opacity: 0, y: -15 }}
+          initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-5xl font-bold font-Outfit text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300"
+          className="text-4xl sm:text-5xl font-black font-GoogleSans text-white tracking-tight leading-none"
         >
-          Get in touch
+          Push Message
         </motion.h3>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-gray-400 max-w-xl mx-auto mt-4 font-Outfit font-light text-sm sm:text-base leading-relaxed"
+          className="text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
         >
-          Have a project in mind or want to explore collaboration opportunities? Send a message and let's construct something incredible.
+          Configure parameters below to push a secure text message directly into my mail terminal.
         </motion.p>
       </div>
 
+      {/* IDE-styled Git submission form */}
       <motion.form
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
         viewport={{ once: true }}
         onSubmit={onSubmit}
         aria-label="Contact form for Mohan Badiger"
-        className="max-w-2xl mx-auto glass-card-premium rounded-3xl p-8 sm:p-10 border border-white/5 shadow-2xl relative z-10"
+        className="max-w-2xl mx-auto terminal-card rounded-xl border border-white/[0.06] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden font-mono text-xs flex flex-col relative z-10"
       >
-        <input
-          type="hidden"
-          name="subject"
-          value="Mohan Badiger - New Contact Form Submission"
-        />
+        {/* IDE tab header */}
+        <div className="px-4 py-2.5 bg-[#0b0b0f]/60 border-b border-white/[0.06] flex items-center justify-between select-none">
+          <div className="flex gap-2 items-center text-[10px] text-gray-500 font-mono">
+            <span className="text-gray-300 bg-white/[0.04] border border-white/[0.04] px-2.5 py-1 rounded flex items-center gap-1.5">
+              <span>🚀</span>
+              send_message.sh
+            </span>
+          </div>
+          <span className="font-mono text-[9px] text-gray-600">
+            PROTOCOL: SMTP/HTTPS
+          </span>
+        </div>
 
-        {/* Accessibility Screen Reader Labels */}
-        <label htmlFor="name" className="sr-only">Your Name</label>
-        <label htmlFor="email" className="sr-only">Your Email Address</label>
-        <label htmlFor="message" className="sr-only">Your Message</label>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-          <div className="flex flex-col">
-            <span className="text-xs font-semibold text-gray-400 font-Outfit mb-2 ml-1">Name</span>
-            <motion.input
-              whileFocus={{ scale: 1.01 }}
-              id="name"
-              type="text"
-              name="name"
-              required
-              placeholder="Enter your name"
-              className="px-4 py-3 outline-none border border-white/10 rounded-xl bg-white/5 text-white font-Outfit text-sm transition-all duration-300 focus:border-purple-500/80 focus:bg-white/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.2)]"
-            />
+        {/* Editor workspace pane */}
+        <div className="flex p-5 gap-4 bg-[#0d0e12]/20 relative">
+          
+          {/* Editor Line Numbers */}
+          <div className="text-right text-gray-700 font-mono text-[11px] select-none flex flex-col gap-[38px] pt-1">
+            <span>01</span>
+            <span>02</span>
+            <span>03</span>
+            <span>04</span>
           </div>
 
-          <div className="flex flex-col">
-            <span className="text-xs font-semibold text-gray-400 font-Outfit mb-2 ml-1">Email</span>
-            <motion.input
-              whileFocus={{ scale: 1.01 }}
-              id="email"
-              type="email"
-              name="email"
-              required
-              placeholder="Enter your email"
-              className="px-4 py-3 outline-none border border-white/10 rounded-xl bg-white/5 text-white font-Outfit text-sm transition-all duration-300 focus:border-purple-500/80 focus:bg-white/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+          <div className="flex-1 flex flex-col gap-6 text-left">
+            <input
+              type="hidden"
+              name="subject"
+              value="Mohan Badiger - New Contact Form Submission"
             />
+
+            {/* Accessibility screen labels */}
+            <label htmlFor="name" className="sr-only">Your Name</label>
+            <label htmlFor="email" className="sr-only">Your Email Address</label>
+            <label htmlFor="message" className="sr-only">Your Message</label>
+
+            {/* Field 01: Name */}
+            <div className="flex flex-col">
+              <span className="text-[10px] text-antigravityBlue font-mono mb-1.5 select-none">
+                const <span className="text-purple-400">senderName</span> =
+              </span>
+              <motion.input
+                whileFocus={{ scale: 1.005 }}
+                id="name"
+                type="text"
+                name="name"
+                required
+                placeholder='"Enter your name"'
+                className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)]"
+              />
+            </div>
+
+            {/* Field 02: Email */}
+            <div className="flex flex-col">
+              <span className="text-[10px] text-antigravityBlue font-mono mb-1.5 select-none">
+                const <span className="text-purple-400">senderEmail</span> =
+              </span>
+              <motion.input
+                whileFocus={{ scale: 1.005 }}
+                id="email"
+                type="email"
+                name="email"
+                required
+                placeholder='"Enter your email"'
+                className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)]"
+              />
+            </div>
+
+            {/* Field 03: Message */}
+            <div className="flex flex-col">
+              <span className="text-[10px] text-antigravityBlue font-mono mb-1.5 select-none">
+                const <span className="text-purple-400">messageBody</span> =
+              </span>
+              <motion.textarea
+                whileFocus={{ scale: 1.005 }}
+                id="message"
+                name="message"
+                rows="4"
+                required
+                placeholder='"Enter message contents"'
+                className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)] resize-none"
+              ></motion.textarea>
+            </div>
+
+            {/* Field 04: Command Button */}
+            <div className="flex flex-col mt-2">
+              <motion.button
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-3 bg-gradient-to-r from-antigravityBlue to-antigravityPurple hover:opacity-90 text-white font-mono text-[11px] font-bold rounded shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 select-none"
+              >
+                <span>$</span> git commit -m "Send" && git push
+              </motion.button>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col mb-8">
-          <span className="text-xs font-semibold text-gray-400 font-Outfit mb-2 ml-1">Message</span>
-          <motion.textarea
-            whileFocus={{ scale: 1.01 }}
-            id="message"
-            name="message"
-            rows="5"
-            required
-            placeholder="Enter your message"
-            className="w-full px-4 py-3 outline-none border border-white/10 rounded-xl bg-white/5 text-white font-Outfit text-sm transition-all duration-300 focus:border-purple-500/80 focus:bg-white/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.2)] resize-none"
-          ></motion.textarea>
-        </div>
-
-        <motion.button
-          whileHover={{ scale: 1.03, y: -2 }}
-          whileTap={{ scale: 0.97 }}
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full py-3.5 px-8 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-Outfit text-sm font-bold rounded-xl transition-all duration-300 shadow-[0_10px_20px_rgba(139,92,246,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isSubmitting ? "Sending..." : "Submit Message"}
-          <img
-            src="./assets/right-arrow-white.png"
-            alt="Submit"
-            className="w-4 h-4 object-contain ml-1"
-          />
-        </motion.button>
-
+        {/* Console logs output */}
         {result && (
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={`mt-6 text-center font-Outfit text-sm font-medium ${
-              result.includes("success") || result.includes("Thank")
-                ? "text-emerald-400 glow-text-emerald"
-                : "text-purple-400"
-            }`}
-            aria-live="polite"
-          >
-            {result}
-          </motion.p>
+          <div className="px-5 py-3.5 bg-[#0b0b0f] border-t border-white/[0.06] text-left select-none">
+            <span className="font-mono text-[10px] text-gray-500 block mb-1">
+              SHELL_OUTPUT:
+            </span>
+            <p className="font-mono text-[10px] text-sky-400 leading-normal">
+              {result}
+            </p>
+          </div>
         )}
       </motion.form>
     </motion.section>

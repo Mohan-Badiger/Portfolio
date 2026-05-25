@@ -1,181 +1,191 @@
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { assets } from './assets.js'
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
+
+// Mock logs to simulate console outputs
+const agentLogs = [
+  { text: ">> Initializing Mohan's Developer Console [v2.0.0]...", color: "text-gray-400" },
+  { text: ">> Establishing local repository connections...", color: "text-gray-400" },
+  { text: ">> Status: ONLINE", color: "text-emerald-400" },
+  { text: ">> Synchronizing project metadata...", color: "text-gray-400" },
+  { text: "   - bnt_temples.jsx (Loaded)", color: "text-purple-400" },
+  { text: "   - easy_share.ts (Loaded)", color: "text-purple-400" },
+  { text: "   - fotx_digital.py (Loaded)", color: "text-purple-400" },
+  { text: "   - droplyx.json (Loaded)", color: "text-purple-400" },
+  { text: ">> Mapping system architecture modules...", color: "text-gray-400" },
+  { text: "   - React, Node.js, MongoDB, Docker, AWS EC2", color: "text-sky-400" },
+  { text: ">> Running local check compilation checks...", color: "text-yellow-400" },
+  { text: ">> Build successful: 0 errors, 0 warnings", color: "text-emerald-400" },
+  { text: ">> Listening for hot reload triggers...", color: "text-gray-400" },
+  { text: ">> Hot server initialized: https://mohanbadiger.site", color: "text-emerald-400 animate-pulse" },
+  { text: ">> Setup ready: system idling...", color: "text-sky-400" },
+]
 
 export default function Header() {
-  // Motion values for 3D parallax tilt
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
+  const [logs, setLogs] = useState([])
+  const [logIndex, setLogIndex] = useState(0)
 
-  // Transform motion values to rotation degrees
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [12, -12]), { stiffness: 150, damping: 25 })
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-12, 12]), { stiffness: 150, damping: 25 })
+  // Simulation loop for typing out agent logs
+  useEffect(() => {
+    if (logIndex < agentLogs.length) {
+      const timeout = setTimeout(() => {
+        setLogs((prev) => [...prev, agentLogs[logIndex]])
+        setLogIndex((prev) => prev + 1)
+      }, logIndex === 0 ? 500 : Math.random() * 800 + 400) // Varied delay for typing realism
 
-  // Mouse move handler over the container
-  const handleMouseMove = (event) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const mouseX = (event.clientX - rect.left) / rect.width - 0.5
-    const mouseY = (event.clientY - rect.top) / rect.height - 0.5
-    x.set(mouseX)
-    y.set(mouseY)
-  }
-
-  // Reset rotation when mouse leaves
-  const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
+      return () => clearTimeout(timeout)
+    } else {
+      // Loop logs from start after idling for a bit
+      const resetTimeout = setTimeout(() => {
+        setLogs([])
+        setLogIndex(0)
+      }, 8000)
+      return () => clearTimeout(resetTimeout)
+    }
+  }, [logIndex])
 
   return (
-    <div 
-      className="w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-6 sm:px-12 relative overflow-hidden"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Dynamic background lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] aurora-blob-3 pointer-events-none rounded-full blur-[120px] opacity-75" />
+    <div className="w-full min-h-screen relative flex items-center justify-center pt-24 pb-16 px-6 sm:px-12 lg:px-[8%] bg-dot-grid overflow-hidden">
+      {/* Aurora glow light leaks */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] -z-10 aurora-blue pointer-events-none rounded-full blur-[130px] opacity-40 animate-float-slow" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] -z-10 aurora-purple pointer-events-none rounded-full blur-[120px] opacity-30 animate-float-normal" />
 
-      {/* SEO H1 */}
-      <h1 className="sr-only">
-        Mohan Badiger – Full Stack MERN Developer
-      </h1>
+      {/* SEO H1 (Invisible) */}
+      <h1 className="sr-only">Mohan Badiger – Full Stack MERN Developer</h1>
 
-      {/* 3D Tilting Card */}
-      <motion.div
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: 'preserve-3d',
-        }}
-        className="w-full max-w-3xl glass-card-premium rounded-[32px] p-8 sm:p-12 md:p-16 flex flex-col items-center text-center gap-6 shadow-[0_30px_100px_rgba(0,0,0,0.5)] border border-white/10 relative z-10 select-none preserve-3d"
-      >
-        {/* Double rotating neon rings behind profile picture */}
-        <div className="relative w-36 h-36 flex items-center justify-center mb-2" style={{ transform: 'translateZ(40px)' }}>
-          {/* Neon Ring 1 */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-            className="absolute inset-0 rounded-full border-2 border-dashed border-purple-500/60 blur-[2px]"
-          />
-          {/* Neon Ring 2 */}
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-            className="absolute -inset-2 rounded-full border border-pink-500/40 blur-[4px]"
-          />
-          
-          <motion.img
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
-            src="./assets/profile_img.jpg"
-            alt="Mohan Badiger profile photo"
-            className="rounded-full w-32 h-32 object-cover border-4 border-black/50 shadow-2xl relative z-10"
-          />
-        </div>
-
-        {/* Greeting message */}
-        <motion.h2
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex items-center gap-2 text-lg sm:text-xl font-Outfit tracking-wide text-gray-400 dark:text-gray-300"
-          style={{ transform: 'translateZ(30px)' }}
-        >
-          Hi, I'm <span className="text-white font-semibold underline decoration-purple-500/60 decoration-2 underline-offset-4">Mohan Badiger</span>
-          <motion.img
-            animate={{ rotate: [0, 15, -10, 15, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            src="./assets/hand-icon.png"
-            alt="waving hand icon"
-            className="w-6 h-6 object-contain"
-          />
-        </motion.h2>
-
-        {/* Heading */}
-        <motion.h3
-          initial={{ y: -30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight font-Outfit leading-none text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-purple-400"
-          style={{ transform: 'translateZ(50px)' }}
-        >
-          Full-Stack <br className="sm:hidden" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-amber-400 glow-text-purple">Developer</span>
-        </motion.h3>
-
-        {/* Bio */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="max-w-xl mx-auto text-sm sm:text-base text-gray-500 dark:text-gray-400 font-Outfit font-light leading-relaxed"
-          style={{ transform: 'translateZ(20px)' }}
-        >
-          BCA Student | Passionate about Full-Stack Development. I engineer responsive web architectures using <span className="text-white font-medium">React</span>, <span className="text-white font-medium">Node.js</span>, <span className="text-white font-medium">MongoDB</span>, <span className="text-white font-medium">Docker</span>, and <span className="text-white font-medium">AWS</span>.
-        </motion.p>
-
-        {/* Call-to-actions */}
-        <div 
-          className="flex flex-col sm:flex-row items-center gap-4 mt-4"
-          style={{ transform: 'translateZ(35px)' }}
-        >
-          <motion.a
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            href="#contact"
-            className="px-8 py-3 rounded-full bg-gradient-to-r from-[#8b5cf6] to-[#ec4899] text-white flex items-center justify-center gap-2 font-Outfit text-sm font-semibold shadow-[0_10px_20px_rgba(139,92,246,0.3)] hover:shadow-[0_15px_30px_rgba(139,92,246,0.5)] transition-all duration-300"
-          >
-            Contact me
-            <img src="./assets/right-arrow-white.png" alt="right arrow" className="w-4 h-4 object-contain" />
-          </motion.a>
-
-          <motion.a
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            href="./assets/Mohan_FullStack Resume.pdf"
-            download
-            className="px-8 py-3 rounded-full border border-white/10 glass-card bg-white/5 hover:bg-white/10 text-white flex items-center justify-center gap-2 font-Outfit text-sm font-semibold transition-all duration-300"
-          >
-            My resume
-            <img
-              src="./assets/download-icon.png"
-              alt="download resume"
-              className="w-4 h-4 object-contain dark:invert-0 invert"
-            />
-          </motion.a>
-        </div>
-
-        {/* Social connections */}
+      <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        {/* Left Side: Bold Google Sans Flex Typography */}
         <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="flex gap-4 mt-6 justify-center"
-          style={{ transform: 'translateZ(25px)' }}
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-6 flex flex-col gap-6 text-left"
         >
-          {[
-            { url: 'https://github.com/Mohan-Badiger', lightIcon: assets.github, darkIcon: assets.githubdark, alt: 'GitHub' },
-            { url: 'https://www.linkedin.com/in/mohan-badiger', lightIcon: assets.linkedin, darkIcon: assets.linkedindark, alt: 'LinkedIn' },
-            { url: 'https://www.youtube.com/@MohanBadiger250', lightIcon: assets.youtube, darkIcon: assets.youtubedark, alt: 'YouTube' },
-            { url: 'https://www.instagram.com/mohan_badiger250', lightIcon: assets.instagram, darkIcon: assets.instagramdark, alt: 'Instagram' }
-          ].map((soc, idx) => (
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-white/[0.04] bg-white/[0.02] w-fit">
+            <span className="w-2 h-2 rounded-full bg-antigravityBlue animate-ping" />
+            <span className="text-[10px] uppercase font-bold tracking-widest font-GoogleSans text-gray-400">
+              Full-Stack Developer & BCA Student
+            </span>
+          </div>
+
+          <h2 className="text-5xl sm:text-7xl lg:text-8xl font-GoogleSans tracking-tight leading-[0.9]">
+            <span className="text-white font-medium">Mohan</span> <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-antigravityBlue via-antigravityPurple to-antigravityPink font-bold">
+              Badiger
+            </span>
+          </h2>
+
+          <h3 className="text-2xl sm:text-3xl font-normal font-GoogleSans tracking-tight text-gray-400 leading-tight">
+            Engineering high-performance web systems<span className="text-antigravityBlue font-bold">.</span>
+          </h3>
+
+          <p className="max-w-lg text-sm sm:text-base text-gray-500 dark:text-gray-400 font-GoogleSans font-light leading-relaxed">
+            I develop responsive, user-friendly full-stack solutions using <span className="text-gray-300 font-medium">React</span>, <span className="text-gray-300 font-medium">Node.js</span>, <span className="text-gray-300 font-medium">MongoDB</span>, <span className="text-gray-300 font-medium">Docker</span>, and <span className="text-gray-300 font-medium">AWS</span>. Translating complex code into fluid interfaces.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4 mt-2">
             <motion.a
-              key={idx}
-              href={soc.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.15, y: -4 }}
-              className="w-11 h-11 rounded-full border border-white/10 glass-card flex items-center justify-center hover:border-purple-500/50 hover:bg-purple-950/20 shadow-md transition-all duration-300"
-              aria-label={`Mohan Badiger ${soc.alt}`}
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              href="#contact"
+              className="px-6 py-3 rounded bg-white text-[#08080c] font-GoogleSans text-xs font-semibold shadow-xl transition-all duration-200"
             >
-              {/* Light Theme Icon */}
-              <img src={soc.lightIcon} alt={soc.alt} className="w-5 h-5 object-contain dark:hidden" />
-              {/* Dark Theme Icon */}
-              <img src={soc.darkIcon} alt={soc.alt} className="w-5 h-5 object-contain hidden dark:block" />
+              Get Started
             </motion.a>
-          ))}
+
+            <motion.a
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              href="./assets/Mohan_FullStack Resume.pdf"
+              download
+              className="px-6 py-3 rounded border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.02] text-white font-GoogleSans text-xs font-semibold transition-all duration-200"
+            >
+              Download Resume
+            </motion.a>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex gap-4 mt-6 items-center">
+            {[
+              { url: 'https://github.com/Mohan-Badiger', icon: assets.github, darkIcon: assets.githubdark, name: 'GitHub' },
+              { url: 'https://www.linkedin.com/in/mohan-badiger', icon: assets.linkedin, darkIcon: assets.linkedindark, name: 'LinkedIn' },
+              { url: 'https://www.youtube.com/@MohanBadiger250', icon: assets.youtube, darkIcon: assets.youtubedark, name: 'YouTube' },
+              { url: 'https://www.instagram.com/mohan_badiger250', icon: assets.instagram, darkIcon: assets.instagramdark, name: 'Instagram' }
+            ].map((soc, idx) => (
+              <a
+                key={idx}
+                href={soc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded border border-white/[0.06] flex items-center justify-center hover:bg-white/[0.03] transition-colors"
+                aria-label={`Mohan Badiger ${soc.name}`}
+              >
+                <img src={soc.darkIcon} alt={soc.name} className="w-4 h-4 object-contain" />
+              </a>
+            ))}
+          </div>
         </motion.div>
-      </motion.div>
+
+        {/* Right Side: Antigravity Mission Control (Agent Terminal) */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-6 w-full animate-float-normal"
+        >
+          {/* Mock Console Outer Frame */}
+          <div className="w-full terminal-card rounded-xl border border-white/[0.06] shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden font-mono text-xs select-none">
+            {/* Window bar */}
+            <div className="flex items-center justify-between px-4 py-3 bg-[#0d0e12] border-b border-white/[0.06]">
+              {/* Left Mock Dots */}
+              <div className="flex gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+              </div>
+              {/* Tab Title */}
+              <div className="flex gap-2 text-[10px] text-gray-500 font-GoogleSans">
+                <span className="text-gray-300 font-medium px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.04]">
+                  agent_mission_log.log
+                </span>
+                <span className="px-2 py-0.5">profile.json</span>
+              </div>
+              {/* Right diagnostics */}
+              <div className="text-[10px] text-gray-600 font-GoogleSans">
+                Gemini 3.5 High
+              </div>
+            </div>
+
+            {/* Simulated Shell Screen */}
+            <div className="p-5 h-[340px] overflow-y-auto flex flex-col gap-2.5 text-left leading-relaxed scrollbar-thin">
+              {logs.map((log, index) => (
+                <div key={index} className={`font-mono text-[11px] ${log.color}`}>
+                  {log.text}
+                </div>
+              ))}
+              
+              {/* Blinking Shell Cursor */}
+              {logIndex < agentLogs.length && (
+                <div className="flex items-center gap-1">
+                  <span className="text-gray-500">&gt;&gt;</span>
+                  <span className="w-1.5 h-4 bg-antigravityBlue animate-pulse" />
+                </div>
+              )}
+            </div>
+
+            {/* Diagnostics Stats Bar */}
+            <div className="px-4 py-2.5 bg-[#0d0e12] border-t border-white/[0.06] flex items-center justify-between text-[10px] text-gray-500 font-GoogleSans font-light">
+              <div className="flex gap-4">
+                <span>MODULES: <span className="text-emerald-400 font-medium">6 STABLE</span></span>
+                <span>CPU: <span className="text-sky-400 font-medium">4%</span></span>
+              </div>
+              <div>
+                <span>STATUS: <span className="text-purple-400 font-medium">SYSTEM IDLE</span></span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </div>
   )
 }
