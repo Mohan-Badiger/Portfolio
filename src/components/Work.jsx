@@ -254,7 +254,6 @@ export default function Work() {
                   alt={`${current.name} screenshot preview`}
                   width={384}
                   height={288}
-                  loading="lazy"
                   decoding="async"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -317,7 +316,6 @@ export default function Work() {
                   alt="Launch icon"
                   width={14}
                   height={14}
-                  loading="lazy"
                   decoding="async"
                   className="w-3.5 h-3.5 object-contain invert"
                 />

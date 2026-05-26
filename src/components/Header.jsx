@@ -64,7 +64,7 @@ export default function Header() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-slate-200 dark:border-white/[0.04] bg-slate-100/50 dark:bg-white/[0.02] w-fit">
             <span className="w-2 h-2 rounded-full bg-antigravityBlue animate-ping" />
             <span className="text-[10px] uppercase font-bold tracking-widest font-GoogleSans text-gray-500 dark:text-gray-400">
-              Full-Stack Developer & BCA Student
+              Full-Stack Developer
             </span>
           </div>
 
@@ -88,7 +88,7 @@ export default function Header() {
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               href="#contact"
-              className="px-6 py-3 rounded bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-[#08080c] dark:hover:bg-slate-100 font-GoogleSans text-xs font-semibold shadow-xl transition-all duration-200"
+              className="px-6 py-3 rounded bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-[#08080c] dark:hover:bg-slate-100 font-GoogleSans text-xs font-medium shadow-xl transition-all duration-200"
             >
               Get Started
             </motion.a>
@@ -98,7 +98,7 @@ export default function Header() {
               whileTap={{ scale: 0.98 }}
               href="./assets/Mohan_FullStack Resume.pdf"
               download
-              className="px-6 py-3 rounded border border-slate-200 dark:border-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.02] text-slate-800 dark:text-white font-GoogleSans text-xs font-semibold transition-all duration-200"
+              className="px-6 py-3 rounded border border-slate-200 dark:border-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.02] text-slate-800 dark:text-white font-GoogleSans text-xs font-medium transition-all duration-200"
             >
               Download Resume
             </motion.a>

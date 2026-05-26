@@ -49,7 +49,6 @@ export default function Footer() {
             alt="Email icon"
             width={20}
             height={20}
-            loading="lazy"
             decoding="async"
             className="w-5 dark:hidden"
           />
@@ -58,7 +57,6 @@ export default function Footer() {
             alt="Email icon"
             width={20}
             height={20}
-            loading="lazy"
             decoding="async"
             className="w-5 hidden dark:block"
           />

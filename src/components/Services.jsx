@@ -73,7 +73,6 @@ function ServiceCard({ service, index }) {
           alt={`${service.name} icon`}
           width={32}
           height={32}
-          loading="lazy"
           decoding="async"
           className="w-8 h-8 object-contain"
         />
@@ -120,7 +119,6 @@ function ServiceCard({ service, index }) {
           alt="Arrow icon"
           width={12}
           height={12}
-          loading="lazy"
           decoding="async"
           className="w-3 h-3 object-contain dark:invert transform group-hover:translate-x-1 transition-transform"
         />

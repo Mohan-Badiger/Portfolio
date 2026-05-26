@@ -179,7 +179,6 @@ export default function About() {
                   alt={`${tool.name} tool`}
                   width={20}
                   height={20}
-                  loading="lazy"
                   decoding="async"
                   className="w-5 h-5 object-contain flex-shrink-0"
                 />
