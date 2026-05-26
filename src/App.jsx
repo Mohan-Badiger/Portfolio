@@ -9,6 +9,7 @@ import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 import CursorTrail from './components/CursorTrail'
 import BigDeveloperTitle from './components/BigDeveloperTitle'
+import WhatsAppButton from './components/WhatsAppButton'
 
 
 export default function App() {
@@ -85,6 +86,9 @@ export default function App() {
 
       {/* Footer credits and social map */}
       <Footer />
+
+      {/* Floating premium WhatsApp connection module */}
+      <WhatsAppButton />
     </div>
   )
 }
