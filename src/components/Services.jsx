@@ -56,7 +56,7 @@ function ServiceCard({ service, index }) {
       )}
 
       {/* Card Header: Simulated Dev Stats */}
-      <div 
+      <div
         className="flex items-center justify-between font-mono text-[9px] text-gray-500 mb-6 uppercase"
         style={{ transform: 'translateZ(15px)' }}
       >
@@ -75,7 +75,7 @@ function ServiceCard({ service, index }) {
           height={32}
           loading="lazy"
           decoding="async"
-          className="w-8 h-8 object-contain dark:invert invert-0"
+          className="w-8 h-8 object-contain"
         />
       </div>
 
@@ -88,10 +88,26 @@ function ServiceCard({ service, index }) {
 
       <p
         style={{ transform: 'translateZ(10px)' }}
-        className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 font-GoogleSans font-light leading-relaxed mb-6"
+        className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 font-GoogleSans font-light leading-relaxed mb-4"
       >
         {service.description}
       </p>
+
+      {service.tags && (
+        <div
+          style={{ transform: 'translateZ(15px)' }}
+          className="flex flex-wrap gap-1.5 mb-6"
+        >
+          {service.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[9px] font-mono px-2 py-0.5 rounded border border-slate-200/60 dark:border-white/[0.04] bg-slate-50 dark:bg-white/[0.02] text-slate-600 dark:text-gray-400"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
 
       <a
         href={service.link || '#contact'}
@@ -118,6 +134,7 @@ ServiceCard.propTypes = {
     name: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string),
     link: PropTypes.string,
   }).isRequired,
   index: PropTypes.number.isRequired,
@@ -126,28 +143,32 @@ ServiceCard.propTypes = {
 export default function Services() {
   const services = [
     {
-      name: 'Web Design & Architecture',
-      icon: './assets/web-icon.png',
-      description: 'Crafting responsive, high-performance web structures using modern frameworks and SEO standards.',
-      link: '',
+      name: 'Frontend Development',
+      icon: './assets/react.png',
+      description: 'Building modern, high-performance, and responsive user interfaces with styled layouts and client-side logic.',
+      tags: ['React', 'Next.js', 'Tailwind CSS'],
+      link: '#contact',
     },
     {
-      name: 'Mobile App Layouts',
-      icon: './assets/mobile-icon.png',
-      description: 'Designing modular, interactive components optimized for multi-device cross-platform application design.',
-      link: '',
+      name: 'Backend Development',
+      icon: './assets/nodejs.png',
+      description: 'Designing scalable server architectures, secure endpoints, and modeling robust database architectures.',
+      tags: ['Node.js', 'Express.js', 'MongoDB'],
+      link: '#contact',
     },
     {
-      name: 'UI/UX Design Systems',
-      icon: './assets/ui-icon.png',
-      description: 'Building modern interfaces backed by structured design languages, high-fidelity prototypes, and wireframes.',
-      link: '',
+      name: 'DevOps & Deployment',
+      icon: './assets/EC2.png',
+      description: 'Containerizing environments, establishing automated CI/CD pipelines, and deploying to cloud infrastructure.',
+      tags: ['Docker', 'CI/CD', 'AWS'],
+      link: '#contact',
     },
     {
-      name: 'Graphics & Brand Identity',
-      icon: './assets/graphics-icon.png',
-      description: 'Engineering visual branding systems, vector assets, and digital media to define memorable online products.',
-      link: '',
+      name: 'Version Control & Workflow',
+      icon: './assets/git.png',
+      description: 'Managing structured code repository history, branching strategies, and collaboration workflows.',
+      tags: ['Git', 'GitHub'],
+      link: '#contact',
     },
   ]
 
@@ -190,7 +211,7 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-slate-600 dark:text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
         >
-          I deliver premium developer services combining fast loading speeds, responsive engineering, and beautiful pixel-perfect user interfaces.
+          I specialize in end-to-end full-stack web development, building high-performance applications, robust APIs, and modern responsive interfaces.
         </motion.p>
       </div>
 

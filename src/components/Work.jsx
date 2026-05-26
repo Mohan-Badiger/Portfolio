@@ -66,6 +66,7 @@ export default function Work() {
   ]
 
   const [activeIdx, setActiveIdx] = useState(0)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const current = projects[activeIdx]
 
   // Interactive 3D tilt variables for the screenshot preview
@@ -99,7 +100,7 @@ export default function Work() {
       viewport={{ once: true }}
       id="work"
       aria-label="Projects by Mohan Badiger"
-      className="w-full px-6 sm:px-12 lg:px-[12%] py-24 scroll-mt-24 relative overflow-hidden"
+      className="w-full px-4 sm:px-12 lg:px-[12%] py-20 sm:py-24 scroll-mt-24 relative overflow-hidden"
     >
       {/* Background aurora light leak */}
       <div className="absolute top-1/2 right-0 w-[450px] h-[450px] -z-10 translate-x-[20%] translate-y-[-50%] aurora-blue pointer-events-none rounded-full blur-[120px] opacity-30" />
@@ -140,12 +141,13 @@ export default function Work() {
       {/* Full Mock IDE Wrapper */}
       <div className="w-full rounded-xl border border-slate-200 dark:border-white/[0.06] bg-white/60 dark:bg-[#0d0e12]/60 shadow-[0_15px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-md overflow-hidden flex flex-col md:flex-row min-h-[500px]">
         {/* Left IDE Sidebar: File Explorer */}
-        <div className="w-full md:w-60 border-r border-slate-200 dark:border-white/[0.06] bg-slate-100/30 dark:bg-[#0b0b0f]/80 flex flex-col p-4 flex-shrink-0">
-          <div className="text-[10px] uppercase font-bold tracking-wider font-mono text-slate-500 dark:text-gray-505 mb-4 select-none pl-2">
+        <div className="w-full md:w-60 border-b md:border-b-0 md:border-r border-slate-200 dark:border-white/[0.06] bg-slate-100/30 dark:bg-[#0b0b0f]/85 flex flex-col p-4 flex-shrink-0 relative">
+          <div className="hidden md:block text-[10px] uppercase font-bold tracking-wider font-mono text-slate-500 dark:text-gray-500 mb-4 select-none pl-2">
             WORKSPACE / PROJECTS
           </div>
 
-          <ul className="flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible gap-1.5 pb-2 md:pb-0 scrollbar-none">
+          {/* Desktop File List */}
+          <ul className="hidden md:flex flex-col gap-1.5">
             {projects.map((proj, idx) => {
               const isActive = idx === activeIdx
               return (
@@ -166,6 +168,50 @@ export default function Work() {
               )
             })}
           </ul>
+
+          {/* Mobile File Dropdown Selector */}
+          <div className="md:hidden relative w-full">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="w-full flex items-center justify-between font-mono text-xs px-4 py-3 rounded border border-slate-200 dark:border-white/[0.08] bg-slate-100/80 dark:bg-white/[0.02] text-slate-800 dark:text-white focus:outline-none transition-all duration-200"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-antigravityBlue">📁</span>
+                <span className="font-semibold">{current.file}</span>
+              </div>
+              <div className="flex items-center gap-2 text-[10px] text-slate-500">
+                <span className="font-mono">{current.size}</span>
+                <span className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}>▼</span>
+              </div>
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute top-full left-0 right-0 z-50 mt-1.5 py-1 rounded border border-slate-250 dark:border-white/[0.08] bg-white dark:bg-[#0d0e12] shadow-2xl">
+                {projects.map((proj, idx) => {
+                  const isActive = idx === activeIdx
+                  return (
+                    <button
+                      key={proj.name}
+                      onClick={() => {
+                        setActiveIdx(idx)
+                        setIsDropdownOpen(false)
+                      }}
+                      className={`w-full text-left font-mono text-xs px-4 py-2.5 transition-colors flex items-center justify-between ${
+                        isActive
+                          ? 'bg-slate-100 dark:bg-white/[0.04] text-antigravityBlue border-l-2 border-antigravityBlue font-medium'
+                          : 'text-slate-650 dark:text-gray-400 hover:bg-slate-50 dark:hover:bg-white/[0.02] border-l-2 border-transparent'
+                      }`}
+                    >
+                      <span className="flex items-center gap-2">
+                        <span>📄</span>
+                        {proj.file}
+                      </span>
+                      <span className="text-[9px] text-slate-500 font-mono">{proj.size}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Right IDE Panel: Active Editor Tab */}
@@ -184,7 +230,7 @@ export default function Work() {
           </div>
 
           {/* Tab Work Content Area */}
-          <div className="p-6 sm:p-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="p-5 sm:p-10 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
 
             {/* Left: 3D Tilting Image Mockup */}
             <div className="flex items-center justify-center">
