@@ -14,9 +14,19 @@ export default function Work() {
       size: '14.2 MB',
     },
     {
+      name: 'ReelVerse',
+      file: 'reelverse.jsx',
+      icon: './assets/work-2.png',
+      description: 'ReelVerse is a full-stack cinema ticket booking platform built with React, Node.js, and MongoDB — featuring real-time seat selection, Razorpay payments, Google OAuth,QR-code digital tickets.',
+      link: 'https://reelverse-mohan.vercel.app',
+      tags: ['React', 'Tailwind', 'Socket.IO', 'Express', 'Node'],
+      status: 'STABLE [99.4%]',
+      size: '8.7 MB',
+    },
+    {
       name: 'Easy Share',
       file: 'easy_share.jsx',
-      icon: './assets/work-2.png',
+      icon: './assets/work-4.png',
       description: 'A cloud-based File Sharing Web Application featuring fast socket connections, encrypted packet paths, drag-and-drop triggers, and download links.',
       link: 'https://easysharefiles.vercel.app',
       tags: ['React', 'Tailwind', 'Socket.IO', 'Express', 'Node'],
@@ -195,11 +205,10 @@ export default function Work() {
                         setActiveIdx(idx)
                         setIsDropdownOpen(false)
                       }}
-                      className={`w-full text-left font-mono text-xs px-4 py-2.5 transition-colors flex items-center justify-between ${
-                        isActive
-                          ? 'bg-slate-100 dark:bg-white/[0.04] text-antigravityBlue border-l-2 border-antigravityBlue font-medium'
-                          : 'text-slate-650 dark:text-gray-400 hover:bg-slate-50 dark:hover:bg-white/[0.02] border-l-2 border-transparent'
-                      }`}
+                      className={`w-full text-left font-mono text-xs px-4 py-2.5 transition-colors flex items-center justify-between ${isActive
+                        ? 'bg-slate-100 dark:bg-white/[0.04] text-antigravityBlue border-l-2 border-antigravityBlue font-medium'
+                        : 'text-slate-650 dark:text-gray-400 hover:bg-slate-50 dark:hover:bg-white/[0.02] border-l-2 border-transparent'
+                        }`}
                     >
                       <span className="flex items-center gap-2">
                         <span>📄</span>
