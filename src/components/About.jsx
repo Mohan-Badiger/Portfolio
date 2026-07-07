@@ -2,15 +2,14 @@ import { motion } from 'framer-motion'
 
 export default function About() {
   const tools = [
-    { name: 'VS Code', icon: './assets/vscode.png', status: 'SYS_EDIT' },
-    { name: 'React', icon: './assets/react.png', status: 'SYS_CORE' },
-    { name: 'JavaScript', icon: './assets/javascript.png', status: 'SYS_COMP' },
-    { name: 'Node.js', icon: './assets/nodejs.png', status: 'SYS_EXEC' },
-    { name: 'MongoDB', icon: './assets/mongodb.png', status: 'SYS_DATA' },
-    { name: 'Figma', icon: './assets/figma.png', status: 'SYS_DRAW' },
-    { name: 'Git', icon: './assets/git.png', status: 'SYS_SYNC' },
-    { name: 'AWS EC2', icon: './assets/EC2.png', status: 'SYS_SERV' },
-    { name: 'Socket.IO', icon: './assets/socket.png', status: 'SYS_CONN' },
+    { name: 'VS Code', icon: './assets/vscode.png' },
+    { name: 'React', icon: './assets/react.png' },
+    { name: 'JavaScript', icon: './assets/javascript.png' },
+    { name: 'Node.js', icon: './assets/nodejs.png' },
+    { name: 'MongoDB', icon: './assets/mongodb.png' },
+    { name: 'Git', icon: './assets/git.png' },
+    { name: 'AWS EC2', icon: './assets/EC2.png' },
+    { name: 'Socket.IO', icon: './assets/socket.png' },
   ]
 
   const data = [
@@ -33,7 +32,7 @@ export default function About() {
       name: 'Capabilities',
       icon1: './assets/project-icon.png',
       icon2: './assets/project-icon-dark.png',
-      description: 'Full stack architecture, server hosting, real-time sync',
+      description: 'Full stack architecture, real-time sync',
     },
   ]
 
@@ -89,11 +88,6 @@ export default function About() {
           <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-antigravityBlue/40" />
           <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-antigravityBlue/40" />
 
-          {/* Grid coordinates indicator */}
-          <span className="absolute -top-6 left-0 text-[9px] font-mono text-gray-550 dark:text-gray-600 uppercase">
-            REF_POS: 42.85N / 9B.72E
-          </span>
-
           <div className="w-full h-full rounded border border-slate-200 dark:border-white/[0.06] p-2 bg-white/50 dark:bg-[#111217]/50 backdrop-blur-md relative overflow-hidden group">
             <img
               src="./assets/user_image.jpg"
@@ -131,19 +125,15 @@ export default function About() {
                 key={item.name}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
-                className="p-5 rounded backdrop-blur-sm flex flex-col justify-between h-40 cursor-pointer card-shadow-hover"
+                className="p-5 rounded backdrop-blur-sm flex flex-col justify-between cursor-pointer card-shadow-hover"
               >
                 <div>
                   {/* Console Header */}
-                  <div className="flex items-center justify-between font-mono text-[9px] text-gray-500 dark:text-gray-600 mb-4 uppercase">
-                    <span>{item.module}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-antigravityBlue/50" />
-                  </div>
-                  <h4 className="font-bold text-base font-GoogleSans text-slate-900 dark:text-white leading-tight mb-2">
+                  <h4 className="text-xl font-GoogleSans text-slate-900 dark:text-white leading-tight mb-2">
                     {item.name}
                   </h4>
                 </div>
-                <p className="text-slate-500 dark:text-gray-400 text-xs font-GoogleSans font-light leading-normal">
+                <p className="text-slate-500 dark:text-gray-400 text-sm font-GoogleSans font-light mt-2 leading-normal">
                   {item.description}
                 </p>
               </motion.li>
@@ -185,9 +175,6 @@ export default function About() {
                 <div className="flex flex-col text-left">
                   <span className="text-xs font-semibold font-GoogleSans text-slate-700 dark:text-gray-300">
                     {tool.name}
-                  </span>
-                  <span className="font-mono text-[8px] text-gray-500 dark:text-gray-600">
-                    {`${tool.status} // [OK]`}
                   </span>
                 </div>
               </motion.li>
