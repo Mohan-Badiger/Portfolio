@@ -17,7 +17,7 @@ export default function Footer() {
 
       <div className="text-center">
         {/* Existing brand text */}
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -26,7 +26,7 @@ export default function Footer() {
         >
           Mohan<span className="text-antigravityBlue font-extrabold">_</span>
         </motion.p>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -37,7 +37,7 @@ export default function Footer() {
         </motion.p>
 
         {/* Email */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -62,17 +62,17 @@ export default function Footer() {
           />
 
           <a
-            href="mailto:hello@mohanbadiger.site"
+            href="mailto:mohanbadiger250@gmail.com"
             aria-label="Email Mohan Badiger"
             className="hover:text-purple-500 transition-colors"
           >
-            hello@mohanbadiger.site
+            mohanbadiger250@gmail.com
           </a>
         </motion.div>
       </div>
 
       {/* Bottom bar */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
@@ -88,7 +88,7 @@ export default function Footer() {
           >
             Mohan Badiger
           </a>
-            , All rights reserved.
+          , All rights reserved.
         </p>
 
         <ul
