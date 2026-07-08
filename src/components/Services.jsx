@@ -60,7 +60,7 @@ function ServiceCard({ service, index }) {
         className="flex items-center justify-between font-mono text-[9px] text-gray-500 mb-6 uppercase"
         style={{ transform: 'translateZ(15px)' }}
       >
-        <span>SYS_SVC_0{index + 1}</span>
+
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           <span className="text-gray-500 dark:text-gray-400">ONLINE</span>
