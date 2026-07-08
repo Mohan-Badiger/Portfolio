@@ -155,7 +155,7 @@ export default function Services() {
       link: '#contact',
     },
     {
-      name: 'DevOps & Deployment',
+      name: 'Cloud Services & Deployment',
       icon: './assets/EC2.png',
       description: 'Containerizing environments, establishing automated CI/CD pipelines, and deploying to cloud infrastructure.',
       tags: ['Docker', 'CI/CD', 'AWS'],
