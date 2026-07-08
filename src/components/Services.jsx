@@ -56,14 +56,6 @@ function ServiceCard({ service, index }) {
       )}
 
       {/* Card Header: Simulated Dev Stats */}
-      <div
-        className="flex items-center justify-between font-mono text-[9px] text-gray-500 mb-6 uppercase"
-        style={{ transform: 'translateZ(15px)' }}
-      >
-
-
-      </div>
-
       <div style={{ transform: 'translateZ(30px)' }} className="mb-5">
         <img
           src={service.icon}
