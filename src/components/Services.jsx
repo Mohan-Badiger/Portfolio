@@ -61,10 +61,7 @@ function ServiceCard({ service, index }) {
         style={{ transform: 'translateZ(15px)' }}
       >
 
-        <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-gray-500 dark:text-gray-400">ONLINE</span>
-        </div>
+
       </div>
 
       <div style={{ transform: 'translateZ(30px)' }} className="mb-5">
