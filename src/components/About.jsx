@@ -12,27 +12,33 @@ export default function About() {
     { name: 'Socket.IO', icon: './assets/socket.png' },
   ]
 
-  const data = [
+  const education = [
     {
-      module: 'MOD_01',
+      institution: "BLDEA's BHS Arts and TGP Science College, Jamakhandi",
+      period: '2022 – 2025',
+      degree: 'Bachelor of Computer Applications (BCA)',
+      score: 'CGPA: 8.47',
+    },
+    {
+      institution: 'SRA PU College, Banahatti',
+      period: '2021 – 2022',
+      degree: 'Pre-University Education',
+      score: 'Percentage: 81.83%',
+    },
+  ]
+
+  const highlights = [
+    {
       name: 'Languages',
-      icon1: './assets/code-icon.png',
-      icon2: './assets/code-icon-dark.png',
-      description: 'HTML, CSS, JS, React, Next.js, Node.js',
+      description: 'HTML, CSS, JavaScript, React, Next.js, Node.js, TypeScript, Python',
     },
     {
-      module: 'MOD_02',
-      name: 'Education',
-      icon1: './assets/edu-icon.png',
-      icon2: './assets/edu-icon-dark.png',
-      description: 'BCA (Bachelor of Computer Applications)',
+      name: 'Databases',
+      description: 'MongoDB, MySQL, Firebase',
     },
     {
-      module: 'MOD_03',
-      name: 'Capabilities',
-      icon1: './assets/project-icon.png',
-      icon2: './assets/project-icon-dark.png',
-      description: 'Full stack architecture, real-time sync',
+      name: 'DevOps',
+      description: 'Docker, AWS EC2, CI/CD, Nginx, Git',
     },
   ]
 
@@ -53,66 +59,31 @@ export default function About() {
 
       {/* Header section */}
       <div className="flex flex-col items-start mb-16 text-left">
-        <motion.h4
+        <motion.h3
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-antigravityBlue font-bold tracking-widest text-xs uppercase mb-2 font-GoogleSans"
+          className="text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-none"
         >
-          01 / Biography
-        </motion.h4>
-        <motion.h3
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-black font-GoogleSans text-slate-900 dark:text-white tracking-tight leading-none"
-        >
-          Developer Profile
+          Profile
         </motion.h3>
       </div>
 
-      <div className="flex w-full flex-col lg:flex-row items-center gap-16 lg:gap-24">
-        {/* Profile Image with Blueprint Frame (Zero Gravity) */}
+      <div className="flex w-full flex-col">
+        {/* Bio + Skills + Education */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="w-64 sm:w-80 aspect-[3/4] relative select-none animate-float-slow flex-shrink-0"
-        >
-          {/* Blueprint corners styling */}
-          <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-antigravityBlue/40" />
-          <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-antigravityBlue/40" />
-          <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-antigravityBlue/40" />
-          <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-antigravityBlue/40" />
-
-          <div className="w-full h-full rounded border border-slate-200 dark:border-white/[0.06] p-2 bg-white/50 dark:bg-[#111217]/50 backdrop-blur-md relative overflow-hidden group">
-            <img
-              src="./assets/user_image.jpg"
-              alt="Mohan Badiger developer profile image"
-              width={320}
-              height={427}
-              decoding="async"
-              className="w-full h-full object-cover rounded filter grayscale group-hover:grayscale-0 transition-all duration-700"
-            />
-          </div>
-        </motion.div>
-
-        {/* Biography text and developer module panels */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex-1 w-full"
+          className="w-full"
         >
-          <p className="mb-10 text-slate-600 dark:text-gray-400 font-GoogleSans font-light leading-relaxed text-sm sm:text-base">
+          <p className="mb-10 text-slate-600 dark:text-gray-400 font-Inter leading-relaxed text-sm sm:text-base">
             I am Mohan Badiger, a MERN developer focused on constructing robust full stack code bases. Utilizing modular microservices and automated development workflows, I configure responsive front-end pages and scalable database schemas. Eager to partner on production releases and build high-performance applications.
           </p>
 
-          {/* Developer Module panels */}
+          {/* Skills Highlights */}
           <motion.ul
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -120,35 +91,32 @@ export default function About() {
             viewport={{ once: true }}
             className="grid grid-cols-1 sm:grid-cols-3 gap-4"
           >
-            {data.map((item) => (
+            {highlights.map((item) => (
               <motion.li
                 key={item.name}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
-                className="p-5 rounded backdrop-blur-sm flex flex-col justify-between cursor-pointer card-shadow-hover"
+                className="p-5 rounded backdrop-blur-sm flex flex-col cursor-pointer card-shadow-hover"
               >
-                <div>
-                  {/* Console Header */}
-                  <h4 className="text-xl font-GoogleSans text-slate-900 dark:text-white leading-tight mb-2">
-                    {item.name}
-                  </h4>
-                </div>
-                <p className="text-slate-500 dark:text-gray-400 text-sm font-GoogleSans font-light mt-2 leading-normal">
+                <h4 className="text-base font-semibold font-Inter text-slate-900 dark:text-white leading-tight mb-2">
+                  {item.name}
+                </h4>
+                <p className="text-slate-500 dark:text-gray-400 text-[13px] font-Inter leading-relaxed">
                   {item.description}
                 </p>
               </motion.li>
             ))}
           </motion.ul>
 
-          {/* Diagnostics Tools & Modules */}
+          {/* Tools */}
           <motion.h4
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="mt-12 mb-5 text-slate-700 dark:text-gray-300 font-GoogleSans font-medium text-sm sm:text-base uppercase tracking-wider"
+            className="mt-12 mb-5 text-slate-700 dark:text-gray-300 font-Inter font-semibold text-sm tracking-wide"
           >
-            SYSTEM MODULES & DEPENDENCIES
+            Tools & Technologies
           </motion.h4>
 
           <motion.ul
@@ -172,14 +140,56 @@ export default function About() {
                   decoding="async"
                   className="w-5 h-5 object-contain flex-shrink-0"
                 />
-                <div className="flex flex-col text-left">
-                  <span className="text-xs font-semibold font-GoogleSans text-slate-700 dark:text-gray-300">
-                    {tool.name}
-                  </span>
-                </div>
+                <span className="text-xs font-semibold font-Inter text-slate-700 dark:text-gray-300">
+                  {tool.name}
+                </span>
               </motion.li>
             ))}
           </motion.ul>
+
+          {/* Education */}
+          <motion.h4
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-12 mb-5 text-slate-700 dark:text-gray-300 font-Inter font-semibold text-sm tracking-wide"
+          >
+            Education
+          </motion.h4>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            viewport={{ once: true }}
+            className="flex flex-col gap-4"
+          >
+            {education.map((edu) => (
+              <div
+                key={edu.institution}
+                className="p-5 rounded border border-slate-200 dark:border-white/[0.05] bg-white/60 dark:bg-[#111217]/40 backdrop-blur-sm"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
+                  <h5 className="text-sm font-semibold font-Inter text-slate-900 dark:text-white leading-tight">
+                    {edu.institution}
+                  </h5>
+                  <span className="text-[12px] font-Inter font-medium text-antigravityBlue whitespace-nowrap">
+                    {edu.period}
+                  </span>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                  <span className="text-[13px] font-Inter text-slate-500 dark:text-gray-400">
+                    {edu.degree}
+                  </span>
+                  <span className="hidden sm:inline text-slate-300 dark:text-gray-600">•</span>
+                  <span className="text-[13px] font-Inter font-semibold text-slate-700 dark:text-gray-300">
+                    {edu.score}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </motion.section>
