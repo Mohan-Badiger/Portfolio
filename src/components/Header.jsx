@@ -63,23 +63,23 @@ export default function Header() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-slate-200 dark:border-white/[0.04] bg-slate-100/50 dark:bg-white/[0.02] w-fit">
             <span className="w-2 h-2 rounded-full bg-antigravityBlue animate-ping" />
-            <span className="text-[10px] uppercase font-bold tracking-widest font-GoogleSans text-gray-500 dark:text-gray-400">
+            <span className="text-[10px] uppercase font-bold tracking-widest font-Inter text-gray-500 dark:text-gray-400">
               Full-Stack Developer
             </span>
           </div>
 
-          <h2 className="text-6xl sm:text-7xl lg:text-8xl font-GoogleSans tracking-tight leading-[0.9]">
+          <h2 className="text-6xl sm:text-7xl lg:text-8xl font-Inter tracking-tight leading-[0.9]">
             <span className="text-slate-900 dark:text-white font-medium">Mohan</span> <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-antigravityBlue via-antigravityPurple to-antigravityPink font-semibold tracking-wide md:tracking-wider">
               Badiger
             </span>
           </h2>
 
-          <h3 className="text-2xl sm:text-3xl font-normal font-GoogleSans tracking-tight text-slate-500 dark:text-gray-300 leading-tight">
+          <h3 className="text-2xl sm:text-3xl font-normal font-Inter tracking-tight text-slate-500 dark:text-gray-300 leading-tight">
             Engineering high-performance web systems<span className="text-antigravityBlue font-bold">.</span>
           </h3>
 
-          <p className="max-w-lg text-sm sm:text-base text-slate-650 dark:text-gray-400 font-GoogleSans font-light leading-relaxed">
+          <p className="max-w-lg text-sm sm:text-base text-slate-650 dark:text-gray-400 font-Inter font-light leading-relaxed">
             I develop responsive, user-friendly full-stack solutions using <span className="text-slate-900 dark:text-white font-semibold">React</span>, <span className="text-slate-900 dark:text-white font-semibold">Node.js</span>, <span className="text-slate-900 dark:text-white font-semibold">MongoDB</span>, <span className="text-slate-900 dark:text-white font-semibold">Docker</span>, and <span className="text-slate-900 dark:text-white font-semibold">AWS</span>. Translating complex code into fluid interfaces.
           </p>
 
@@ -88,7 +88,7 @@ export default function Header() {
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               href="#contact"
-              className="px-6 py-3 rounded bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-[#08080c] dark:hover:bg-slate-100 font-GoogleSans text-xs font-medium shadow-xl transition-all duration-200"
+              className="px-6 py-3 rounded bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-[#08080c] dark:hover:bg-slate-100 font-Inter text-xs font-medium shadow-xl transition-all duration-200"
             >
               Get Started
             </motion.a>
@@ -96,9 +96,9 @@ export default function Header() {
             <motion.a
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
-              href="./assets/Mohan_FullStack Resume.pdf"
+              href="./assets/Mohan_Resume_SDE.pdf"
               download
-              className="px-6 py-3 rounded border border-slate-200 dark:border-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.02] text-slate-800 dark:text-white font-GoogleSans text-xs font-medium transition-all duration-200"
+              className="px-6 py-3 rounded border border-slate-200 dark:border-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.02] text-slate-800 dark:text-white font-Inter text-xs font-medium transition-all duration-200"
             >
               Download Resume
             </motion.a>
@@ -159,14 +159,14 @@ export default function Header() {
                 <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
               </div>
               {/* Tab Title */}
-              <div className="flex gap-2 text-[10px] text-gray-500 font-GoogleSans">
+              <div className="flex gap-2 text-[10px] text-gray-500 font-Inter">
                 <span className="text-gray-300 font-medium px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.04]">
                   information.log
                 </span>
                 <span className="px-2 py-0.5">profile.json</span>
               </div>
               {/* Right diagnostics */}
-              <div className="text-[10px] text-gray-600 font-GoogleSans">
+              <div className="text-[10px] text-gray-600 font-Inter">
                 Developer
               </div>
             </div>
@@ -189,7 +189,7 @@ export default function Header() {
             </div>
 
             {/* Diagnostics Stats Bar */}
-            <div className="px-4 py-2.5 bg-[#0d0e12] border-t border-white/[0.06] flex items-center justify-between text-[10px] text-gray-500 font-GoogleSans font-light">
+            <div className="px-4 py-2.5 bg-[#0d0e12] border-t border-white/[0.06] flex items-center justify-between text-[10px] text-gray-500 font-Inter font-light">
               <div className="flex gap-4">
                 <span>MODULES: <span className="text-emerald-400 font-medium">6 STABLE</span></span>
                 <span>CPU: <span className="text-sky-400 font-medium">4%</span></span>
