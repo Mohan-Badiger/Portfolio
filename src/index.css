@@ -6,7 +6,7 @@
 @layer base {
   body {
     @apply bg-slate-50 text-slate-800 dark:bg-[#08080c] dark:text-[#f8fafc];
-    font-family: 'Google Sans Flex', 'Google Sans', 'Outfit', sans-serif;
+    font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
     transition: background-color 0.4s ease, color 0.4s ease;
   }
 
@@ -168,7 +168,7 @@
 
 /* Big Footer Developer Text - Gradient fill */
 .big-developer-text {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
   background: linear-gradient(to right, #4285f4 20%, #9b72f8 50%, #ec407a 80%);
   background-clip: text;
   -webkit-background-clip: text;
