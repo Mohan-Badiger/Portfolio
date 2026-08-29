@@ -59,32 +59,23 @@ export default function ContactSection() {
 
       {/* Header section */}
       <div className="flex flex-col items-start text-left mb-16">
-        <motion.h4
+        <motion.h3
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-antigravityBlue font-bold tracking-widest text-xs uppercase mb-2 font-GoogleSans"
+          className="text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-none"
         >
-          04 / Connection
-        </motion.h4>
-        <motion.h3
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-black font-GoogleSans text-slate-900 dark:text-white tracking-tight leading-none"
-        >
-          Push Message
+          Contact
         </motion.h3>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-slate-650 dark:text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
+          className="text-slate-500 dark:text-gray-400 max-w-lg mt-4 font-Inter text-sm leading-relaxed"
         >
-          Configure parameters below to push a secure text message directly into my mail terminal.
+          Have a project in mind or want to connect? Send me a message and I'll get back to you.
         </motion.p>
       </div>
 
