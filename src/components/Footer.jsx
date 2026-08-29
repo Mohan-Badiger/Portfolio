@@ -22,7 +22,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-2xl md:text-4xl font-bold font-GoogleSans text-slate-900 dark:hidden"
+          className="text-2xl sm:text-2xl md:text-4xl font-bold font-Inter text-slate-900 dark:hidden"
         >
           Mohan<span className="text-antigravityBlue font-extrabold">_</span>
         </motion.p>
@@ -31,7 +31,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-2xl md:text-4xl font-bold font-GoogleSans text-white hidden dark:block"
+          className="text-2xl sm:text-2xl md:text-4xl font-bold font-Inter text-white hidden dark:block"
         >
           Mohan<span className="text-antigravityBlue font-extrabold">_</span>
         </motion.p>

@@ -10,8 +10,7 @@ export default {
                 'auto': 'repeat(auto-fit, minmax(200px, 1fr))'
             },
             fontFamily: {
-                GoogleSans: ["'Google Sans Flex'", "'Google Sans'", "sans-serif"],
-                Outfit: ["Outfit", "sans-serif"]
+                Inter: ["'DM Sans'", "system-ui", "-apple-system", "'Segoe UI'", "sans-serif"],
             },
             animation: {
                 spin_slow: 'spin 6s linear infinite'

@@ -64,21 +64,21 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className={`w-full fixed top-0 left-0 px-6 sm:px-10 lg:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-300 ${isScrolled
-            ? 'py-3 backdrop-blur-md border-b border-slate-200/50 dark:border-white/[0.04] bg-white/80 dark:bg-[#08080c]/80'
-            : 'bg-transparent'
+          ? 'py-3 backdrop-blur-md border-b border-slate-200/50 dark:border-white/[0.04] bg-white/80 dark:bg-[#08080c]/80'
+          : 'bg-transparent'
           }`}
       >
         <a href="#" className="flex items-center gap-2 group">
           {/* <div className="w-6 h-6 rounded bg-gradient-to-tr from-antigravityBlue via-antigravityPurple to-antigravityPink flex items-center justify-center text-[10px] font-bold text-white shadow-lg">
             M
           </div> */}
-          <span className="text-lg font-bold font-GoogleSans tracking-tight text-slate-900 dark:text-white">
-            Mohan<span className="text-antigravityBlue font-extrabold group-hover:text-antigravityPink transition-colors">_</span>
+          <span className="text-lg font-bold font-Inter tracking-tight text-slate-900 dark:text-white">
+            Mohan
           </span>
         </a>
 
         {/* Minimalist Google-style menu links */}
-        <ul className="hidden md:flex items-center gap-6 font-GoogleSans text-sm font-light text-slate-500 dark:text-gray-400">
+        <ul className="hidden md:flex items-center gap-6 font-Inter text-sm font-light text-slate-500 dark:text-gray-400">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id
             return (
@@ -86,8 +86,8 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   className={`transition-colors duration-200 ${isActive
-                      ? 'text-slate-900 dark:text-white font-medium'
-                      : 'hover:text-slate-900 dark:hover:text-gray-250'
+                    ? 'text-slate-900 dark:text-white font-medium'
+                    : 'hover:text-slate-900 dark:hover:text-gray-250'
                     }`}
                 >
                   {link.name}
@@ -132,7 +132,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             href="#contact"
-            className="hidden lg:flex items-center gap-2 px-5 py-1.5 border border-antigravityBlue/20 bg-antigravityBlue/5 hover:bg-antigravityBlue/10 hover:border-antigravityBlue/50 text-xs font-medium font-GoogleSans text-antigravityBlue rounded transition-all duration-300"
+            className="hidden lg:flex items-center gap-2 px-5 py-1.5 border border-antigravityBlue/20 bg-antigravityBlue/5 hover:bg-antigravityBlue/10 hover:border-antigravityBlue/50 text-xs font-medium font-Inter text-antigravityBlue rounded transition-all duration-300"
           >
             Deploy
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -173,7 +173,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
-              className="fixed right-0 top-0 bottom-0 w-72 h-full bg-white dark:bg-[#0d0e12]/95 border-l border-slate-200 dark:border-white/[0.06] backdrop-blur-2xl z-50 flex flex-col p-6 shadow-2xl text-slate-800 dark:text-white font-GoogleSans"
+              className="fixed right-0 top-0 bottom-0 w-72 h-full bg-white dark:bg-[#0d0e12]/95 border-l border-slate-200 dark:border-white/[0.06] backdrop-blur-2xl z-50 flex flex-col p-6 shadow-2xl text-slate-800 dark:text-white font-Inter"
             >
               <div className="flex justify-between items-center mb-10 pb-4 border-b border-slate-100 dark:border-white/[0.06]">
                 <div className="flex items-center gap-2">

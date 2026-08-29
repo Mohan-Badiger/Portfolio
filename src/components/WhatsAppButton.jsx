@@ -48,7 +48,7 @@ export default function WhatsAppButton() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-[9px] font-mono text-emerald-500 font-bold tracking-wider uppercase">ONLINE</span>
             </div>
-            <span className="text-xs font-bold font-GoogleSans text-slate-800 dark:text-white leading-tight">
+            <span className="text-xs font-bold font-Inter text-slate-800 dark:text-white leading-tight">
               Chat with Mohan
             </span>
           </motion.a>
