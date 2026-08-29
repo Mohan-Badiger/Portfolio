@@ -69,14 +69,14 @@ function ServiceCard({ service, index }) {
 
       <h3
         style={{ transform: 'translateZ(25px)' }}
-        className="text-base font-bold font-GoogleSans text-slate-900 dark:text-white mb-2"
+        className="text-base font-bold font-Inter text-slate-900 dark:text-white mb-2"
       >
         {service.name}
       </h3>
 
       <p
         style={{ transform: 'translateZ(10px)' }}
-        className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 font-GoogleSans font-light leading-relaxed mb-4"
+        className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 font-Inter font-light leading-relaxed mb-4"
       >
         {service.description}
       </p>
@@ -100,7 +100,7 @@ function ServiceCard({ service, index }) {
       <a
         href={service.link || '#contact'}
         style={{ transform: 'translateZ(20px)' }}
-        className="inline-flex items-center gap-2 text-[11px] font-medium font-GoogleSans text-antigravityBlue group-hover:text-slate-950 dark:group-hover:text-white transition-colors"
+        className="inline-flex items-center gap-2 text-[11px] font-medium font-Inter text-antigravityBlue group-hover:text-slate-950 dark:group-hover:text-white transition-colors"
       >
         View Module
         <img
@@ -173,30 +173,21 @@ export default function Services() {
 
       {/* Header section */}
       <div className="flex flex-col items-start text-left mb-16">
-        <motion.h4
+        <motion.h3
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-antigravityBlue font-bold tracking-widest text-xs uppercase mb-2 font-GoogleSans"
+          className="text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-none"
         >
-          02 / Capability
-        </motion.h4>
-        <motion.h3
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-black font-GoogleSans text-slate-900 dark:text-white tracking-tight leading-none"
-        >
-          My Services
+          Services
         </motion.h3>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-slate-600 dark:text-gray-400 max-w-lg mt-4 font-GoogleSans font-light text-xs sm:text-sm leading-relaxed"
+          className="text-slate-600 dark:text-gray-400 max-w-lg mt-4 font-Inter text-sm leading-relaxed"
         >
           I specialize in end-to-end full-stack web development, building high-performance applications, robust APIs, and modern responsive interfaces.
         </motion.p>
