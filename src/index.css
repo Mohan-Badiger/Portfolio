@@ -187,3 +187,19 @@
   text-shadow: 0 0 60px rgba(155, 114, 248, 0.25);
   transform: scale(1.02);
 }
+
+/* Card fade in animation for repository cards */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card-fade-in {
+  animation: cardFadeIn 0.35s ease-out forwards;
+}
