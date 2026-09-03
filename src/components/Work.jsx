@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 
 // GitHub language color mapping (GitHub exact colors)
@@ -58,8 +58,8 @@ const FEATURED_PROJECTS = [
   },
   {
     repoName: 'mip',
-    description: 'Admin management information portal with role-based access control, data analytics dashboards, report generation, and user management system.',
-    homepage: 'https://mipadmin.vercel.app',
+    description: 'Modern jewellery e-commerce storefront featuring elegant collection showcase, product filtering, shopping cart, and smooth responsive shopping experience.',
+    homepage: 'https://mipjewellery.vercel.app/',
     html_url: 'https://github.com/Mohan-Badiger/mip',
     languages: { JavaScript: 95, CSS: 5 },
   },
@@ -86,50 +86,171 @@ const FEATURED_PROJECTS = [
   },
 ]
 
+// Fallback data for additional repositories so View All works instantly offline / rate-limited
+const DEFAULT_OTHER_PROJECTS = [
+  {
+    repoName: 'VishwakarmaTemple-Website',
+    description: 'Full-stack cultural and community temple website with event calendars, donation portals, photo gallery, and member directory.',
+    homepage: 'https://vishwakarma-temple-website.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/VishwakarmaTemple-Website',
+    languages: { JavaScript: 88, CSS: 12 },
+  },
+  {
+    repoName: 'Mock-test-module',
+    description: 'Online examination and assessment platform with timed quizzes, score calculations, instant feedback, and answer review module.',
+    homepage: 'https://mock-test-module.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/Mock-test-module',
+    languages: { JavaScript: 92, CSS: 8 },
+  },
+  {
+    repoName: 'hirenext',
+    description: 'Job application and applicant tracking web application featuring modern recruitment dashboards and candidate management.',
+    homepage: 'https://hirenext-pi.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/hirenext',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+  {
+    repoName: 'Employee-Management-React',
+    description: 'Interactive React employee directory application with CRUD operations, search filters, department categorisation, and modal forms.',
+    homepage: 'https://employee-management-react-teal.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/Employee-Management-React',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'E-Commerce-Js',
+    description: 'Vanilla JavaScript e-commerce shopping experience with dynamic catalog rendering, cart state persistence, and responsive UI.',
+    homepage: 'https://e-commerce-js-lime.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/E-Commerce-Js',
+    languages: { JavaScript: 80, HTML: 12, CSS: 8 },
+  },
+  {
+    repoName: 'cv-mohan',
+    description: 'Interactive digital resume and curriculum vitae showcasing technical experience, skills matrix, and professional background.',
+    homepage: 'https://cv-mohan.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/cv-mohan',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+  {
+    repoName: 'WorkForce-Pro',
+    description: 'Enterprise workforce and staff workflow coordination platform for managing organizational resources, schedules, and team metrics.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/WorkForce-Pro',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'Restaurant-project',
+    description: 'Full-service restaurant management web application with digital menus, table reservation booking, and order processing.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/Restaurant-project',
+    languages: { JavaScript: 93, CSS: 7 },
+  },
+  {
+    repoName: 'data-visualization-dashboard',
+    description: 'Interactive data analytics portal built with chart libraries, metric summary widgets, and customizable visual reports.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/data-visualization-dashboard',
+    languages: { JavaScript: 92, CSS: 8 },
+  },
+  {
+    repoName: 'stock-tracker-app',
+    description: 'Financial equity and stock tracking dashboard featuring live price lookups, portfolio valuation, and watchlist monitoring.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/stock-tracker-app',
+    languages: { TypeScript: 92, CSS: 8 },
+  },
+  {
+    repoName: 'AttendenceTrackSystem',
+    description: 'Automated student and staff attendance monitoring system with attendance logging, monthly records, and exportable reports.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/AttendenceTrackSystem',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+  {
+    repoName: 'Company-Registration-Verification-Module',
+    description: 'Secure corporate onboarding module for enterprise registration, credential verification, and document management.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/Company-Registration-Verification-Module',
+    languages: { JavaScript: 94, CSS: 6 },
+  },
+  {
+    repoName: 'Inventory-system',
+    description: 'Stock inventory and warehouse asset management platform with SKU tracking, quantity threshold warnings, and supply logs.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/Inventory-system',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'DSA_with_JavaScript',
+    description: 'Comprehensive repository of Data Structures and Algorithms implemented in JavaScript with optimal time and space complexity solutions.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/DSA_with_JavaScript',
+    languages: { JavaScript: 100 },
+  },
+  {
+    repoName: 'learning-docker-aws-nginx',
+    description: 'DevOps deployment experiments and practical configuration guides for Docker containers, AWS cloud services, and Nginx reverse proxies.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/learning-docker-aws-nginx',
+    languages: { Shell: 60, Dockerfile: 40 },
+  },
+  {
+    repoName: 'employee-crud-mern',
+    description: 'Full-stack MERN stack employee record CRUD application with RESTful API architecture and MongoDB data persistence.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/employee-crud-mern',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'donation-receipt',
+    description: 'Donation receipt and invoice generator web utility with print layout rendering and PDF receipt generation.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/donation-receipt',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+]
+
 const FEATURED_NAMES = FEATURED_PROJECTS.map((p) => p.repoName)
 
 function formatDate(dateStr) {
   if (!dateStr) return 'Recently'
-  const date = new Date(dateStr)
-  const now = new Date()
-  const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24))
-  if (diffDays === 0) return 'today'
-  if (diffDays === 1) return 'yesterday'
-  if (diffDays < 30) return `${diffDays}d ago`
-  const months = Math.floor(diffDays / 30)
-  if (diffDays < 365) return `${months}mo ago`
-  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+  try {
+    const date = new Date(dateStr)
+    if (isNaN(date.getTime())) return 'Recently'
+    const now = new Date()
+    const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24))
+    if (diffDays === 0) return 'today'
+    if (diffDays === 1) return 'yesterday'
+    if (diffDays < 30) return `${diffDays}d ago`
+    const months = Math.floor(diffDays / 30)
+    if (diffDays < 365) return `${months}mo ago`
+    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+  } catch {
+    return 'Recently'
+  }
 }
 
 function getLanguageBars(langs) {
-  if (!langs || Object.keys(langs).length === 0) return []
-  const total = Object.values(langs).reduce((a, b) => a + b, 0)
-  return Object.entries(langs)
+  if (!langs || typeof langs !== 'object') return []
+  const entries = Object.entries(langs).filter(([_, bytes]) => typeof bytes === 'number' && bytes > 0)
+  if (entries.length === 0) return []
+  const total = entries.reduce((a, [_, bytes]) => a + bytes, 0)
+  if (total <= 0) return []
+  return entries
     .map(([name, bytes]) => ({
       name,
-      percent: Number(((bytes / total) * 100).toFixed(0)),
+      percent: Math.max(1, Math.round((bytes / total) * 100)),
       color: LANG_COLORS[name] || '#8b8b8b',
     }))
     .filter((l) => l.percent > 0)
     .sort((a, b) => b.percent - a.percent)
 }
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.35, ease: 'easeOut' },
-  },
-}
-
 function RepoCard({ repo }) {
   const langBars = getLanguageBars(repo.languages)
 
   return (
-    <motion.div
-      variants={cardVariants}
-      className="group flex flex-col justify-between rounded-xl border border-slate-200/90 dark:border-white/[0.08] bg-white/90 dark:bg-[#0d1117] p-5 sm:p-6 transition-all duration-300 hover:border-antigravityBlue/50 dark:hover:border-antigravityBlue/40 hover:shadow-[0_8px_30px_rgba(66,133,244,0.08)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] relative"
+    <div
+      className="group flex flex-col justify-between rounded-xl border border-slate-200/90 dark:border-white/[0.08] bg-white/90 dark:bg-[#0d1117] p-5 sm:p-6 transition-all duration-300 hover:border-antigravityBlue/50 dark:hover:border-antigravityBlue/40 hover:shadow-[0_8px_30px_rgba(66,133,244,0.08)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] relative animate-card-fade-in"
     >
       <div>
         {/* Top Row: Repo Icon + Title + Public Badge */}
@@ -282,7 +403,7 @@ function RepoCard({ repo }) {
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
@@ -299,6 +420,7 @@ export default function Work() {
         )
         if (!res.ok) return
         const data = await res.json()
+        if (!Array.isArray(data)) return
         const filtered = data.filter((r) => !r.fork && r.name !== 'Mohan-Badiger' && r.size > 0)
         setAllRepos(filtered)
 
@@ -335,8 +457,8 @@ export default function Work() {
     return {
       name: proj.repoName,
       description: proj.description,
-      homepage: apiRepo?.homepage || proj.homepage,
-      html_url: apiRepo?.html_url || proj.html_url,
+      homepage: proj.homepage || apiRepo?.homepage,
+      html_url: proj.html_url || apiRepo?.html_url,
       stargazers_count: apiRepo?.stargazers_count || 0,
       forks_count: apiRepo?.forks_count || 0,
       updated_at: apiRepo?.updated_at || null,
@@ -344,24 +466,49 @@ export default function Work() {
     }
   })
 
-  // Other repos for "View all"
-  const otherRepos = allRepos
-    .filter((r) => !FEATURED_NAMES.includes(r.name))
-    .map((r) => ({
-      name: r.name,
-      description: r.description,
-      homepage: r.homepage,
-      html_url: r.html_url,
-      stargazers_count: r.stargazers_count || 0,
-      forks_count: r.forks_count || 0,
-      updated_at: r.updated_at,
-      languages: r.language ? { [r.language]: 100 } : {},
-    }))
+  // Combined other repos (fallback + API data merge)
+  const otherRepos = useMemo(() => {
+    const map = new Map()
+    DEFAULT_OTHER_PROJECTS.forEach((p) => {
+      map.set(p.repoName, {
+        name: p.repoName,
+        description: p.description,
+        homepage: p.homepage,
+        html_url: p.html_url,
+        stargazers_count: 0,
+        forks_count: 0,
+        updated_at: null,
+        languages: p.languages || {},
+      })
+    })
 
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.05 } },
-  }
+    // If API returned data, enrich or add extra repos
+    allRepos.forEach((r) => {
+      if (FEATURED_NAMES.includes(r.name)) return
+      const existing = map.get(r.name)
+      if (existing) {
+        if (r.homepage) existing.homepage = r.homepage
+        if (r.html_url) existing.html_url = r.html_url
+        existing.stargazers_count = r.stargazers_count || 0
+        existing.forks_count = r.forks_count || 0
+        existing.updated_at = r.updated_at
+        if (r.description) existing.description = r.description
+      } else {
+        map.set(r.name, {
+          name: r.name,
+          description: r.description || 'Public GitHub repository by Mohan Badiger.',
+          homepage: r.homepage,
+          html_url: r.html_url,
+          stargazers_count: r.stargazers_count || 0,
+          forks_count: r.forks_count || 0,
+          updated_at: r.updated_at,
+          languages: r.language ? { [r.language]: 100 } : {},
+        })
+      }
+    })
+
+    return Array.from(map.values())
+  }, [allRepos])
 
   return (
     <section
@@ -383,13 +530,7 @@ export default function Work() {
       </div>
 
       {/* Project Cards Grid - Renders instantly */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.02 }}
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
         {featuredCards.map((repo) => (
           <RepoCard key={repo.name} repo={repo} />
         ))}
@@ -399,19 +540,20 @@ export default function Work() {
           otherRepos.map((repo) => (
             <RepoCard key={repo.name} repo={repo} />
           ))}
-      </motion.div>
+      </div>
 
       {/* View All / Show Less Button */}
       {otherRepos.length > 0 && (
         <div className="flex justify-center mt-10">
           <button
-            onClick={() => setShowAll(!showAll)}
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-slate-200 dark:border-white/[0.08] bg-white/60 dark:bg-white/[0.02] text-sm font-Inter font-medium text-slate-700 dark:text-gray-300 hover:border-antigravityBlue/30 hover:text-antigravityBlue transition-all duration-300 cursor-pointer"
+            type="button"
+            onClick={() => setShowAll((prev) => !prev)}
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-slate-200 dark:border-white/[0.08] bg-white/60 dark:bg-white/[0.02] text-sm font-Inter font-medium text-slate-700 dark:text-gray-300 hover:border-antigravityBlue/30 hover:text-antigravityBlue transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md"
           >
             <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
               <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z" />
             </svg>
-            {showAll ? 'Show featured only' : `View all repositories (${otherRepos.length} more)`}
+            <span>{showAll ? 'Show featured only' : `View all repositories (${otherRepos.length} more)`}</span>
             <svg
               className={`w-3.5 h-3.5 transition-transform duration-300 ${
                 showAll ? 'rotate-180' : ''
@@ -429,3 +571,4 @@ export default function Work() {
     </section>
   )
 }
+
