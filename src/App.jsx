@@ -11,9 +11,8 @@ import CursorTrail from './components/CursorTrail'
 import BigDeveloperTitle from './components/BigDeveloperTitle'
 import WhatsAppButton from './components/WhatsAppButton'
 
-
 export default function App() {
-  // Initialize Lenis smooth scroll globally
+  // Initialize Lenis smooth scroll globally with proper lifecycle cleanup
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -27,12 +26,13 @@ export default function App() {
 
     window.lenis = lenis
 
+    let rafId
     function raf(time) {
       lenis.raf(time)
-      requestAnimationFrame(raf)
+      rafId = requestAnimationFrame(raf)
     }
 
-    requestAnimationFrame(raf)
+    rafId = requestAnimationFrame(raf)
 
     // Intercept anchor link clicks to scroll smoothly with Lenis
     const handleAnchorClick = (e) => {
@@ -42,9 +42,10 @@ export default function App() {
       if (href && href.startsWith('#')) {
         e.preventDefault()
         const targetId = href.substring(1)
-        const targetEl = targetId === 'top' || targetId === ''
-          ? document.getElementById('root')
-          : document.getElementById(targetId)
+        const targetEl =
+          targetId === 'top' || targetId === ''
+            ? document.getElementById('root')
+            : document.getElementById(targetId)
         if (targetEl) {
           lenis.scrollTo(targetEl, { offset: -80, duration: 1.2 })
         } else {
@@ -55,24 +56,26 @@ export default function App() {
 
     document.addEventListener('click', handleAnchorClick)
 
-    // Scroll to top on reload to avoid browser offset bugs with custom scroll hooks
+    // Scroll to top on reload to avoid browser offset bugs
     window.scrollTo(0, 0)
 
     return () => {
+      cancelAnimationFrame(rafId)
       document.removeEventListener('click', handleAnchorClick)
       lenis.destroy()
+      delete window.lenis
     }
   }, [])
 
   return (
     <div className="relative min-h-screen bg-slate-50 text-slate-800 dark:bg-[#08080c] dark:text-[#f8fafc] bg-dot-grid overflow-x-hidden selection:bg-purple-600/40 selection:text-white transition-colors duration-500">
-      {/* High-performance custom canvas cursor trail & sprinkles */}
+      {/* High-performance custom canvas cursor trail & sprinkles (auto-pauses when idle) */}
       <CursorTrail />
 
       {/* Floating navigation bar */}
       <Navbar />
 
-      <main>
+      <main id="main-content">
         {/* Hero header */}
         <Header />
 
@@ -87,7 +90,7 @@ export default function App() {
       {/* Footer credits and social map */}
       <Footer />
 
-      {/* Floating premium WhatsApp connection module */}
+      {/* Floating WhatsApp connection module */}
       <WhatsAppButton />
     </div>
   )
