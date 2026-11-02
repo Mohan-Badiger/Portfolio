@@ -14,9 +14,8 @@ function ServiceCard({ service, index }) {
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
 
-    // Rotation degrees calculation
-    const rotX = -((y - rect.height / 2) / (rect.height / 2)) * 10
-    const rotY = ((x - rect.width / 2) / (rect.width / 2)) * 10
+    const rotX = -((y - rect.height / 2) / (rect.height / 2)) * 8
+    const rotY = ((x - rect.width / 2) / (rect.width / 2)) * 8
 
     setRotateX(rotX)
     setRotateY(rotY)
@@ -50,12 +49,12 @@ function ServiceCard({ service, index }) {
         <div
           className="absolute inset-0 pointer-events-none transition-opacity duration-300"
           style={{
-            background: `radial-gradient(circle 180px at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(66, 133, 244, 0.08), transparent)`
+            background: `radial-gradient(circle 180px at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(66, 133, 244, 0.08), transparent)`,
           }}
         />
       )}
 
-      {/* Card Header: Simulated Dev Stats */}
+      {/* Card Header: Icon */}
       <div style={{ transform: 'translateZ(30px)' }} className="mb-5">
         <img
           src={service.icon}
@@ -100,17 +99,18 @@ function ServiceCard({ service, index }) {
       <a
         href={service.link || '#contact'}
         style={{ transform: 'translateZ(20px)' }}
-        className="inline-flex items-center gap-2 text-[11px] font-medium font-Inter text-antigravityBlue group-hover:text-slate-950 dark:group-hover:text-white transition-colors"
+        className="inline-flex items-center gap-2 text-[11px] font-medium font-Inter text-antigravityBlue group-hover:text-blue-600 dark:group-hover:text-white transition-colors"
       >
-        View Module
-        <img
-          src="./assets/right-arrow.png"
-          alt="Arrow icon"
-          width={12}
-          height={12}
-          decoding="async"
-          className="w-3 h-3 object-contain dark:invert transform group-hover:translate-x-1 transition-transform"
-        />
+        <span>Inquire</span>
+        <svg
+          className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
       </a>
     </motion.div>
   )
@@ -131,28 +131,28 @@ export default function Services() {
   const services = [
     {
       name: 'Frontend Development',
-      icon: './assets/react.png',
+      icon: '/assets/react.png',
       description: 'Building modern, high-performance, and responsive user interfaces with styled layouts and client-side logic.',
       tags: ['React', 'Next.js', 'Tailwind CSS'],
       link: '#contact',
     },
     {
       name: 'Backend Development',
-      icon: './assets/nodejs.png',
+      icon: '/assets/nodejs.png',
       description: 'Designing scalable server architectures, secure endpoints, and modeling robust database architectures.',
       tags: ['Node.js', 'Express.js', 'MongoDB'],
       link: '#contact',
     },
     {
       name: 'Cloud Services & Deployment',
-      icon: './assets/EC2.png',
+      icon: '/assets/EC2.png',
       description: 'Containerizing environments, establishing automated CI/CD pipelines, and deploying to cloud infrastructure.',
       tags: ['Docker', 'CI/CD', 'AWS'],
       link: '#contact',
     },
     {
       name: 'Version Control & Workflow',
-      icon: './assets/git.png',
+      icon: '/assets/git.png',
       description: 'Managing structured code repository history, branching strategies, and collaboration workflows.',
       tags: ['Git', 'GitHub'],
       link: '#contact',
@@ -168,7 +168,7 @@ export default function Services() {
       id="services"
       className="w-full px-6 sm:px-12 lg:px-[12%] py-24 scroll-mt-24 relative overflow-hidden"
     >
-      {/* Background aurora blur blobs */}
+      {/* Background blur blobs */}
       <div className="absolute top-1/2 left-0 w-96 h-96 -z-10 translate-x-[-30%] translate-y-[-50%] aurora-blue pointer-events-none rounded-full blur-[110px] opacity-35" />
 
       {/* Header section */}
