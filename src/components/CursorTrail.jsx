@@ -4,18 +4,37 @@ export default function CursorTrail() {
   const canvasRef = useRef(null)
 
   useEffect(() => {
+    // 1. Don't run on touch devices (mobile/tablet) or if user prefers reduced motion
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!hasFinePointer || prefersReducedMotion) return
+
     const canvas = canvasRef.current
     if (!canvas) return
 
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    let width = (canvas.width = window.innerWidth)
-    let height = (canvas.height = window.innerHeight)
+    let dpr = Math.min(window.devicePixelRatio || 1, 2)
+    let width = window.innerWidth
+    let height = window.innerHeight
+
+    const setupCanvasSize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2)
+      width = window.innerWidth
+      height = window.innerHeight
+      canvas.width = width * dpr
+      canvas.height = height * dpr
+      canvas.style.width = `${width}px`
+      canvas.style.height = `${height}px`
+      ctx.scale(dpr, dpr)
+    }
+
+    setupCanvasSize()
 
     // Mouse state
     const mouse = { x: 0, y: 0, lastX: 0, lastY: 0, active: false }
-    
+
     // Arrays for trail points and particles
     const trailPoints = []
     const particles = []
@@ -24,67 +43,20 @@ export default function CursorTrail() {
     const colors = [
       'rgba(168, 85, 247, ', // Purple
       'rgba(236, 72, 153, ', // Pink
-      'rgba(59, 130, 246, ',  // Blue
-      'rgba(34, 197, 94, ',   // Green
-      'rgba(234, 179, 8, ',   // Yellow
+      'rgba(59, 130, 246, ', // Blue
+      'rgba(34, 197, 94, ',  // Green
+      'rgba(234, 179, 8, ',  // Yellow
     ]
 
-    // Handle window resizing
-    const resizeCanvas = () => {
-      width = canvas.width = window.innerWidth
-      height = canvas.height = window.innerHeight
-    }
-    window.addEventListener('resize', resizeCanvas)
+    let animationFrameId = null
+    let isLoopRunning = false
 
-    // Track mouse position
-    const handleMouseMove = (e) => {
-      mouse.active = true
-      mouse.lastX = mouse.x
-      mouse.lastY = mouse.y
-      mouse.x = e.clientX
-      mouse.y = e.clientY
-
-      // Add to trail
-      trailPoints.push({ x: mouse.x, y: mouse.y })
-      if (trailPoints.length > maxTrailLength) {
-        trailPoints.shift()
-      }
-
-      // Calculate speed
-      const dx = mouse.x - mouse.lastX
-      const dy = mouse.y - mouse.lastY
-      const speed = Math.sqrt(dx * dx + dy * dy)
-
-      // Spawn sprinkles on movement (more speed = more particles)
-      if (speed > 1) {
-        const numParticles = Math.min(Math.floor(speed / 5) + 1, 4)
-        for (let i = 0; i < numParticles; i++) {
-          createParticle(mouse.x, mouse.y, false)
-        }
-      }
-    }
-
-    const handleMouseLeave = () => {
-      mouse.active = false
-    }
-
-    const handleMouseClick = (e) => {
-      // Spawn burst of sprinkle particles on click
-      const burstCount = 18
-      for (let i = 0; i < burstCount; i++) {
-        createParticle(e.clientX, e.clientY, true)
-      }
-    }
-
-    // Particle constructor helper
     const createParticle = (x, y, isBurst = false) => {
       const colorIndex = Math.floor(Math.random() * colors.length)
       const baseColor = colors[colorIndex]
-      
+
       const angle = Math.random() * Math.PI * 2
-      const speed = isBurst 
-        ? Math.random() * 5 + 2 
-        : Math.random() * 1.5 + 0.5
+      const speed = isBurst ? Math.random() * 5 + 2 : Math.random() * 1.5 + 0.5
 
       particles.push({
         x,
@@ -97,13 +69,11 @@ export default function CursorTrail() {
         baseColor,
         rotation: Math.random() * Math.PI,
         rotationSpeed: (Math.random() - 0.5) * 0.1,
-        // Star proportions
         spikes: 4,
-        innerRadiusRatio: 0.3
+        innerRadiusRatio: 0.3,
       })
     }
 
-    // Draw 4-pointed star sparkle
     const drawStar = (cx, cy, spikes, outerRadius, innerRadius, color) => {
       let rot = (Math.PI / 2) * 3
       let x = cx
@@ -130,15 +100,14 @@ export default function CursorTrail() {
     }
 
     // Animation Loop
-    let animationFrameId
     const render = () => {
       ctx.clearRect(0, 0, width, height)
 
       // 1. Draw glowing vector trail
       if (trailPoints.length > 1) {
-        ctx.shadowBlur = window.innerWidth < 768 ? 0 : 15
-        ctx.shadowColor = 'rgba(168, 85, 247, 0.6)'
-        
+        ctx.shadowBlur = 12
+        ctx.shadowColor = 'rgba(168, 85, 247, 0.5)'
+
         ctx.beginPath()
         ctx.moveTo(trailPoints[0].x, trailPoints[0].y)
 
@@ -149,27 +118,27 @@ export default function CursorTrail() {
         }
 
         ctx.lineTo(trailPoints[trailPoints.length - 1].x, trailPoints[trailPoints.length - 1].y)
-        
-        // Gradient color for trail
+
         const grad = ctx.createLinearGradient(
-          trailPoints[0].x, trailPoints[0].y,
-          trailPoints[trailPoints.length - 1].x, trailPoints[trailPoints.length - 1].y
+          trailPoints[0].x,
+          trailPoints[0].y,
+          trailPoints[trailPoints.length - 1].x,
+          trailPoints[trailPoints.length - 1].y
         )
-        grad.addColorStop(0, 'rgba(236, 72, 153, 0.1)') // Fade out at tail
-        grad.addColorStop(0.5, 'rgba(168, 85, 247, 0.4)')
-        grad.addColorStop(1, 'rgba(59, 130, 246, 0.8)') // Glowing blue lead
-        
+        grad.addColorStop(0, 'rgba(236, 72, 153, 0.05)')
+        grad.addColorStop(0.5, 'rgba(168, 85, 247, 0.35)')
+        grad.addColorStop(1, 'rgba(59, 130, 246, 0.7)')
+
         ctx.strokeStyle = grad
-        ctx.lineWidth = 4
+        ctx.lineWidth = 3.5
         ctx.lineCap = 'round'
         ctx.lineJoin = 'round'
         ctx.stroke()
-        
-        // Reset shadow for particles
+
         ctx.shadowBlur = 0
       }
 
-      // 2. Update and draw star sparkles (sprinkles)
+      // 2. Update and draw star sparkles
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i]
         p.x += p.vx
@@ -186,11 +155,10 @@ export default function CursorTrail() {
         ctx.save()
         ctx.translate(p.x, p.y)
         ctx.rotate(p.rotation)
-        
-        // Add light glow to sparkles
-        ctx.shadowBlur = window.innerWidth < 768 ? 0 : 10
+
+        ctx.shadowBlur = 8
         ctx.shadowColor = color
-        
+
         drawStar(0, 0, p.spikes, p.size, p.size * p.innerRadiusRatio, color)
         ctx.restore()
       }
@@ -200,24 +168,90 @@ export default function CursorTrail() {
         trailPoints.shift()
       }
 
+      // Dynamic Idle Auto-Pause:
+      // If nothing is animating or moving, stop RAF loop to conserve CPU/battery!
+      if (trailPoints.length === 0 && particles.length === 0 && !mouse.active) {
+        ctx.clearRect(0, 0, width, height)
+        isLoopRunning = false
+        animationFrameId = null
+        return
+      }
+
       animationFrameId = requestAnimationFrame(render)
     }
 
-    // Register event listeners
-    window.addEventListener('mousemove', handleMouseMove)
+    const startLoopIfNeeded = () => {
+      if (!isLoopRunning) {
+        isLoopRunning = true
+        animationFrameId = requestAnimationFrame(render)
+      }
+    }
+
+    const handleMouseMove = (e) => {
+      mouse.active = true
+      mouse.lastX = mouse.x
+      mouse.lastY = mouse.y
+      mouse.x = e.clientX
+      mouse.y = e.clientY
+
+      trailPoints.push({ x: mouse.x, y: mouse.y })
+      if (trailPoints.length > maxTrailLength) {
+        trailPoints.shift()
+      }
+
+      const dx = mouse.x - mouse.lastX
+      const dy = mouse.y - mouse.lastY
+      const speed = Math.sqrt(dx * dx + dy * dy)
+
+      if (speed > 1) {
+        const numParticles = Math.min(Math.floor(speed / 6) + 1, 3)
+        for (let i = 0; i < numParticles; i++) {
+          createParticle(mouse.x, mouse.y, false)
+        }
+      }
+
+      startLoopIfNeeded()
+    }
+
+    // Set active false after short mouse stop so trail fades gracefully
+    let mouseStopTimeout = null
+    const handleMouseStop = () => {
+      clearTimeout(mouseStopTimeout)
+      mouseStopTimeout = setTimeout(() => {
+        mouse.active = false
+      }, 100)
+    }
+
+    const handleMouseLeave = () => {
+      mouse.active = false
+    }
+
+    const handleMouseClick = (e) => {
+      const burstCount = 14
+      for (let i = 0; i < burstCount; i++) {
+        createParticle(e.clientX, e.clientY, true)
+      }
+      startLoopIfNeeded()
+    }
+
+    const handleResize = () => {
+      setupCanvasSize()
+    }
+
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    window.addEventListener('mousemove', handleMouseStop, { passive: true })
     window.addEventListener('mouseleave', handleMouseLeave)
-    window.addEventListener('click', handleMouseClick)
+    window.addEventListener('click', handleMouseClick, { passive: true })
 
-    // Start loop
-    render()
-
-    // Cleanup
     return () => {
-      window.removeEventListener('resize', resizeCanvas)
+      window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mousemove', handleMouseStop)
       window.removeEventListener('mouseleave', handleMouseLeave)
       window.removeEventListener('click', handleMouseClick)
-      cancelAnimationFrame(animationFrameId)
+      clearTimeout(mouseStopTimeout)
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
     }
   }, [])
 

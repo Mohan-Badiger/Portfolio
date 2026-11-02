@@ -2,14 +2,14 @@ import { motion } from 'framer-motion'
 
 export default function About() {
   const tools = [
-    { name: 'VS Code', icon: './assets/vscode.png' },
-    { name: 'React', icon: './assets/react.png' },
-    { name: 'JavaScript', icon: './assets/javascript.png' },
-    { name: 'Node.js', icon: './assets/nodejs.png' },
-    { name: 'MongoDB', icon: './assets/mongodb.png' },
-    { name: 'Git', icon: './assets/git.png' },
-    { name: 'AWS EC2', icon: './assets/EC2.png' },
-    { name: 'Socket.IO', icon: './assets/socket.png' },
+    { name: 'VS Code', icon: '/assets/vscode.png' },
+    { name: 'React', icon: '/assets/react.png' },
+    { name: 'JavaScript', icon: '/assets/javascript.png' },
+    { name: 'Node.js', icon: '/assets/nodejs.png' },
+    { name: 'MongoDB', icon: '/assets/mongodb.png' },
+    { name: 'Git', icon: '/assets/git.png' },
+    { name: 'AWS EC2', icon: '/assets/EC2.png' },
+    { name: 'Socket.IO', icon: '/assets/socket.png' },
   ]
 
   const education = [

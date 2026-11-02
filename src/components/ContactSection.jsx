@@ -2,41 +2,46 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 export default function ContactSection() {
-  const [result, setResult] = useState("")
+  const [result, setResult] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(null)
 
   const onSubmit = async (event) => {
     event.preventDefault()
     setIsSubmitting(true)
-    setResult(">> Running git commit... >> Starting git push...")
+    setIsSuccess(null)
+    setResult('>> Transmitting message payload...')
 
-    const formData = new FormData(event.target)
+    const form = event.target
+    const formData = new FormData(form)
 
-    // Secure split structure to avoid scanner false positives on raw credentials
-    const credentialPartA = "d2ebae31"
-    const credentialPartB = "4a62-4d7e-8fee-bc974f2063ab"
-    const parsedKey = `${credentialPartA}-${credentialPartB}`
-    
-    formData.append("access_key", parsedKey)
+    // Honeypot spam check
+    if (formData.get('botcheck')) {
+      setIsSubmitting(false)
+      return
+    }
 
-    const apiDomain = "api.web3forms.com"
-    const apiRoute = `/submit`
-    const secureEndpoint = `https://${apiDomain}${apiRoute}`
+    const accessKey =
+      import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'd2ebae31-4a62-4d7e-8fee-bc974f2063ab'
+    formData.append('access_key', accessKey)
 
     try {
-      const response = await fetch(secureEndpoint, {
-        method: "POST",
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
         body: formData,
       }).then((res) => res.json())
 
       if (response.success) {
-        setResult(">> Push successful! Message dispatched to Mohan's console.")
-        event.target.reset()
+        setIsSuccess(true)
+        setResult('>> Success! Message sent successfully. Mohan will get back to you shortly.')
+        form.reset()
       } else {
-        setResult(`>> Push failed: ${response.message || "Unknown compile error"}`)
+        setIsSuccess(false)
+        setResult(`>> Transmission failed: ${response.message || 'Please try again or email directly.'}`)
       }
-    } catch (error) {
-      setResult(">> Connection refused: Check network protocols and retry.")
+    } catch {
+      setIsSuccess(false)
+      setResult('>> Network error: Could not reach the server. Please email mohanbadiger250@gmail.com directly.')
     } finally {
       setIsSubmitting(false)
     }
@@ -75,7 +80,7 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="text-slate-500 dark:text-gray-400 max-w-lg mt-4 font-Inter text-sm leading-relaxed"
         >
-          Have a project in mind or want to connect? Send me a message and I'll get back to you.
+          Have an exciting project, role, or collaboration in mind? Drop a message below and I’ll respond promptly.
         </motion.p>
       </div>
 
@@ -97,39 +102,44 @@ export default function ContactSection() {
               send_message.sh
             </span>
           </div>
-          <span className="font-mono text-[9px] text-gray-600">
-            PROTOCOL: SMTP/HTTPS
+          <span className="font-mono text-[9px] text-gray-500">
+            SECURE HTTPS / SMTP
           </span>
         </div>
 
         {/* Editor workspace pane */}
         <div className="p-5 bg-[#0d0e12]/20 flex flex-col gap-6 relative">
-          
+          {/* Honeypot spam field */}
+          <input
+            type="checkbox"
+            name="botcheck"
+            className="hidden"
+            style={{ display: 'none' }}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+
           <input
             type="hidden"
             name="subject"
             value="Mohan Badiger - New Contact Form Submission"
           />
 
-          {/* Accessibility screen labels */}
-          <label htmlFor="name" className="sr-only">Your Name</label>
-          <label htmlFor="email" className="sr-only">Your Email Address</label>
-          <label htmlFor="message" className="sr-only">Your Message</label>
-
           {/* Row 01: Name */}
           <div className="flex items-start gap-4 text-left">
-            <span className="text-gray-700 font-mono text-[11px] select-none pt-1 w-5 text-right flex-shrink-0">01</span>
+            <span className="text-gray-600 font-mono text-[11px] select-none pt-1 w-5 text-right flex-shrink-0">
+              01
+            </span>
             <div className="flex-1 flex flex-col">
-              <span className="text-[10px] text-antigravityBlue font-mono mb-1.5 select-none">
+              <label htmlFor="name" className="text-[11px] text-antigravityBlue font-mono mb-1.5 cursor-pointer">
                 const <span className="text-purple-400">senderName</span> =
-              </span>
-              <motion.input
-                whileFocus={{ scale: 1.005 }}
+              </label>
+              <input
                 id="name"
                 type="text"
                 name="name"
                 required
-                placeholder='"Enter your name"'
+                placeholder='"Your name"'
                 className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)]"
               />
             </div>
@@ -137,18 +147,19 @@ export default function ContactSection() {
 
           {/* Row 02: Email */}
           <div className="flex items-start gap-4 text-left">
-            <span className="text-gray-700 font-mono text-[11px] select-none pt-1 w-5 text-right flex-shrink-0">02</span>
+            <span className="text-gray-600 font-mono text-[11px] select-none pt-1 w-5 text-right flex-shrink-0">
+              02
+            </span>
             <div className="flex-1 flex flex-col">
-              <span className="text-[10px] text-antigravityBlue font-mono mb-1.5 select-none">
+              <label htmlFor="email" className="text-[11px] text-antigravityBlue font-mono mb-1.5 cursor-pointer">
                 const <span className="text-purple-400">senderEmail</span> =
-              </span>
-              <motion.input
-                whileFocus={{ scale: 1.005 }}
+              </label>
+              <input
                 id="email"
                 type="email"
                 name="email"
                 required
-                placeholder='"Enter your email"'
+                placeholder='"your.email@example.com"'
                 className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)]"
               />
             </div>
@@ -156,51 +167,66 @@ export default function ContactSection() {
 
           {/* Row 03: Message */}
           <div className="flex items-start gap-4 text-left">
-            <span className="text-gray-700 font-mono text-[11px] select-none pt-1 w-5 text-right flex-shrink-0">03</span>
+            <span className="text-gray-600 font-mono text-[11px] select-none pt-1 w-5 text-right flex-shrink-0">
+              03
+            </span>
             <div className="flex-1 flex flex-col">
-              <span className="text-[10px] text-antigravityBlue font-mono mb-1.5 select-none">
-                const <span className="text-purple-400">messageBody</span> =
-              </span>
-              <motion.textarea
-                whileFocus={{ scale: 1.005 }}
+              <label htmlFor="message" className="text-[11px] text-antigravityBlue font-mono mb-1.5 cursor-pointer">
+                const <span className="text-purple-400">payloadMessage</span> =
+              </label>
+              <textarea
                 id="message"
                 name="message"
                 rows="4"
                 required
-                placeholder='"Enter message contents"'
+                placeholder='`Hello Mohan, I would like to discuss...`'
                 className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)] resize-none"
-              ></motion.textarea>
-            </div>
-          </div>
-
-          {/* Row 04: Command Button */}
-          <div className="flex items-start gap-4 text-left">
-            <span className="text-gray-700 font-mono text-[11px] select-none pt-2 w-5 text-right flex-shrink-0">04</span>
-            <div className="flex-1 flex flex-col">
-              <motion.button
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full py-3 bg-gradient-to-r from-antigravityBlue to-antigravityPurple hover:opacity-90 text-white font-mono text-[11px] font-bold rounded shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 select-none"
-              >
-                <span>$</span> {'git commit -m "Send" && git push'}
-              </motion.button>
+              />
             </div>
           </div>
         </div>
 
-        {/* Console logs output */}
-        {result && (
-          <div className="px-5 py-3.5 bg-[#0b0b0f] border-t border-white/[0.06] text-left select-none">
-            <span className="font-mono text-[10px] text-gray-500 block mb-1">
-              SHELL_OUTPUT:
-            </span>
-            <p className="font-mono text-[10px] text-sky-400 leading-normal">
-              {result}
-            </p>
+        {/* IDE Footer: Action dispatch bar */}
+        <div className="px-5 py-4 bg-[#0a0a0d] border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <span className="text-[10px] text-gray-500 font-mono select-none">STATUS:</span>
+            <div
+              aria-live="polite"
+              className={`text-[11px] font-mono truncate max-w-xs sm:max-w-md ${
+                isSuccess === true
+                  ? 'text-emerald-400'
+                  : isSuccess === false
+                  ? 'text-rose-400'
+                  : 'text-gray-400'
+              }`}
+            >
+              {result || '>> Awaiting user dispatch...'}
+            </div>
           </div>
-        )}
+
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            disabled={isSubmitting}
+            type="submit"
+            className="w-full sm:w-auto px-6 py-2.5 rounded bg-antigravityBlue hover:bg-blue-600 active:bg-blue-700 text-white font-mono text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer shadow-[0_4px_20px_rgba(66,133,244,0.3)] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin h-3.5 w-3.5 text-white" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                <span>Sending...</span>
+              </>
+            ) : (
+              <>
+                <span>Send Message</span>
+                <span className="text-[10px]">&gt;&gt;</span>
+              </>
+            )}
+          </motion.button>
+        </div>
       </motion.form>
     </motion.section>
   )
