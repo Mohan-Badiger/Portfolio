@@ -10,6 +10,8 @@ export default {
                 'auto': 'repeat(auto-fit, minmax(200px, 1fr))'
             },
             fontFamily: {
+                sans: ["'DM Sans'", "system-ui", "-apple-system", "'Segoe UI'", "sans-serif"],
+                dmsans: ["'DM Sans'", "system-ui", "-apple-system", "'Segoe UI'", "sans-serif"],
                 Inter: ["'DM Sans'", "system-ui", "-apple-system", "'Segoe UI'", "sans-serif"],
             },
             animation: {
@@ -18,7 +20,7 @@ export default {
             colors: {
                 lightHover: '#fcf4ff',
                 darkHover: '#2a004a',
-                darkTheme: '#08080c', // Google Antigravity dark background
+                darkTheme: '#08080c',
                 antigravityGray: '#111217',
                 antigravityBlue: '#4285f4',
                 antigravityPurple: '#9b72f8',
