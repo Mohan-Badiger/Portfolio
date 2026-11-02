@@ -79,7 +79,7 @@ export default function Header() {
             Engineering high-performance web systems<span className="text-antigravityBlue font-bold">.</span>
           </h3>
 
-          <p className="max-w-lg text-sm sm:text-base text-slate-650 dark:text-gray-400 font-Inter font-light leading-relaxed">
+          <p className="max-w-lg text-sm sm:text-base text-slate-600 dark:text-gray-400 font-Inter font-light leading-relaxed">
             I develop responsive, user-friendly full-stack solutions using <span className="text-slate-900 dark:text-white font-semibold">React</span>, <span className="text-slate-900 dark:text-white font-semibold">Node.js</span>, <span className="text-slate-900 dark:text-white font-semibold">MongoDB</span>, <span className="text-slate-900 dark:text-white font-semibold">Docker</span>, and <span className="text-slate-900 dark:text-white font-semibold">AWS</span>. Translating complex code into fluid interfaces.
           </p>
 
@@ -96,7 +96,7 @@ export default function Header() {
             <motion.a
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
-              href="./assets/Mohan_Resume_SDE.pdf"
+              href="/assets/Mohan_Resume_SDE.pdf"
               download
               className="px-6 py-3 rounded border border-slate-200 dark:border-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.02] text-slate-800 dark:text-white font-Inter text-xs font-medium transition-all duration-200"
             >

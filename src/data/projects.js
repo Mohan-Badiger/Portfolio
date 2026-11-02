@@ -1,0 +1,210 @@
+// GitHub language color mapping
+export const LANG_COLORS = {
+  JavaScript: '#f1e05a',
+  TypeScript: '#3178c6',
+  Python: '#3572A5',
+  HTML: '#e34c26',
+  CSS: '#563d7c',
+  Shell: '#89e051',
+  Dockerfile: '#384d54',
+}
+
+// Featured project configs with instant fallback data
+export const FEATURED_PROJECTS = [
+  {
+    repoName: 'KDS-Temple-Website',
+    description: 'Full-stack temple management platform with admin dashboard, image galleries, donation tracking, event scheduling, and community member directory.',
+    homepage: 'https://kds-temple-backend.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/KDS-Temple-Website',
+    languages: { JavaScript: 90, CSS: 7, HTML: 3 },
+  },
+  {
+    repoName: 'cafe',
+    description: 'Modern cafe ordering and management application with menu browsing, cart system, order placement, and real-time order status updates.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/cafe',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'ReelVerse',
+    description: 'Cinema ticket booking platform with real-time seat selection, Razorpay payment integration, Google OAuth authentication, and QR-code digital tickets.',
+    homepage: 'https://reelverse-two.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/ReelVerse',
+    languages: { JavaScript: 92, CSS: 5, HTML: 3 },
+  },
+  {
+    repoName: 'ClimateVault',
+    description: 'Climate data visualization dashboard built with TypeScript and Python — tracking environmental metrics, weather patterns, and carbon footprint analytics.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/ClimateVault',
+    languages: { TypeScript: 60, Python: 36, JavaScript: 2, CSS: 2 },
+  },
+  {
+    repoName: 'droplyx',
+    description: 'E-commerce price tracking and alert dashboard with background polling scripts to detect price drops across stores and trigger instant notifications.',
+    homepage: 'https://droplyx.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/droplyx',
+    languages: { JavaScript: 96, CSS: 4 },
+  },
+  {
+    repoName: 'dayflow',
+    description: 'Daily productivity and task management app with drag-and-drop task boards, priority tagging, progress tracking, and clean minimalist interface.',
+    homepage: 'https://dayflow-blue.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/dayflow',
+    languages: { JavaScript: 94, CSS: 6 },
+  },
+  {
+    repoName: 'mip',
+    description: 'Modern jewellery e-commerce storefront featuring elegant collection showcase, product filtering, shopping cart, and smooth responsive shopping experience.',
+    homepage: 'https://mipjewellery.vercel.app/',
+    html_url: 'https://github.com/Mohan-Badiger/mip',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'Online-Clothing-Store',
+    description: 'Full-featured online fashion store with product catalog, size filters, shopping cart, wishlist, checkout flow, and responsive mobile-first design.',
+    homepage: 'https://mbfashion.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/Online-Clothing-Store',
+    languages: { JavaScript: 92, CSS: 6, HTML: 2 },
+  },
+  {
+    repoName: 'EasyShare',
+    description: 'Cloud-based file sharing application with encrypted transfers, real-time socket connections, drag-and-drop uploads, and shareable download links.',
+    homepage: 'https://easyshare-jet.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/EasyShare',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'Aventisia-assessment',
+    description: 'Interactive data visualization dashboard built as a technical assessment — featuring dynamic charts, filterable datasets, and responsive analytics views.',
+    homepage: 'https://aventisia-assessment.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/Aventisia-assessment',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+]
+
+// Fallback data for additional repositories so View All works instantly offline / rate-limited
+export const DEFAULT_OTHER_PROJECTS = [
+  {
+    repoName: 'VishwakarmaTemple-Website',
+    description: 'Full-stack cultural and community temple website with event calendars, donation portals, photo gallery, and member directory.',
+    homepage: 'https://vishwakarma-temple-website.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/VishwakarmaTemple-Website',
+    languages: { JavaScript: 88, CSS: 12 },
+  },
+  {
+    repoName: 'Mock-test-module',
+    description: 'Online examination and assessment platform with timed quizzes, score calculations, instant feedback, and answer review module.',
+    homepage: 'https://mock-test-module.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/Mock-test-module',
+    languages: { JavaScript: 92, CSS: 8 },
+  },
+  {
+    repoName: 'hirenext',
+    description: 'Job application and applicant tracking web application featuring modern recruitment dashboards and candidate management.',
+    homepage: 'https://hirenext-pi.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/hirenext',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+  {
+    repoName: 'Employee-Management-React',
+    description: 'Interactive React employee directory application with CRUD operations, search filters, department categorisation, and modal forms.',
+    homepage: 'https://employee-management-react-teal.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/Employee-Management-React',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'E-Commerce-Js',
+    description: 'Vanilla JavaScript e-commerce shopping experience with dynamic catalog rendering, cart state persistence, and responsive UI.',
+    homepage: 'https://e-commerce-js-lime.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/E-Commerce-Js',
+    languages: { JavaScript: 80, HTML: 12, CSS: 8 },
+  },
+  {
+    repoName: 'cv-mohan',
+    description: 'Interactive digital resume and curriculum vitae showcasing technical experience, skills matrix, and professional background.',
+    homepage: 'https://cv-mohan.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/cv-mohan',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+  {
+    repoName: 'WorkForce-Pro',
+    description: 'Enterprise workforce and staff workflow coordination platform for managing organizational resources, schedules, and team metrics.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/WorkForce-Pro',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'Restaurant-project',
+    description: 'Full-service restaurant management web application with digital menus, table reservation booking, and order processing.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/Restaurant-project',
+    languages: { JavaScript: 93, CSS: 7 },
+  },
+  {
+    repoName: 'data-visualization-dashboard',
+    description: 'Interactive data analytics portal built with chart libraries, metric summary widgets, and customizable visual reports.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/data-visualization-dashboard',
+    languages: { JavaScript: 92, CSS: 8 },
+  },
+  {
+    repoName: 'stock-tracker-app',
+    description: 'Financial equity and stock tracking dashboard featuring live price lookups, portfolio valuation, and watchlist monitoring.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/stock-tracker-app',
+    languages: { TypeScript: 92, CSS: 8 },
+  },
+  {
+    repoName: 'AttendenceTrackSystem',
+    description: 'Automated student and staff attendance monitoring system with attendance logging, monthly records, and exportable reports.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/AttendenceTrackSystem',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+  {
+    repoName: 'Company-Registration-Verification-Module',
+    description: 'Secure corporate onboarding module for enterprise registration, credential verification, and document management.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/Company-Registration-Verification-Module',
+    languages: { JavaScript: 94, CSS: 6 },
+  },
+  {
+    repoName: 'Inventory-system',
+    description: 'Stock inventory and warehouse asset management platform with SKU tracking, quantity threshold warnings, and supply logs.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/Inventory-system',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'DSA_with_JavaScript',
+    description: 'Comprehensive repository of Data Structures and Algorithms implemented in JavaScript with optimal time and space complexity solutions.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/DSA_with_JavaScript',
+    languages: { JavaScript: 100 },
+  },
+  {
+    repoName: 'learning-docker-aws-nginx',
+    description: 'DevOps deployment experiments and practical configuration guides for Docker containers, AWS cloud services, and Nginx reverse proxies.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/learning-docker-aws-nginx',
+    languages: { Shell: 60, Dockerfile: 40 },
+  },
+  {
+    repoName: 'employee-crud-mern',
+    description: 'Full-stack MERN stack employee record CRUD application with RESTful API architecture and MongoDB data persistence.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/employee-crud-mern',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'donation-receipt',
+    description: 'Donation receipt and invoice generator web utility with print layout rendering and PDF receipt generation.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/donation-receipt',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+]
+
+export const FEATURED_NAMES = FEATURED_PROJECTS.map((p) => p.repoName)
+
