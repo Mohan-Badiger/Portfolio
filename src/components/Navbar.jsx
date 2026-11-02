@@ -14,26 +14,7 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30)
-
-      const sections = ['about', 'services', 'work', 'contact']
-      let currentSection = 'home'
-      for (const section of sections) {
-        const el = document.getElementById(section)
-        if (el) {
-          const rect = el.getBoundingClientRect()
-          if (rect.top <= 120 && rect.bottom >= 120) {
-            currentSection = section
-            break
-          }
-        }
-      }
-      setActiveSection(currentSection)
-    }
-    window.addEventListener('scroll', handleScroll)
-
-    // Check system preference or localstorage
+    // Check system preference or localStorage
     if (localStorage.theme === 'light') {
       document.documentElement.classList.remove('dark')
       setDarkTheme(false)
@@ -42,7 +23,41 @@ export default function Navbar() {
       setDarkTheme(true)
     }
 
-    return () => window.removeEventListener('scroll', handleScroll)
+    // Scroll state observer with RAF throttling to prevent layout thrashing
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 30)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    // Non-blocking IntersectionObserver for active section highlighting
+    const sections = ['about', 'services', 'work', 'contact']
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+    )
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      observer.disconnect()
+    }
   }, [])
 
   const navLinks = [
@@ -63,21 +78,19 @@ export default function Navbar() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`w-full fixed top-0 left-0 px-6 sm:px-10 lg:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-300 ${isScrolled
-          ? 'py-3 backdrop-blur-md border-b border-slate-200/50 dark:border-white/[0.04] bg-white/80 dark:bg-[#08080c]/80'
-          : 'bg-transparent'
-          }`}
+        className={`w-full fixed top-0 left-0 px-6 sm:px-10 lg:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'py-3 backdrop-blur-md border-b border-slate-200/50 dark:border-white/[0.04] bg-white/80 dark:bg-[#08080c]/80'
+            : 'bg-transparent'
+        }`}
       >
-        <a href="#" className="flex items-center gap-2 group">
-          {/* <div className="w-6 h-6 rounded bg-gradient-to-tr from-antigravityBlue via-antigravityPurple to-antigravityPink flex items-center justify-center text-[10px] font-bold text-white shadow-lg">
-            M
-          </div> */}
+        <a href="#top" className="flex items-center gap-2 group" aria-label="Mohan Badiger Home">
           <span className="text-lg font-bold font-Inter tracking-tight text-slate-900 dark:text-white">
-            Mohan
+            Mohan<span className="text-antigravityBlue">.</span>
           </span>
         </a>
 
-        {/* Minimalist Google-style menu links */}
+        {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-6 font-Inter text-sm font-light text-slate-500 dark:text-gray-400">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id
@@ -85,15 +98,15 @@ export default function Navbar() {
               <li key={link.name} className="relative py-1">
                 <a
                   href={link.href}
-                  className={`transition-colors duration-200 ${isActive
-                    ? 'text-slate-900 dark:text-white font-medium'
-                    : 'hover:text-slate-900 dark:hover:text-gray-250'
-                    }`}
+                  className={`transition-colors duration-200 ${
+                    isActive
+                      ? 'text-slate-900 dark:text-white font-medium'
+                      : 'hover:text-slate-900 dark:hover:text-white'
+                  }`}
                 >
                   {link.name}
                 </a>
 
-                {/* Underline tracker for active section */}
                 {isActive && (
                   <motion.div
                     layoutId="activeIndicator"
@@ -107,24 +120,22 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
-          {/* Light/Dark Toggler */}
+          {/* Theme Toggle Button (Inline Crisp Vector SVGs) */}
           <button
             onClick={toggleTheme}
             aria-label="Toggle system color theme"
-            className="p-1.5 rounded border border-slate-200 dark:border-white/[0.06] hover:bg-slate-100 dark:hover:bg-white/[0.04] transition-colors bg-white/20 dark:bg-transparent"
+            className="p-2 rounded border border-slate-200 dark:border-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.04] transition-colors bg-white/40 dark:bg-transparent text-slate-700 dark:text-gray-300"
           >
-            <motion.img
-              key={darkTheme ? 'sun' : 'moon'}
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              src={darkTheme ? './assets/sun_icon.png' : './assets/moon_icon.png'}
-              alt={darkTheme ? 'Light mode' : 'Dark mode'}
-              width={16}
-              height={16}
-              decoding="async"
-              className="w-4 h-4 object-contain"
-            />
+            {darkTheme ? (
+              <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth={2}>
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41m14.14-14.14l-1.41 1.41" strokeLinecap="round" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth={2}>
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            )}
           </button>
 
           {/* Connect Action CTA */}
@@ -134,29 +145,24 @@ export default function Navbar() {
             href="#contact"
             className="hidden lg:flex items-center gap-2 px-5 py-1.5 border border-antigravityBlue/20 bg-antigravityBlue/5 hover:bg-antigravityBlue/10 hover:border-antigravityBlue/50 text-xs font-medium font-Inter text-antigravityBlue rounded transition-all duration-300"
           >
-            Deploy
+            Get in Touch
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           </motion.a>
 
-          {/* Mobile Drawer Trigger */}
+          {/* Mobile Drawer Trigger (Vector Hamburger) */}
           <button
-            className="block md:hidden p-1.5 rounded border border-slate-200 dark:border-white/[0.06] hover:bg-slate-100 dark:hover:bg-white/[0.04]"
+            className="block md:hidden p-2 rounded border border-slate-200 dark:border-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.04] text-slate-700 dark:text-gray-300"
             onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open side panel"
+            aria-label="Open mobile menu"
           >
-            <img
-              src={darkTheme ? './assets/menu-white.png' : './assets/menu-black.png'}
-              alt="Menu"
-              width={16}
-              height={16}
-              decoding="async"
-              className="w-4 h-4 object-contain"
-            />
+            <svg className="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile Drawer (Antigravity Terminal Panel Style) */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
@@ -176,25 +182,17 @@ export default function Navbar() {
               className="fixed right-0 top-0 bottom-0 w-72 h-full bg-white dark:bg-[#0d0e12]/95 border-l border-slate-200 dark:border-white/[0.06] backdrop-blur-2xl z-50 flex flex-col p-6 shadow-2xl text-slate-800 dark:text-white font-Inter"
             >
               <div className="flex justify-between items-center mb-10 pb-4 border-b border-slate-100 dark:border-white/[0.06]">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded bg-gradient-to-tr from-antigravityBlue to-antigravityPurple" />
-                  <span className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
-                    Mohan
-                  </span>
-                </div>
+                <span className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
+                  Mohan<span className="text-antigravityBlue">.</span>
+                </span>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-1.5 rounded border border-slate-200 dark:border-white/[0.06] hover:bg-slate-100 dark:hover:bg-white/[0.04]"
-                  aria-label="Close panel"
+                  className="p-1.5 rounded border border-slate-200 dark:border-white/[0.06] hover:bg-slate-100 dark:hover:bg-white/[0.04] text-slate-700 dark:text-gray-300"
+                  aria-label="Close menu"
                 >
-                  <img
-                    src={darkTheme ? './assets/close-white.png' : './assets/close-black.png'}
-                    alt="Close"
-                    width={12}
-                    height={12}
-                    decoding="async"
-                    className="w-3 h-3 object-contain"
-                  />
+                  <svg className="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
               </div>
 
@@ -216,9 +214,9 @@ export default function Navbar() {
                 <a
                   href="#contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-antigravityBlue to-antigravityPurple text-white text-sm font-semibold rounded shadow-lg"
+                  className="w-full flex items-center justify-center gap-2 py-3 bg-antigravityBlue hover:bg-blue-600 text-white text-sm font-semibold rounded shadow-lg transition-colors"
                 >
-                  Deploy Connection
+                  Get in Touch
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 </a>
               </div>

@@ -10,28 +10,18 @@ export default function Footer() {
       aria-label="Footer - Mohan Badiger Portfolio"
       className="mt-20"
     >
-      {/* ✅ SEO-only invisible heading */}
       <h2 className="sr-only">
         Mohan Badiger – Full Stack MERN Developer Footer
       </h2>
 
       <div className="text-center">
-        {/* Existing brand text */}
+        {/* Brand Name */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-2xl md:text-4xl font-bold font-Inter text-slate-900 dark:hidden"
-        >
-          Mohan<span className="text-antigravityBlue font-extrabold">_</span>
-        </motion.p>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-2xl sm:text-2xl md:text-4xl font-bold font-Inter text-white hidden dark:block"
+          className="text-2xl sm:text-2xl md:text-4xl font-bold font-Inter text-slate-900 dark:text-white"
         >
           Mohan<span className="text-antigravityBlue font-extrabold">_</span>
         </motion.p>
@@ -42,29 +32,16 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="w-max flex items-center gap-2 mx-auto mt-4"
+          className="w-max flex items-center gap-2.5 mx-auto mt-4 text-slate-600 dark:text-gray-300"
         >
-          <img
-            src="./assets/mail_icon.png"
-            alt="Email icon"
-            width={20}
-            height={20}
-            decoding="async"
-            className="w-5 dark:hidden"
-          />
-          <img
-            src="./assets/mail_icon_dark.png"
-            alt="Email icon"
-            width={20}
-            height={20}
-            decoding="async"
-            className="w-5 hidden dark:block"
-          />
+          <svg className="w-4 h-4 text-antigravityBlue flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
 
           <a
             href="mailto:mohanbadiger250@gmail.com"
             aria-label="Email Mohan Badiger"
-            className="hover:text-purple-500 transition-colors"
+            className="text-sm font-Inter hover:text-antigravityBlue transition-colors"
           >
             mohanbadiger250@gmail.com
           </a>
@@ -77,56 +54,55 @@ export default function Footer() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
         viewport={{ once: true }}
-        className="text-center sm:flex items-center justify-between border-t border-slate-200 dark:border-white/[0.06] mx-[10%] mt-12 py-6"
+        className="text-center sm:flex items-center justify-between border-t border-slate-200 dark:border-white/[0.06] mx-[10%] mt-12 py-6 text-xs text-slate-500 dark:text-gray-400 font-Inter"
       >
         <p>
-          © {new Date().getFullYear()}{" "}
+          © {new Date().getFullYear()}{' '}
           <a
             href="https://mohanbadiger.site"
             aria-label="Mohan Badiger Portfolio Website"
-            className="hover:text-purple-500 transition-colors"
+            className="hover:text-antigravityBlue transition-colors"
           >
             Mohan Badiger
           </a>
-          , All rights reserved.
+          . All rights reserved.
         </p>
 
         <ul
-          className="flex items-center gap-10 justify-center mt-4 sm:mt-0"
+          className="flex items-center gap-8 justify-center mt-4 sm:mt-0"
           aria-label="Social links"
         >
           <li>
             <motion.a
-              whileHover={{ scale: 1.1, y: -2 }}
+              whileHover={{ scale: 1.05, y: -1 }}
               target="_blank"
               rel="noopener noreferrer"
               href="https://github.com/Mohan-Badiger"
-              className="hover:text-purple-500 transition-colors"
+              className="hover:text-antigravityBlue transition-colors"
             >
               GitHub
             </motion.a>
           </li>
           <li>
             <motion.a
-              whileHover={{ scale: 1.1, y: -2 }}
+              whileHover={{ scale: 1.05, y: -1 }}
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.linkedin.com/in/mohan-badiger"
-              className="hover:text-purple-500 transition-colors"
+              className="hover:text-antigravityBlue transition-colors"
             >
               LinkedIn
             </motion.a>
           </li>
           <li>
             <motion.a
-              whileHover={{ scale: 1.1, y: -2 }}
+              whileHover={{ scale: 1.05, y: -1 }}
               target="_blank"
               rel="noopener noreferrer"
-              href=""
-              aria-label="Mohan Badiger Twitter profile"
-              className="hover:text-purple-500 transition-colors"
+              href="https://www.youtube.com/@MohanBadiger250"
+              className="hover:text-antigravityBlue transition-colors"
             >
-              Twitter
+              YouTube
             </motion.a>
           </li>
         </ul>
