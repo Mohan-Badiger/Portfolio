@@ -29,16 +29,16 @@ export default function About() {
 
   const highlights = [
     {
-      name: 'Languages',
-      description: 'HTML, CSS, JavaScript, React, Next.js, Node.js, TypeScript, Python',
+      name: 'Frontend & Languages',
+      description: 'JavaScript (ES6+), React.js, Next.js, Tailwind CSS, HTML5/CSS3, PHP',
     },
     {
-      name: 'Databases',
-      description: 'MongoDB, MySQL, Firebase',
+      name: 'Backend & Databases',
+      description: 'Node.js, Express.js, REST APIs, MongoDB, MySQL, PostgreSQL',
     },
     {
-      name: 'DevOps',
-      description: 'Docker, AWS EC2, CI/CD, Nginx, Git',
+      name: 'DevOps & Tooling',
+      description: 'Docker, AWS EC2, Git/GitHub, Postman, Vercel, Cloudinary',
     },
   ]
 
@@ -80,7 +80,7 @@ export default function About() {
           className="w-full"
         >
           <p className="mb-10 text-slate-600 dark:text-gray-400 font-Inter leading-relaxed text-sm sm:text-base">
-            I am Mohan Badiger, a MERN developer focused on constructing robust full stack code bases. Utilizing modular microservices and automated development workflows, I configure responsive front-end pages and scalable database schemas. Eager to partner on production releases and build high-performance applications.
+            I am Mohan Badiger, a Software Development Engineer specializing in building full-stack web applications with <span className="text-slate-900 dark:text-white font-medium">React.js, Next.js, Node.js, Express, MongoDB, Docker</span>, and <span className="text-slate-900 dark:text-white font-medium">AWS</span>. I bring practical industry experience from internships at <span className="text-slate-900 dark:text-white font-medium">Bluestock Fintech</span> and <span className="text-slate-900 dark:text-white font-medium">Infidata Technologies</span>, where I engineered full-stack features, integrated RESTful APIs, and collaborated on production releases. Graduating with a BCA (8.47 CGPA), I combine solid Computer Science fundamentals with disciplined software engineering.
           </p>
 
           {/* Skills Highlights */}
