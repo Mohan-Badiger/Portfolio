@@ -37,7 +37,7 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true })
 
     // Non-blocking IntersectionObserver for active section highlighting
-    const sections = ['about', 'services', 'work', 'contact']
+    const sections = ['about', 'experience', 'skills', 'work', 'contact']
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -63,7 +63,8 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', id: 'home', href: '#top' },
     { name: 'About', id: 'about', href: '#about' },
-    { name: 'Services', id: 'services', href: '#services' },
+    { name: 'Experience', id: 'experience', href: '#experience' },
+    { name: 'Skills', id: 'skills', href: '#skills' },
     { name: 'Projects', id: 'work', href: '#work' },
     { name: 'Contact', id: 'contact', href: '#contact' },
   ]
