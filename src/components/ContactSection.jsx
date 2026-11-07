@@ -63,7 +63,7 @@ export default function ContactSection() {
       <h2 className="sr-only">Contact Mohan Badiger – Full Stack MERN Developer</h2>
 
       {/* Header section */}
-      <div className="flex flex-col items-start text-left mb-16">
+      <div className="flex flex-col items-start text-left mb-12">
         <motion.h3
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -80,9 +80,60 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="text-slate-500 dark:text-gray-400 max-w-lg mt-4 font-Inter text-sm leading-relaxed"
         >
-          Have an exciting project, role, or collaboration in mind? Drop a message below and I’ll respond promptly.
+          I am actively exploring SDE / Software Developer opportunities and open to immediate joining. Let's connect!
         </motion.p>
       </div>
+
+      {/* Recruiter Quick Direct Access Strip - Sleek, Minimal & Premium */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.25 }}
+        viewport={{ once: true }}
+        className="max-w-2xl mx-auto mb-8 rounded-xl border border-slate-200/90 dark:border-white/[0.08] bg-white/80 dark:bg-[#0d1117]/80 backdrop-blur-md p-5 sm:p-6 shadow-sm font-Inter"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-4 sm:divide-x divide-slate-200/80 dark:divide-white/[0.06]">
+          {/* Email */}
+          <div className="flex flex-col text-left sm:pr-4">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-gray-500 font-semibold mb-1">
+              Direct Email
+            </span>
+            <a
+              href="mailto:mohanbadiger250@gmail.com"
+              className="text-xs sm:text-[13px] font-medium text-slate-900 dark:text-white hover:text-antigravityBlue dark:hover:text-antigravityBlue transition-colors break-words"
+            >
+              mohanbadiger250@gmail.com
+            </a>
+          </div>
+
+          {/* Phone / WhatsApp */}
+          <div className="flex flex-col text-left sm:px-4">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-gray-500 font-semibold mb-1">
+              Phone / WhatsApp
+            </span>
+            <a
+              href="tel:+916362893798"
+              className="text-xs sm:text-[13px] font-medium text-slate-900 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
+            >
+              +91 6362893798
+            </a>
+          </div>
+
+          {/* Location & Relocation */}
+          <div className="flex flex-col text-left sm:pl-4">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-gray-500 font-semibold mb-1">
+              Location & Availability
+            </span>
+            <span className="text-xs sm:text-[13px] font-medium text-slate-900 dark:text-white">
+              Bengaluru, India
+            </span>
+            <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium mt-0.5 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Open to Relocate
+            </span>
+          </div>
+        </div>
+      </motion.div>
 
       {/* IDE-styled Git submission form */}
       <motion.form
