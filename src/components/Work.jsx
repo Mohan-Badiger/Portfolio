@@ -4,7 +4,7 @@ import {
   FEATURED_PROJECTS,
   DEFAULT_OTHER_PROJECTS,
   FEATURED_NAMES,
-} from '../data/projects'
+} from './projectsData'
 
 const CACHE_KEY = 'mb_github_repos_cache_v1'
 const CACHE_TTL = 1000 * 60 * 60 * 6 // 6 hours
@@ -68,9 +68,9 @@ function RepoCard({ repo }) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-[15px] font-semibold font-Inter text-antigravityBlue hover:underline decoration-antigravityBlue/50 underline-offset-2 truncate"
-              title={repo.name}
+              title={repo.title || repo.name}
             >
-              {repo.name}
+              {repo.title || repo.name}
             </a>
 
             <span className="text-[10px] font-Inter font-medium text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-white/10 rounded-full px-2 py-0.5 leading-none bg-slate-50 dark:bg-white/[0.03]">
@@ -276,6 +276,7 @@ export default function Work() {
     const langs = repoLanguages[proj.repoName] || proj.languages
     return {
       name: proj.repoName,
+      title: proj.title,
       description: proj.description,
       homepage: proj.homepage || apiRepo?.homepage,
       html_url: proj.html_url || apiRepo?.html_url,
