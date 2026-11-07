@@ -1,0 +1,192 @@
+// GitHub language color mapping
+export const LANG_COLORS = {
+  JavaScript: '#f1e05a',
+  TypeScript: '#3178c6',
+  Python: '#3572A5',
+  HTML: '#e34c26',
+  CSS: '#563d7c',
+  Shell: '#89e051',
+  Dockerfile: '#384d54',
+}
+
+// Featured project configs aligned with Mohan's professional resume metrics
+export const FEATURED_PROJECTS = [
+  {
+    repoName: 'KDS-Temple-Website',
+    title: 'Temple Management Platform',
+    description: 'Full-stack platform with 11+ REST API modules and 11 MongoDB models. Integrated Razorpay payments with HMAC-SHA256 signature verification, Google OAuth 2.0, RBAC, Cloudinary uploads, rate limiting, and XSS protection.',
+    homepage: 'https://kds-temple-backend.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/KDS-Temple-Website',
+    languages: { JavaScript: 85, CSS: 10, HTML: 5 },
+  },
+  {
+    repoName: 'droplyx',
+    title: 'Droplyx – E-Commerce Price Tracking SaaS',
+    description: 'Full-stack SaaS automating price tracking across 5 e-commerce platforms using Next.js & Puppeteer. Designed REST APIs, Mongoose schemas, URL deduplication, JWT/OTP auth, and 2 automated email alert workflows.',
+    homepage: 'https://droplyx.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/droplyx',
+    languages: { JavaScript: 92, CSS: 8 },
+  },
+  {
+    repoName: 'ReelVerse',
+    title: 'ReelVerse – Cinema Ticket Platform',
+    description: 'Cinema ticket booking web application with real-time seat reservation, Razorpay payment processing, Google OAuth 2.0 authentication, and automated QR-code digital ticket generation.',
+    homepage: 'https://reelverse-two.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/ReelVerse',
+    languages: { JavaScript: 90, CSS: 6, HTML: 4 },
+  },
+  {
+    repoName: 'DSA_with_JavaScript',
+    title: 'Data Structures & Algorithms in JS',
+    description: 'Extensive repository of Data Structures & Algorithms solutions (Arrays, Linked Lists, Trees, Graphs, Dynamic Programming) implemented in JavaScript with optimal time and space complexity.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/DSA_with_JavaScript',
+    languages: { JavaScript: 100 },
+  },
+  {
+    repoName: 'EasyShare',
+    title: 'EasyShare – Encrypted File Transfer',
+    description: 'Cloud file-sharing application featuring encrypted data transfers, real-time Socket.IO connections, drag-and-drop uploads, and secure shareable download links.',
+    homepage: 'https://easyshare-jet.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/EasyShare',
+    languages: { JavaScript: 94, CSS: 6 },
+  },
+  {
+    repoName: 'learning-docker-aws-nginx',
+    title: 'Docker, AWS EC2 & Nginx Deployment',
+    description: 'Practical infrastructure experiments containerizing Node.js applications with Docker, deploying to AWS EC2 instances, and configuring Nginx reverse proxy routing with SSL.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/learning-docker-aws-nginx',
+    languages: { Shell: 60, Dockerfile: 40 },
+  },
+  {
+    repoName: 'ClimateVault',
+    title: 'ClimateVault – Analytics Dashboard',
+    description: 'Environmental metrics and climate data analytics portal built with TypeScript and Python — analyzing weather variations, carbon trends, and metric visualizations.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/ClimateVault',
+    languages: { TypeScript: 60, Python: 36, JavaScript: 4 },
+  },
+  {
+    repoName: 'dayflow',
+    title: 'Dayflow – Task Management App',
+    description: 'Daily productivity workflow application with interactive drag-and-drop boards, priority tagging, progress tracking, and persistent state management.',
+    homepage: 'https://dayflow-blue.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/dayflow',
+    languages: { JavaScript: 94, CSS: 6 },
+  },
+  {
+    repoName: 'Online-Clothing-Store',
+    title: 'Online Fashion E-Commerce',
+    description: 'Responsive fashion shopping application with product catalog browsing, size/category filters, shopping cart, wishlist, and seamless mobile-first checkout flow.',
+    homepage: 'https://mbfashion.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/Online-Clothing-Store',
+    languages: { JavaScript: 92, CSS: 6, HTML: 2 },
+  },
+  {
+    repoName: 'employee-crud-mern',
+    title: 'Employee Record CRUD (MERN)',
+    description: 'Full-stack employee records management application with RESTful endpoints, MongoDB schema validation, pagination, and React state management.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/employee-crud-mern',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+]
+
+// Fallback data for additional repositories so View All works instantly offline / rate-limited
+export const DEFAULT_OTHER_PROJECTS = [
+  {
+    repoName: 'VishwakarmaTemple-Website',
+    description: 'Full-stack community portal with event calendars, donation tracking, photo galleries, and member administration.',
+    homepage: 'https://vishwakarma-temple-website.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/VishwakarmaTemple-Website',
+    languages: { JavaScript: 88, CSS: 12 },
+  },
+  {
+    repoName: 'Mock-test-module',
+    description: 'Online examination platform with timed quizzes, score calculations, instant feedback, and answer review analytics.',
+    homepage: 'https://mock-test-module.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/Mock-test-module',
+    languages: { JavaScript: 92, CSS: 8 },
+  },
+  {
+    repoName: 'hirenext',
+    description: 'Job application and applicant tracking web portal featuring recruitment dashboards and candidate status pipelines.',
+    homepage: 'https://hirenext-pi.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/hirenext',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+  {
+    repoName: 'cafe',
+    description: 'Cafe ordering application with live menu browsing, interactive cart, order dispatch, and status updates.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/cafe',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'Aventisia-assessment',
+    description: 'Interactive analytics dashboard built with dynamic charts, filterable datasets, and responsive data views.',
+    homepage: 'https://aventisia-assessment.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/Aventisia-assessment',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'Employee-Management-React',
+    description: 'Interactive employee directory with CRUD operations, search filters, department categorisation, and modal forms.',
+    homepage: 'https://employee-management-react-teal.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/Employee-Management-React',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'E-Commerce-Js',
+    description: 'Vanilla JavaScript e-commerce shopping experience with catalog filtering, cart persistence, and responsive UI.',
+    homepage: 'https://e-commerce-js-lime.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/E-Commerce-Js',
+    languages: { JavaScript: 80, HTML: 12, CSS: 8 },
+  },
+  {
+    repoName: 'cv-mohan',
+    description: 'Interactive digital resume portal showcasing technical experience, skills matrix, and professional milestones.',
+    homepage: 'https://cv-mohan.vercel.app',
+    html_url: 'https://github.com/Mohan-Badiger/cv-mohan',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+  {
+    repoName: 'WorkForce-Pro',
+    description: 'Workforce and staff workflow coordination portal for organizational resources, shifts, and team metrics.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/WorkForce-Pro',
+    languages: { JavaScript: 95, CSS: 5 },
+  },
+  {
+    repoName: 'Restaurant-project',
+    description: 'Full-service restaurant management web application with digital menus, table reservation booking, and order processing.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/Restaurant-project',
+    languages: { JavaScript: 93, CSS: 7 },
+  },
+  {
+    repoName: 'stock-tracker-app',
+    description: 'Financial equity tracking dashboard with live price lookups, portfolio valuation, and watchlist monitoring.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/stock-tracker-app',
+    languages: { TypeScript: 92, CSS: 8 },
+  },
+  {
+    repoName: 'AttendenceTrackSystem',
+    description: 'Automated student and staff attendance monitoring system with attendance logging, monthly records, and exportable reports.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/AttendenceTrackSystem',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+  {
+    repoName: 'donation-receipt',
+    description: 'Donation invoice generator web utility with print layout rendering and PDF receipt generation.',
+    homepage: null,
+    html_url: 'https://github.com/Mohan-Badiger/donation-receipt',
+    languages: { JavaScript: 90, CSS: 10 },
+  },
+]
+
+export const FEATURED_NAMES = FEATURED_PROJECTS.map((p) => p.repoName)
+

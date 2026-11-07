@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-function ServiceCard({ service, index }) {
+function SkillCard({ competency, index }) {
   const [rotateX, setRotateX] = useState(0)
   const [rotateY, setRotateY] = useState(0)
   const [spotlightPos, setSpotlightPos] = useState({ x: 0, y: 0 })
@@ -42,7 +42,7 @@ function ServiceCard({ service, index }) {
         transformStyle: 'preserve-3d',
         transition: isHovered ? 'none' : 'transform 0.5s ease',
       }}
-      className="p-6 sm:p-8 rounded-xl relative overflow-hidden select-none preserve-3d group cursor-pointer card-shadow-hover shadow-sm hover:shadow-md"
+      className="p-6 sm:p-7 rounded-xl relative overflow-hidden select-none preserve-3d group card-shadow-hover shadow-sm hover:shadow-md flex flex-col justify-between"
     >
       {/* Dynamic Cursor Spotlight Overlay */}
       {isHovered && (
@@ -54,125 +54,126 @@ function ServiceCard({ service, index }) {
         />
       )}
 
-      {/* Card Header: Icon */}
-      <div style={{ transform: 'translateZ(30px)' }} className="mb-5">
-        <img
-          src={service.icon}
-          alt={`${service.name} icon`}
-          width={32}
-          height={32}
-          decoding="async"
-          className="w-8 h-8 object-contain"
-        />
+      <div>
+        {/* Card Header: Icon */}
+        <div style={{ transform: 'translateZ(30px)' }} className="mb-5 flex items-center justify-between">
+          <img
+            src={competency.icon}
+            alt={`${competency.name} icon`}
+            width={32}
+            height={32}
+            decoding="async"
+            className="w-8 h-8 object-contain"
+          />
+          <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-gray-500">
+            {competency.badge}
+          </span>
+        </div>
+
+        <h4
+          style={{ transform: 'translateZ(25px)' }}
+          className="text-base font-bold font-Inter text-slate-900 dark:text-white mb-2"
+        >
+          {competency.name}
+        </h4>
+
+        <p
+          style={{ transform: 'translateZ(10px)' }}
+          className="text-xs sm:text-sm text-slate-600 dark:text-gray-400 font-Inter font-light leading-relaxed mb-5"
+        >
+          {competency.description}
+        </p>
       </div>
 
-      <h3
-        style={{ transform: 'translateZ(25px)' }}
-        className="text-base font-bold font-Inter text-slate-900 dark:text-white mb-2"
-      >
-        {service.name}
-      </h3>
-
-      <p
-        style={{ transform: 'translateZ(10px)' }}
-        className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 font-Inter font-light leading-relaxed mb-4"
-      >
-        {service.description}
-      </p>
-
-      {service.tags && (
-        <div
-          style={{ transform: 'translateZ(15px)' }}
-          className="flex flex-wrap gap-1.5 mb-6"
-        >
-          {service.tags.map((tag) => (
+      <div style={{ transform: 'translateZ(15px)' }}>
+        <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100 dark:border-white/[0.04]">
+          {competency.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[9px] font-mono px-2 py-0.5 rounded border border-slate-200/60 dark:border-white/[0.04] bg-slate-50 dark:bg-white/[0.02] text-slate-600 dark:text-gray-400"
+              className="text-[10px] font-mono px-2 py-0.5 rounded border border-slate-200/60 dark:border-white/[0.04] bg-slate-50 dark:bg-white/[0.02] text-slate-700 dark:text-gray-300"
             >
               {tag}
             </span>
           ))}
         </div>
-      )}
-
-      <a
-        href={service.link || '#contact'}
-        style={{ transform: 'translateZ(20px)' }}
-        className="inline-flex items-center gap-2 text-[11px] font-medium font-Inter text-antigravityBlue group-hover:text-blue-600 dark:group-hover:text-white transition-colors"
-      >
-        <span>Inquire</span>
-        <svg
-          className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-        </svg>
-      </a>
+      </div>
     </motion.div>
   )
 }
 
-ServiceCard.propTypes = {
-  service: PropTypes.shape({
+SkillCard.propTypes = {
+  competency: PropTypes.shape({
     name: PropTypes.string.isRequired,
+    badge: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    tags: PropTypes.arrayOf(PropTypes.string),
-    link: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   index: PropTypes.number.isRequired,
 }
 
 export default function Services() {
-  const services = [
+  const competencies = [
     {
-      name: 'Frontend Development',
+      name: 'Frontend Engineering',
+      badge: 'Client Layer',
       icon: '/assets/react.png',
-      description: 'Building modern, high-performance, and responsive user interfaces with styled layouts and client-side logic.',
-      tags: ['React', 'Next.js', 'Tailwind CSS'],
-      link: '#contact',
+      description: 'Building modern, high-performance web applications with modular components, responsive design, and smooth user experiences.',
+      tags: ['React.js', 'Next.js', 'JavaScript (ES6+)', 'Tailwind CSS', 'HTML5/CSS3'],
     },
     {
-      name: 'Backend Development',
+      name: 'Backend & REST APIs',
+      badge: 'Server Layer',
       icon: '/assets/nodejs.png',
-      description: 'Designing scalable server architectures, secure endpoints, and modeling robust database architectures.',
-      tags: ['Node.js', 'Express.js', 'MongoDB'],
-      link: '#contact',
+      description: 'Designing scalable RESTful APIs, securing endpoints with JWT & OAuth 2.0, implementing webhooks, and managing backend logic.',
+      tags: ['Node.js', 'Express.js', 'REST APIs', 'JWT / OAuth', 'PHP'],
     },
     {
-      name: 'Cloud Services & Deployment',
+      name: 'Databases & Data Modeling',
+      badge: 'Data Layer',
+      icon: '/assets/mongodb.png',
+      description: 'Architecting relational and NoSQL databases with optimized schemas, aggregation pipelines, and efficient query design.',
+      tags: ['MongoDB', 'MySQL', 'PostgreSQL', 'Mongoose', 'CRUD Operations'],
+    },
+    {
+      name: 'Cloud, DevOps & Tools',
+      badge: 'Infrastructure',
       icon: '/assets/EC2.png',
-      description: 'Containerizing environments, establishing automated CI/CD pipelines, and deploying to cloud infrastructure.',
-      tags: ['Docker', 'CI/CD', 'AWS'],
-      link: '#contact',
-    },
-    {
-      name: 'Version Control & Workflow',
-      icon: '/assets/git.png',
-      description: 'Managing structured code repository history, branching strategies, and collaboration workflows.',
-      tags: ['Git', 'GitHub'],
-      link: '#contact',
+      description: 'Containerizing environments with Docker, managing AWS cloud deployments, automating workflows, and version controlling with Git.',
+      tags: ['Docker', 'AWS EC2', 'Git / GitHub', 'Postman', 'Vercel / Cloudinary'],
     },
   ]
 
+  const csFundamentals = [
+    'Data Structures & Algorithms',
+    'Object-Oriented Programming (OOP)',
+    'Database Management Systems (DBMS)',
+    'Operating Systems',
+    'Computer Networks',
+    'System Design & API Security',
+  ]
+
   return (
-    <motion.div
+    <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true, margin: '-100px' }}
-      id="services"
+      id="skills"
+      aria-label="Technical Skills and Competencies"
       className="w-full px-6 sm:px-12 lg:px-[12%] py-24 scroll-mt-24 relative overflow-hidden"
     >
-      {/* Background blur blobs */}
+      {/* Background aurora ambient lights */}
       <div className="absolute top-1/2 left-0 w-96 h-96 -z-10 translate-x-[-30%] translate-y-[-50%] aurora-blue pointer-events-none rounded-full blur-[110px] opacity-35" />
 
       {/* Header section */}
       <div className="flex flex-col items-start text-left mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-slate-200 dark:border-white/[0.04] bg-slate-100/50 dark:bg-white/[0.02] mb-3">
+          <span className="w-2 h-2 rounded-full bg-antigravityBlue" />
+          <span className="text-[10px] uppercase font-bold tracking-widest font-Inter text-slate-600 dark:text-gray-400">
+            Technical Stack
+          </span>
+        </div>
         <motion.h3
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -180,29 +181,61 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-none"
         >
-          Services
+          Technical Competencies
         </motion.h3>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-slate-600 dark:text-gray-400 max-w-lg mt-4 font-Inter text-sm leading-relaxed"
+          className="text-slate-600 dark:text-gray-400 max-w-xl mt-4 font-Inter text-sm leading-relaxed"
         >
-          I specialize in end-to-end full-stack web development, building high-performance applications, robust APIs, and modern responsive interfaces.
+          Core software engineering capabilities spanning full-stack development, distributed API integration, database engineering, and computer science fundamentals.
         </motion.p>
       </div>
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-10">
-        {services.map((service, index) => (
-          <ServiceCard
-            key={service.name}
-            service={service}
+        {competencies.map((comp, index) => (
+          <SkillCard
+            key={comp.name}
+            competency={comp}
             index={index}
           />
         ))}
       </div>
-    </motion.div>
+
+      {/* CS Fundamentals Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="mt-10 p-6 sm:p-7 rounded-xl border border-slate-200/90 dark:border-white/[0.06] bg-white/70 dark:bg-[#0d0e12]/60 backdrop-blur-md"
+      >
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h4 className="text-base font-bold font-Inter text-slate-900 dark:text-white flex items-center gap-2">
+              <span className="text-antigravityBlue">⚡</span>
+              Computer Science Fundamentals
+            </h4>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 font-Inter mt-1">
+              Strong core foundation supporting reliable software design, algorithmic optimization, and system design.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {csFundamentals.map((item) => (
+              <span
+                key={item}
+                className="text-xs font-Inter px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-white/[0.03] text-slate-700 dark:text-gray-200 font-medium"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </motion.section>
   )
 }
