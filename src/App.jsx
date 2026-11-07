@@ -3,6 +3,7 @@ import Lenis from 'lenis'
 import Navbar from './components/Navbar'
 import Header from './components/Header'
 import About from './components/About'
+import Experience from './components/Experience'
 import Services from './components/Services'
 import Work from './components/Work'
 import ContactSection from './components/ContactSection'
@@ -81,6 +82,7 @@ export default function App() {
 
         {/* Core sections */}
         <About />
+        <Experience />
         <Services />
         <Work />
         <ContactSection />
