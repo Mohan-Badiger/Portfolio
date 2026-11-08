@@ -46,28 +46,32 @@ export default function About() {
     <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true, margin: '-40px' }}
       id="about"
       aria-label="About Mohan Badiger"
-      className="w-full px-6 sm:px-12 lg:px-[12%] py-24 scroll-mt-24 relative overflow-hidden"
+      className="w-full px-4 xs:px-6 sm:px-12 lg:px-[12%] py-16 sm:py-24 scroll-mt-20 sm:scroll-mt-24 relative overflow-hidden"
     >
       {/* Background visual light blob */}
-      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] -z-10 translate-x-[20%] translate-y-[20%] aurora-pink pointer-events-none rounded-full blur-[110px]" />
-
-      <h2 className="sr-only">About Mohan Badiger – Full Stack MERN Developer</h2>
+      <div className="absolute bottom-0 right-0 w-72 sm:w-[450px] h-72 sm:h-[450px] -z-10 translate-x-[20%] translate-y-[20%] aurora-pink pointer-events-none rounded-full blur-[80px] sm:blur-[110px]" />
 
       {/* Header section */}
-      <div className="flex flex-col items-start mb-16 text-left">
-        <motion.h3
+      <div className="flex flex-col items-start mb-12 sm:mb-16 text-left">
+        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/[0.04] bg-slate-100/50 dark:bg-white/[0.02] mb-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-antigravityBlue" />
+          <span className="text-[10px] uppercase font-bold tracking-widest font-mono text-slate-600 dark:text-gray-400">
+            About Me
+          </span>
+        </div>
+        <motion.h2
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-none"
+          className="text-3xl xs:text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-tight"
         >
-          Profile
-        </motion.h3>
+          Engineering Profile
+        </motion.h2>
       </div>
 
       <div className="flex w-full flex-col">
