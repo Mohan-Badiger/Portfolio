@@ -51,34 +51,38 @@ export default function ContactSection() {
     <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true, margin: '-40px' }}
       id="contact"
       aria-label="Contact Mohan Badiger"
-      className="w-full px-6 sm:px-12 lg:px-[12%] py-24 scroll-mt-24 relative overflow-hidden"
+      className="w-full px-4 xs:px-6 sm:px-12 lg:px-[12%] py-16 sm:py-24 scroll-mt-20 sm:scroll-mt-24 relative overflow-hidden"
     >
       {/* Background radial lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 -z-10 aurora-purple pointer-events-none rounded-full blur-[110px] opacity-25 animate-float-slow" />
-
-      <h2 className="sr-only">Contact Mohan Badiger – Full Stack MERN Developer</h2>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 -z-10 aurora-purple pointer-events-none rounded-full blur-[80px] sm:blur-[110px] opacity-25 animate-float-slow" />
 
       {/* Header section */}
-      <div className="flex flex-col items-start text-left mb-12">
-        <motion.h3
+      <div className="flex flex-col items-start text-left mb-10 sm:mb-12">
+        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/[0.04] bg-slate-100/50 dark:bg-white/[0.02] mb-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-antigravityBlue" />
+          <span className="text-[10px] uppercase font-bold tracking-widest font-mono text-slate-600 dark:text-gray-400">
+            Get in Touch
+          </span>
+        </div>
+        <motion.h2
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-none"
+          className="text-3xl xs:text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-tight"
         >
-          Contact
-        </motion.h3>
+          Contact Me
+        </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-slate-500 dark:text-gray-400 max-w-lg mt-4 font-Inter text-sm leading-relaxed"
+          className="text-slate-500 dark:text-gray-400 max-w-lg mt-2 sm:mt-3 font-Inter text-xs sm:text-sm leading-relaxed"
         >
           I am actively exploring SDE / Software Developer opportunities and open to immediate joining. Let's connect!
         </motion.p>
@@ -191,7 +195,7 @@ export default function ContactSection() {
                 name="name"
                 required
                 placeholder='"Your name"'
-                className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)]"
+                className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-[16px] sm:text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)]"
               />
             </div>
           </div>
@@ -211,7 +215,7 @@ export default function ContactSection() {
                 name="email"
                 required
                 placeholder='"your.email@example.com"'
-                className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)]"
+                className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-[16px] sm:text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)]"
               />
             </div>
           </div>
@@ -231,7 +235,7 @@ export default function ContactSection() {
                 rows="4"
                 required
                 placeholder='`Hello Mohan, I would like to discuss...`'
-                className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)] resize-none"
+                className="w-full px-4 py-2.5 outline-none border border-white/10 rounded bg-[#111217]/50 text-white font-mono text-[16px] sm:text-xs transition-all duration-300 focus:border-antigravityBlue/50 focus:bg-[#111217]/80 focus:shadow-[0_0_15px_rgba(66,133,244,0.15)] resize-none"
               />
             </div>
           </div>

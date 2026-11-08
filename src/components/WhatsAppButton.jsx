@@ -5,8 +5,9 @@ export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
 
-  // Trigger tooltip once shortly after page loads to draw subtle attention
+  // Trigger tooltip once shortly after page loads on desktop only
   useEffect(() => {
+    if (window.innerWidth < 768) return // Don't auto-pop on mobile
     const timer = setTimeout(() => {
       setShowTooltip(true)
     }, 4000)
@@ -27,7 +28,7 @@ export default function WhatsAppButton() {
   const whatsappUrl = `https://wa.me/916362893798?text=${encodeURIComponent(message)}`
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-3 select-none">
       {/* Tooltip text */}
       <AnimatePresence>
         {(isHovered || showTooltip) && (
