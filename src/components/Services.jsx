@@ -9,6 +9,7 @@ function SkillCard({ competency, index }) {
   const [isHovered, setIsHovered] = useState(false)
 
   const handleMouseMove = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return
     const card = e.currentTarget
     const rect = card.getBoundingClientRect()
     const x = e.clientX - rect.left
@@ -157,45 +158,45 @@ export default function Services() {
     <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true, margin: '-40px' }}
       id="skills"
       aria-label="Technical Skills and Competencies"
-      className="w-full px-6 sm:px-12 lg:px-[12%] py-24 scroll-mt-24 relative overflow-hidden"
+      className="w-full px-4 xs:px-6 sm:px-12 lg:px-[12%] py-16 sm:py-24 scroll-mt-20 sm:scroll-mt-24 relative overflow-hidden"
     >
       {/* Background aurora ambient lights */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 -z-10 translate-x-[-30%] translate-y-[-50%] aurora-blue pointer-events-none rounded-full blur-[110px] opacity-35" />
+      <div className="absolute top-1/2 left-0 w-72 sm:w-96 h-72 sm:h-96 -z-10 translate-x-[-30%] translate-y-[-50%] aurora-blue pointer-events-none rounded-full blur-[80px] sm:blur-[110px] opacity-35" />
 
       {/* Header section */}
-      <div className="flex flex-col items-start text-left mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-slate-200 dark:border-white/[0.04] bg-slate-100/50 dark:bg-white/[0.02] mb-3">
-          <span className="w-2 h-2 rounded-full bg-antigravityBlue" />
-          <span className="text-[10px] uppercase font-bold tracking-widest font-Inter text-slate-600 dark:text-gray-400">
+      <div className="flex flex-col items-start text-left mb-12 sm:mb-16">
+        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/[0.04] bg-slate-100/50 dark:bg-white/[0.02] mb-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-antigravityBlue" />
+          <span className="text-[10px] uppercase font-bold tracking-widest font-mono text-slate-600 dark:text-gray-400">
             Technical Stack
           </span>
         </div>
-        <motion.h3
+        <motion.h2
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-none"
+          className="text-3xl xs:text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-tight"
         >
           Technical Competencies
-        </motion.h3>
+        </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-slate-600 dark:text-gray-400 max-w-xl mt-4 font-Inter text-sm leading-relaxed"
+          className="text-slate-600 dark:text-gray-400 max-w-xl mt-3 sm:mt-4 font-Inter text-xs sm:text-sm leading-relaxed"
         >
           Core software engineering capabilities spanning full-stack development, distributed API integration, database engineering, and computer science fundamentals.
         </motion.p>
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 my-8 sm:my-10">
         {competencies.map((comp, index) => (
           <SkillCard
             key={comp.name}
@@ -210,25 +211,25 @@ export default function Services() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        viewport={{ once: true }}
-        className="mt-10 p-6 sm:p-7 rounded-xl border border-slate-200/90 dark:border-white/[0.06] bg-white/70 dark:bg-[#0d0e12]/60 backdrop-blur-md"
+        viewport={{ once: true, margin: '-20px' }}
+        className="mt-6 sm:mt-10 p-5 sm:p-7 rounded-xl border border-slate-200/90 dark:border-white/[0.06] bg-white/70 dark:bg-[#0d0e12]/60 backdrop-blur-md"
       >
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
-            <h4 className="text-base font-bold font-Inter text-slate-900 dark:text-white flex items-center gap-2">
+            <h3 className="text-sm sm:text-base font-bold font-Inter text-slate-900 dark:text-white flex items-center gap-2">
               <span className="text-antigravityBlue">⚡</span>
               Computer Science Fundamentals
-            </h4>
+            </h3>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 font-Inter mt-1">
               Strong core foundation supporting reliable software design, algorithmic optimization, and system design.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {csFundamentals.map((item) => (
               <span
                 key={item}
-                className="text-xs font-Inter px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-white/[0.03] text-slate-700 dark:text-gray-200 font-medium"
+                className="text-xs font-Inter px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg border border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-white/[0.03] text-slate-700 dark:text-gray-200 font-medium"
               >
                 {item}
               </span>

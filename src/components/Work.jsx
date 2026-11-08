@@ -335,21 +335,25 @@ export default function Work() {
     <section
       id="work"
       aria-label="Projects by Mohan Badiger"
-      className="w-full px-4 sm:px-12 lg:px-[12%] py-20 sm:py-28 scroll-mt-24 relative overflow-hidden"
+      className="w-full px-4 xs:px-6 sm:px-12 lg:px-[12%] py-16 sm:py-24 scroll-mt-20 sm:scroll-mt-24 relative overflow-hidden"
     >
       {/* Background aurora effects */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] -z-10 translate-x-[30%] aurora-blue pointer-events-none rounded-full blur-[140px] opacity-25" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] -z-10 -translate-x-[30%] aurora-purple pointer-events-none rounded-full blur-[120px] opacity-20" />
-
-      <h2 className="sr-only">Projects by Mohan Badiger – Full Stack MERN Developer</h2>
+      <div className="absolute top-1/4 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] -z-10 translate-x-[30%] aurora-blue pointer-events-none rounded-full blur-[80px] sm:blur-[140px] opacity-25" />
+      <div className="absolute bottom-0 left-0 w-72 sm:w-[400px] h-72 sm:h-[400px] -z-10 -translate-x-[30%] aurora-purple pointer-events-none rounded-full blur-[80px] sm:blur-[120px] opacity-20" />
 
       {/* Section Header */}
-      <div className="flex flex-col items-start text-left mb-12">
-        <h3 className="text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-none">
-          Projects
-        </h3>
-        <p className="text-slate-500 dark:text-gray-400 mt-3 text-sm font-Inter">
-          A selection of production systems, full-stack web applications, and developer utilities.
+      <div className="flex flex-col items-start text-left mb-10 sm:mb-12">
+        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/[0.04] bg-slate-100/50 dark:bg-white/[0.02] mb-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-antigravityBlue" />
+          <span className="text-[10px] uppercase font-bold tracking-widest font-mono text-slate-600 dark:text-gray-400">
+            Portfolio Showcase
+          </span>
+        </div>
+        <h2 className="text-3xl xs:text-4xl sm:text-5xl font-bold font-Inter text-slate-900 dark:text-white tracking-tight leading-tight">
+          Featured Projects
+        </h2>
+        <p className="text-slate-500 dark:text-gray-400 mt-2 sm:mt-3 text-xs sm:text-sm font-Inter max-w-xl">
+          A selection of production systems, full-stack web applications, SaaS tools, and developer utilities.
         </p>
       </div>
 
