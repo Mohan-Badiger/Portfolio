@@ -3,75 +3,75 @@
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" />
+    <!-- Favicon & PWA Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
 
-    <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Dual Theme Color (Light/Dark Status Bar on Mobile) -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#08080c" />
 
-    <!-- Prevent Theme Flashing -->
+    <!-- Mobile-First Responsive Viewport with Safe Areas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Prevent Dark/Light Theme Flashing -->
     <script>
-      if (localStorage.theme === 'light') {
-        document.documentElement.classList.remove('dark');
-      } else {
+      try {
+        if (localStorage.theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (_) {
         document.documentElement.classList.add('dark');
       }
     </script>
 
-    <!-- Primary SEO Title -->
-    <title>Mohan Badiger | Full Stack Developer</title>
-
-    <!-- SEO Meta Description -->
+    <!-- Primary SEO Title & Meta -->
+    <title>Mohan Badiger | Software Development Engineer | Full Stack MERN</title>
     <meta
       name="description"
-      content="Mohan Badiger is a Full Stack MERN Developer specializing in React, Node.js, MongoDB, Docker, AWS, and modern web technologies. View projects, skills, and contact details."
+      content="Mohan Badiger is a Software Development Engineer (Full Stack / MERN) specializing in React.js, Next.js, Node.js, Express, MongoDB, Docker, and AWS. View production systems, engineering experience, and contact details."
     />
-
-    <!-- Keywords (still useful for personal branding) -->
     <meta
       name="keywords"
-      content="Mohan Badiger, Mohan Badiger developer, Full Stack Developer, MERN Developer, React Developer Portfolio, AWS Docker Developer"
+      content="Mohan Badiger, Mohan Badiger developer, Software Development Engineer, SDE Intern, Full Stack Developer, MERN Developer, React Developer, Node.js Developer, Bengaluru SDE"
     />
-
-    <!-- Author -->
     <meta name="author" content="Mohan Badiger" />
-
-    <!-- Robots -->
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://mohanbadiger.site/" />
 
-    <!-- Open Graph (LinkedIn, Facebook) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Mohan Badiger | Full Stack Developer" />
+    <!-- Open Graph (LinkedIn, Facebook, WhatsApp Preview) -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Mohan Badiger Portfolio" />
+    <meta property="og:title" content="Mohan Badiger | Software Development Engineer" />
     <meta
       property="og:description"
-      content="Portfolio of Mohan Badiger, Full Stack MERN Developer. Explore projects, skills, and experience."
+      content="Full Stack Software Development Engineer (React, Next.js, Node.js, Express, MongoDB, Docker, AWS). Explore projects, experience, and contact."
     />
     <meta property="og:url" content="https://mohanbadiger.site/" />
-    <meta
-      property="og:image"
-      content="https://mohanbadiger.site/profile_img.jpg"
-    />
+    <meta property="og:image" content="https://mohanbadiger.site/profile_img.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mohan Badiger - Software Development Engineer Portfolio" />
 
-    <!-- Twitter Card -->
+    <!-- Twitter Card (Large Preview) -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Mohan Badiger | Full Stack Developer" />
+    <meta name="twitter:title" content="Mohan Badiger | Software Development Engineer" />
     <meta
       name="twitter:description"
-      content="Portfolio of Mohan Badiger, Full Stack MERN Developer using React, Node, MongoDB, AWS."
+      content="Full Stack SDE Portfolio: React, Next.js, Node.js, MongoDB, Docker, AWS. View work & get in touch."
     />
-    <meta
-      name="twitter:image"
-      content="https://mohanbadiger.site/profile_img.jpg"
-    />
+    <meta name="twitter:image" content="https://mohanbadiger.site/profile_img.jpg" />
 
-    <!-- Fonts -->
+    <!-- Preconnect & High-Performance Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -79,6 +79,7 @@
       rel="stylesheet"
     />
 
+    <!-- Structured Data: Person Schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -87,29 +88,58 @@
         "name": "Mohan Badiger",
         "url": "https://mohanbadiger.site",
         "image": "https://mohanbadiger.site/profile_img.jpg",
+        "jobTitle": "Software Development Engineer",
+        "email": "mailto:mohanbadiger250@gmail.com",
+        "telephone": "+916362893798",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bengaluru",
+          "addressRegion": "Karnataka",
+          "addressCountry": "IN"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "BLDEA's BHS Arts and TGP Science College, Jamakhandi"
+        },
+        "knowsAbout": [
+          "Full Stack Development",
+          "React.js",
+          "Next.js",
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Docker",
+          "AWS EC2",
+          "REST APIs",
+          "Data Structures & Algorithms"
+        ],
         "sameAs": [
           "https://www.linkedin.com/in/mohan-badiger",
           "https://github.com/Mohan-Badiger",
-          "https://www.youtube.com/@MohanBadiger250"
+          "https://www.youtube.com/@MohanBadiger250",
+          "https://www.instagram.com/mohan_badiger250"
         ]
       }
     </script>
 
+    <!-- Structured Data: WebSite Schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "@id": "https://mohanbadiger.site/#website",
         "url": "https://mohanbadiger.site",
-        "name": "Mohan Badiger",
-        "alternateName": "Mohan Badiger Portfolio"
+        "name": "Mohan Badiger | Software Development Engineer",
+        "alternateName": "Mohan Badiger Portfolio",
+        "description": "Portfolio of Mohan Badiger - Full Stack SDE with React, Node.js, MongoDB, Docker, and AWS.",
+        "author": {
+          "@id": "https://mohanbadiger.site/#person"
+        }
       }
     </script>
   </head>
 
-  <body
-    class="overflow-x-hidden font-Inter leading-8 dark:bg-darkTheme dark:text-white"
-  >
+  <body class="overflow-x-hidden font-sans leading-relaxed dark:bg-[#08080c] dark:text-[#f8fafc] bg-slate-50 text-slate-800 antialiased selection:bg-purple-600/40 selection:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
