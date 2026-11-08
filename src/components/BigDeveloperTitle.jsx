@@ -2,19 +2,19 @@ import { motion } from 'framer-motion'
 
 export default function BigDeveloperTitle() {
   return (
-    <div className="w-full overflow-hidden select-none py-12 relative flex justify-center items-center pointer-events-none">
+    <div className="w-full overflow-hidden select-none py-8 sm:py-12 relative flex justify-center items-center pointer-events-none" aria-hidden="true">
       {/* Aurora glow underneath */}
-      <div className="absolute w-[600px] h-32 -z-10 bg-gradient-to-r from-antigravityBlue/5 via-antigravityPurple/5 to-antigravityPink/5 pointer-events-none rounded-full blur-[60px]" />
+      <div className="absolute w-72 sm:w-[600px] h-24 sm:h-32 -z-10 bg-gradient-to-r from-antigravityBlue/5 via-antigravityPurple/5 to-antigravityPink/5 pointer-events-none rounded-full blur-[40px] sm:blur-[60px]" />
 
-      <motion.h2
-        initial={{ opacity: 0, y: 40 }}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="text-[13vw] sm:text-[15vw] md:text-[17vw] lg:text-[21vw] big-developer-text font-semibold tracking-tight leading-none select-none text-center pointer-events-auto cursor-default"
+        viewport={{ once: true, margin: '-20px' }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="text-[12vw] sm:text-[15vw] md:text-[17vw] lg:text-[20vw] big-developer-text font-semibold tracking-tight leading-none select-none text-center pointer-events-auto cursor-default"
       >
         Developer
-      </motion.h2>
+      </motion.div>
     </div>
   )
 }
