@@ -41,21 +41,18 @@ export default function Header() {
   }, [logIndex])
 
   return (
-    <div className="w-full min-h-screen relative flex items-center justify-center pt-24 pb-16 px-6 sm:px-12 lg:px-[8%] bg-dot-grid overflow-hidden">
-      {/* Aurora glow light leaks */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] -z-10 aurora-blue pointer-events-none rounded-full blur-[130px] opacity-40 animate-float-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] -z-10 aurora-purple pointer-events-none rounded-full blur-[120px] opacity-30 animate-float-normal" />
-
-      {/* SEO H1 (Invisible) */}
-      <h1 className="sr-only">Mohan Badiger – Full Stack MERN Developer</h1>
+    <div className="w-full min-h-[92vh] sm:min-h-screen relative flex items-center justify-center pt-20 sm:pt-24 pb-14 sm:pb-16 px-4 xs:px-6 sm:px-10 lg:px-[8%] bg-dot-grid overflow-hidden">
+      {/* Aurora glow light leaks - Scaled down for mobile GPU performance */}
+      <div className="absolute top-1/4 left-1/4 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] -z-10 aurora-blue pointer-events-none rounded-full blur-[80px] sm:blur-[130px] opacity-40 animate-float-slow" />
+      <div className="absolute bottom-1/4 right-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] -z-10 aurora-purple pointer-events-none rounded-full blur-[70px] sm:blur-[120px] opacity-30 animate-float-normal" />
 
       <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
         {/* Left Side: Expanded 7-column layout for breathing room */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-7 flex flex-col gap-6 text-left"
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-7 flex flex-col gap-5 sm:gap-6 text-left"
         >
           {/* Subtle & Premium Live Status Pill */}
           <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/[0.04] dark:bg-emerald-400/[0.05] backdrop-blur-sm w-fit select-none">
@@ -68,28 +65,30 @@ export default function Header() {
             </span>
           </div>
 
-          <h2 className="text-6xl sm:text-7xl lg:text-8xl font-Inter tracking-tight leading-[0.9]">
+          {/* Semantic SEO Primary H1 */}
+          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-Inter tracking-tight leading-[0.95] break-words">
             <span className="text-slate-900 dark:text-white font-medium">Mohan</span> <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-antigravityBlue via-antigravityPurple to-antigravityPink font-semibold tracking-wide md:tracking-wider">
               Badiger
             </span>
+          </h1>
+
+          {/* Semantic Subtitle H2 */}
+          <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-[25px] font-normal font-Inter tracking-tight text-slate-600 dark:text-gray-300 leading-snug whitespace-normal sm:whitespace-nowrap">
+            Software Development Engineer <span className="text-antigravityBlue font-semibold">(Full Stack / MERN)</span>
           </h2>
 
-          {/* Single-line Subtitle */}
-          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-[25px] font-normal font-Inter tracking-tight text-slate-600 dark:text-gray-300 leading-tight whitespace-normal sm:whitespace-nowrap">
-            Software Development Engineer <span className="text-antigravityBlue font-semibold">(Full Stack / MERN)</span>
-          </h3>
-
-          <p className="max-w-xl text-sm sm:text-base text-slate-600 dark:text-gray-400 font-Inter font-light leading-relaxed">
+          <p className="max-w-xl text-xs xs:text-sm sm:text-base text-slate-600 dark:text-gray-400 font-Inter font-light leading-relaxed">
             Software Development Engineer with hands-on internship experience at <span className="text-slate-900 dark:text-white font-semibold">Bluestock Fintech</span> and <span className="text-slate-900 dark:text-white font-semibold">Infidata Technologies</span>. Engineering high-performance web systems using <span className="text-slate-900 dark:text-white font-semibold">React.js, Next.js, Node.js, Express, MongoDB, Docker</span>, and <span className="text-slate-900 dark:text-white font-semibold">AWS</span>, backed by strong CS fundamentals.
           </p>
 
+          {/* Action CTAs - Side-by-Side Premium Buttons */}
           <div className="flex flex-wrap items-center gap-4 mt-2">
             <motion.a
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               href="#work"
-              className="px-6 py-3 rounded bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-[#08080c] dark:hover:bg-slate-100 font-Inter text-xs font-semibold shadow-xl transition-all duration-200"
+              className="px-6 py-3 rounded-lg bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-[#08080c] dark:hover:bg-slate-100 font-Inter text-xs font-semibold shadow-xl transition-all duration-200 w-auto"
             >
               View Projects
             </motion.a>
@@ -99,9 +98,9 @@ export default function Header() {
               whileTap={{ scale: 0.98 }}
               href="/assets/Mohan_Resume_SDE.pdf"
               download
-              className="px-6 py-3 rounded border border-slate-200 dark:border-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.02] text-slate-800 dark:text-white font-Inter text-xs font-semibold transition-all duration-200 flex items-center gap-2"
+              className="px-6 py-3 rounded-lg border border-slate-200 dark:border-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.02] text-slate-800 dark:text-white font-Inter text-xs font-semibold transition-all duration-200 flex items-center gap-2 w-auto"
             >
-              <svg className="w-4 h-4 text-antigravityBlue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="w-4 h-4 text-antigravityBlue flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
               </svg>
               Download Resume
@@ -110,7 +109,7 @@ export default function Header() {
 
           {/* Social Links & Fast Recruiter Contacts */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-1">
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-2.5 sm:gap-3 items-center">
               {[
                 { url: 'https://github.com/Mohan-Badiger', icon: assets.github, darkIcon: assets.githubdark, name: 'GitHub' },
                 { url: 'https://www.linkedin.com/in/mohan-badiger', icon: assets.linkedin, darkIcon: assets.linkedindark, name: 'LinkedIn' },
@@ -122,7 +121,7 @@ export default function Header() {
                   href={soc.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg border border-slate-250 dark:border-white/[0.08] bg-slate-100/40 dark:bg-white/[0.02] flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/[0.06] hover:border-antigravityBlue/50 dark:hover:border-antigravityBlue/50 hover:shadow-lg hover:shadow-antigravityBlue/10 transition-all duration-300 group"
+                  className="w-11 h-11 rounded-lg border border-slate-250 dark:border-white/[0.08] bg-slate-100/40 dark:bg-white/[0.02] flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/[0.06] hover:border-antigravityBlue/50 dark:hover:border-antigravityBlue/50 hover:shadow-lg hover:shadow-antigravityBlue/10 transition-all duration-300 group"
                   aria-label={`Mohan Badiger ${soc.name}`}
                 >
                   <img
@@ -150,7 +149,7 @@ export default function Header() {
             <div className="flex items-center gap-3 text-xs font-Inter text-slate-600 dark:text-gray-300">
               <a
                 href="mailto:mohanbadiger250@gmail.com"
-                className="hover:text-antigravityBlue transition-colors flex items-center gap-1.5"
+                className="hover:text-antigravityBlue transition-colors flex items-center gap-1.5 py-1"
                 title="Send email"
               >
                 <span className="text-slate-400 dark:text-gray-500">✉</span>
@@ -160,12 +159,12 @@ export default function Header() {
           </div>
         </motion.div>
 
-        {/* Right Side: Refined, compact 5-column Agent Terminal */}
+        {/* Right Side: Refined, compact 5-column Agent Terminal (Hidden on small screens) */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 w-full animate-float-normal"
+          className="hidden lg:block lg:col-span-5 w-full animate-float-normal"
         >
           {/* Mock Console Outer Frame */}
           <div className="w-full terminal-card rounded-xl border border-white/[0.06] shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden font-mono text-xs select-none">
