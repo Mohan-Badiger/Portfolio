@@ -13,16 +13,18 @@ import BigDeveloperTitle from './components/BigDeveloperTitle'
 import WhatsAppButton from './components/WhatsAppButton'
 
 export default function App() {
-  // Initialize Lenis smooth scroll globally with proper lifecycle cleanup
+  // Initialize Lenis smooth scroll globally with mobile-optimized tuning
   useEffect(() => {
+    const isMobile = window.innerWidth < 768
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth inertia ease
+      duration: isMobile ? 0.8 : 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
+      touchMultiplier: 1.0,
+      syncTouch: false,
     })
 
     window.lenis = lenis
