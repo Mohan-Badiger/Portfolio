@@ -43,8 +43,7 @@ export default function WhatsAppButton() {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => setShowTooltip(false)}
-            className="hidden sm:flex flex-col items-start bg-white/95 dark:bg-[#0d0e12]/95 border border-slate-200 dark:border-white/[0.08] shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.4)] backdrop-blur-md px-4 py-2.5 rounded-lg select-none cursor-pointer text-left transition-colors duration-300"
-          >
+            className="hidden sm:flex flex-col items-start bg-white/95 dark:bg-[#0d0e12]/95 border border-slate-200 dark:border-white/[0.08] shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.4)] backdrop-blur-md px-4 py-2.5 rounded-lg select-none cursor-pointer text-left transition-colors duration-300">
             <div className="flex items-center gap-1.5 mb-0.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-[9px] font-mono text-emerald-500 font-bold tracking-wider uppercase">ONLINE</span>
