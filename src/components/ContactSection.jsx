@@ -82,8 +82,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-slate-500 dark:text-gray-400 max-w-lg mt-2 sm:mt-3 font-Inter text-xs sm:text-sm leading-relaxed"
-        >
+          className="text-slate-500 dark:text-gray-400 max-w-lg mt-2 sm:mt-3 font-Inter text-xs sm:text-sm leading-relaxed">
           I am actively exploring SDE / Software Developer opportunities and open to immediate joining. Let's connect!
         </motion.p>
       </div>
@@ -247,13 +246,12 @@ export default function ContactSection() {
             <span className="text-[10px] text-gray-500 font-mono select-none">STATUS:</span>
             <div
               aria-live="polite"
-              className={`text-[11px] font-mono truncate max-w-xs sm:max-w-md ${
-                isSuccess === true
+              className={`text-[11px] font-mono truncate max-w-xs sm:max-w-md ${isSuccess === true
                   ? 'text-emerald-400'
                   : isSuccess === false
-                  ? 'text-rose-400'
-                  : 'text-gray-400'
-              }`}
+                    ? 'text-rose-400'
+                    : 'text-gray-400'
+                }`}
             >
               {result || '>> Awaiting user dispatch...'}
             </div>
