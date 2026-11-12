@@ -10,8 +10,7 @@ export default function Experience() {
       viewport={{ once: true, margin: '-40px' }}
       id="experience"
       aria-label="Professional Experience of Mohan Badiger"
-      className="w-full px-4 xs:px-6 sm:px-12 lg:px-[12%] py-16 sm:py-24 scroll-mt-20 sm:scroll-mt-24 relative overflow-hidden"
-    >
+      className="w-full px-4 xs:px-6 sm:px-12 lg:px-[12%] py-16 sm:py-24 scroll-mt-20 sm:scroll-mt-24 relative overflow-hidden" >
       {/* Background aurora ambient light */}
       <div className="absolute top-1/3 left-0 w-72 sm:w-96 h-72 sm:h-96 -z-10 translate-x-[-30%] aurora-blue pointer-events-none rounded-full blur-[80px] sm:blur-[120px] opacity-25" />
       <div className="absolute bottom-1/4 right-0 w-72 sm:w-96 h-72 sm:h-96 -z-10 translate-x-[30%] aurora-purple pointer-events-none rounded-full blur-[80px] sm:blur-[120px] opacity-20" />
