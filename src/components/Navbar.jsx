@@ -91,12 +91,10 @@ export default function Navbar() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`w-full fixed top-0 left-0 px-4 xs:px-6 sm:px-10 lg:px-[8%] py-3 sm:py-4 flex items-center justify-between z-50 transition-all duration-300 ${
-          isScrolled
+        className={`w-full fixed top-0 left-0 px-4 xs:px-6 sm:px-10 lg:px-[8%] py-3 sm:py-4 flex items-center justify-between z-50 transition-all duration-300 ${isScrolled
             ? 'backdrop-blur-md border-b border-slate-200/50 dark:border-white/[0.04] bg-white/85 dark:bg-[#08080c]/85 shadow-sm'
             : 'bg-transparent'
-        }`}
-      >
+          }`}>
         <a href="#top" className="flex items-center gap-2 group min-h-[44px] min-w-[44px]" aria-label="Mohan Badiger Home">
           <span className="text-lg font-bold font-Inter tracking-tight text-slate-900 dark:text-white">
             Mohan<span className="text-antigravityBlue">.</span>
@@ -111,11 +109,10 @@ export default function Navbar() {
               <li key={link.name} className="relative py-1">
                 <a
                   href={link.href}
-                  className={`transition-colors duration-200 py-1 inline-block ${
-                    isActive
+                  className={`transition-colors duration-200 py-1 inline-block ${isActive
                       ? 'text-slate-900 dark:text-white font-medium'
                       : 'hover:text-slate-900 dark:hover:text-white'
-                  }`}
+                    }`}
                 >
                   {link.name}
                 </a>
@@ -219,11 +216,10 @@ export default function Navbar() {
                       <a
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`flex items-center justify-between min-h-[48px] px-4 rounded-xl text-base font-medium transition-all duration-200 ${
-                          isActive
+                        className={`flex items-center justify-between min-h-[48px] px-4 rounded-xl text-base font-medium transition-all duration-200 ${isActive
                             ? 'bg-antigravityBlue/10 text-antigravityBlue dark:text-antigravityBlue font-semibold border border-antigravityBlue/25 shadow-sm'
                             : 'text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-white/[0.06] hover:text-slate-950 dark:hover:text-white'
-                        }`}
+                          }`}
                       >
                         <span>{link.name}</span>
                         {isActive ? (
