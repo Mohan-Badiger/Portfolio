@@ -11,8 +11,7 @@ export default function BigDeveloperTitle() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-20px' }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="text-[12vw] sm:text-[15vw] md:text-[17vw] lg:text-[20vw] big-developer-text font-semibold tracking-tight leading-none select-none text-center pointer-events-auto cursor-default"
-      >
+        className="text-[12vw] sm:text-[15vw] md:text-[17vw] lg:text-[20vw] big-developer-text font-semibold tracking-tight leading-none select-none text-center pointer-events-auto cursor-default">
         Developer
       </motion.div>
     </div>
