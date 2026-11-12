@@ -42,6 +42,7 @@ export default function About() {
     },
   ]
 
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
