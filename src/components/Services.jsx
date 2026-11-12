@@ -64,8 +64,7 @@ function SkillCard({ competency, index }) {
             width={32}
             height={32}
             decoding="async"
-            className="w-8 h-8 object-contain"
-          />
+            className="w-8 h-8 object-contain" />
           <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-gray-500">
             {competency.badge}
           </span>
